@@ -1,94 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Messy Jobs — The Work that AI Cannot Reach</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: #1a1a2e; background: #fff; }
+    body { font-family: 'Inter', sans-serif; background: #f7f6f4; color: #2c2c2c; }
+
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(15,12,41,0.92); backdrop-filter: blur(12px);
-      padding: 16px 32px; display: flex; align-items: center; justify-content: space-between;
+      background: rgba(247,246,244,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e0ddd8;
+      padding: 0 48px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #fff; text-decoration: none; font-weight: 700; }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { color: #a5b4fc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: #fff; }
-    @media (max-width: 600px) { .nav-links { display: none; } }
+    .nav-logo {
+      font-family: 'Playfair Display', serif; font-size: 1rem;
+      color: #2c2c2c; text-decoration: none; font-weight: 700; letter-spacing: 0.3px;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; color: #666; text-decoration: none;
+      font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #4a9a9a; }
+    @media (max-width: 640px) { .nav-links { display: none; } nav { padding: 0 24px; } }
+
+    /* ── HERO ── */
     #hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #16213e 100%);
+      margin-top: 56px;
+      position: relative; width: 100%; height: 70vh; min-height: 480px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://user-gen-media-assets.s3.amazonaws.com/gemini_images/7a14bd40-8dc4-4ba0-9749-ac0c85ff528a.png');
+      background-size: cover; background-position: center 60%;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,
+        rgba(200,230,230,0.5) 0%, rgba(168,212,212,0.5) 15%, rgba(126,202,202,0.5) 30%,
+        rgba(184,184,184,0.5) 45%, rgba(212,208,200,0.5) 60%,
+        rgba(126,202,202,0.5) 72%, rgba(74,154,154,0.5) 85%, rgba(61,61,61,0.5) 100%);
+    }
+    .hero-texture { display: none; }
+    .hero-inner {
+      position: relative; z-index: 2;
+      height: 100%; display: flex; align-items: flex-end;
+      padding: 0 8% 56px;
+    }
+    .hero-text { max-width: 700px; }
+    .hero-tag {
+      display: inline-block; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: #7ecaca; margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(6rem, 18vw, 14rem);
+      font-weight: 400; color: #fff; line-height: 0.88;
+      letter-spacing: -2px; margin-bottom: 16px;
+    }
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,0.8); font-style: italic; letter-spacing: 0.3px;
+    }
+
+    /* ── META LINE ── */
+    .meta-bar {
+      padding: 28px 8% 0;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      border-bottom: 1px solid #e0ddd8; padding-bottom: 24px; margin-bottom: 64px;
+    }
+    .meta-authors { font-size: 0.85rem; color: #4a9a9a; font-weight: 500; }
+    .meta-sep { color: #ccc; }
+    .meta-tag {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; background: #e8f4f4; color: #4a9a9a;
+      padding: 4px 12px; border-radius: 20px;
+    }
+
+    /* ── BODY LAYOUT ── */
+    .page-body { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    @media (max-width: 640px) { .page-body { padding: 0 24px; } .meta-bar { padding: 24px 24px 20px; } }
+
+    .editorial-col { max-width: 720px; }
+
+    /* ── SECTION TYPOGRAPHY ── */
+    .section-block { margin-bottom: 80px; }
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: #7ecaca; margin-bottom: 16px;
+    }
+    h2.section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700; color: #2c2c2c; line-height: 1.25;
+      margin-bottom: 24px;
+    }
+    .body-text { font-size: 1.05rem; color: #444; line-height: 1.85; margin-bottom: 20px; }
+    .dedication {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem;
+      color: #2c2c2c; line-height: 1.7; margin-bottom: 28px;
+      padding-left: 24px; border-left: 3px solid #7ecaca;
+    }
+    .rule { border: none; border-top: 1px solid #e0ddd8; margin: 72px 0; }
+
+    /* ── SIGNATURES ── */
+    .signatures { display: flex; gap: 48px; margin-top: 36px; flex-wrap: wrap; }
+    .sig-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .sig-placeholder {
+      width: 130px; height: 60px;
+      background: linear-gradient(135deg, #e8f4f4, #c8e6e6);
+      border-radius: 4px; border: 1px dashed #7ecaca;
       display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 60px 24px; position: relative; overflow: hidden;
+      font-size: 0.68rem; color: #4a9a9a; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
     }
-    #hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 60% 40%, rgba(99,102,241,0.15) 0%, transparent 60%);
+    .sig-name { font-size: 0.82rem; color: #888; font-style: italic; }
+
+    /* ── CHAPTERS ── */
+    .tabs-nav { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .tab-btn {
+      padding: 8px 20px; border: 1.5px solid #c8e0e0; background: #fff;
+      border-radius: 40px; font-size: 0.82rem; font-weight: 500; color: #666;
+      cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif;
     }
-    .hero-inner { position: relative; max-width: 760px; }
-    .hero-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #a5b4fc; border: 1px solid rgba(165,180,252,0.4); padding: 6px 18px; border-radius: 40px; margin-bottom: 32px; }
-    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px; }
-    .hero-subtitle { font-size: clamp(1rem, 2.5vw, 1.35rem); color: #a5b4fc; font-style: italic; margin-bottom: 40px; }
-    .hero-divider { width: 60px; height: 2px; background: rgba(165,180,252,0.5); margin: 0 auto 36px; }
-    .hero-quote { font-size: clamp(0.95rem, 2vw, 1.1rem); color: #e2e8f0; line-height: 1.75; margin-bottom: 48px; }
-    .btn-primary { display: inline-block; background: #6366f1; color: #fff; font-weight: 600; font-size: 1rem; padding: 16px 40px; border-radius: 50px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
-    .btn-primary:hover { background: #4f46e5; transform: translateY(-2px); }
-    section { padding: 100px 24px; }
-    .container { max-width: 1080px; margin: 0 auto; }
-    .section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #6366f1; margin-bottom: 14px; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #1a1a2e; line-height: 1.25; margin-bottom: 24px; }
-    #welcome { background: #f8f7ff; }
-    .welcome-dedication { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #1a1a2e; line-height: 1.65; margin-bottom: 32px; max-width: 680px; }
-    .welcome-body p { font-size: 1.05rem; color: #444; line-height: 1.85; margin-bottom: 20px; }
-    .signatures { display: flex; gap: 48px; margin-top: 40px; flex-wrap: wrap; }
-    .sig-block { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .sig-placeholder { width: 120px; height: 56px; background: linear-gradient(135deg, #e0e7ff, #c7d2fe); border-radius: 4px; border: 1px dashed #6366f1; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #6366f1; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-    .sig-name { font-size: 0.85rem; color: #555; font-style: italic; }
-    #chapters { background: #fff; }
-    .tabs-nav { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
-    .tab-btn { padding: 10px 24px; border: 2px solid #e2e8f0; background: #fff; border-radius: 50px; font-size: 0.9rem; font-weight: 500; color: #555; cursor: pointer; transition: all 0.2s; }
-    .tab-btn.active, .tab-btn:hover { background: #6366f1; border-color: #6366f1; color: #fff; }
+    .tab-btn.active, .tab-btn:hover { background: #4a9a9a; border-color: #4a9a9a; color: #fff; }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
-    .accordion-item { border: 1px solid #e8e8f0; border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
-    .accordion-header { width: 100%; background: #fff; border: none; padding: 20px 24px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1rem; font-weight: 600; color: #1a1a2e; transition: background 0.2s; }
-    .accordion-header:hover { background: #f5f4ff; }
-    .accordion-header.open { background: #f5f4ff; color: #6366f1; }
-    .accordion-icon { font-size: 1.2rem; transition: transform 0.2s; flex-shrink: 0; margin-left: 16px; }
+
+    .accordion-item { border-bottom: 1px solid #e8e4df; }
+    .accordion-header {
+      width: 100%; background: transparent; border: none;
+      padding: 20px 0; text-align: left; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.98rem; font-weight: 600; color: #2c2c2c;
+      font-family: 'Inter', sans-serif; transition: color 0.2s;
+    }
+    .accordion-header:hover { color: #4a9a9a; }
+    .accordion-header.open { color: #4a9a9a; }
+    .accordion-icon { font-size: 1.2rem; transition: transform 0.2s; flex-shrink: 0; margin-left: 16px; color: #7ecaca; }
     .accordion-header.open .accordion-icon { transform: rotate(45deg); }
-    .accordion-body { display: none; padding: 0 24px 24px; background: #fafafa; }
+    .accordion-body { display: none; padding: 0 0 24px; }
     .accordion-body.open { display: block; }
-    .acc-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-    .acc-meta-item { background: #fff; border-radius: 8px; padding: 14px 16px; border: 1px solid #e8e8f0; }
-    .acc-meta-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #6366f1; margin-bottom: 4px; }
-    .acc-meta-value { font-size: 0.9rem; color: #333; line-height: 1.5; }
-    .acc-summary { font-size: 0.95rem; color: #555; line-height: 1.75; margin-top: 16px; }
-    @media (max-width: 600px) { .acc-meta { grid-template-columns: 1fr; } }
-    #authors { background: #f8f7ff; }
-    .authors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
-    .author-card { background: #fff; border-radius: 16px; padding: 36px 28px; text-align: center; border: 1px solid #e8e8f0; transition: box-shadow 0.2s; }
-    .author-card:hover { box-shadow: 0 8px 32px rgba(99,102,241,0.12); }
-    .author-photo { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; background: linear-gradient(135deg, #e0e7ff, #c7d2fe); border: 2px dashed #6366f1; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: #6366f1; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-    .author-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
-    .author-title { font-size: 0.85rem; font-weight: 600; color: #6366f1; margin-bottom: 4px; }
-    .author-uni { font-size: 0.82rem; color: #888; margin-bottom: 16px; }
-    .author-desc { font-size: 0.88rem; color: #555; line-height: 1.65; border-top: 1px solid #f0f0f8; padding-top: 16px; }
-    @media (max-width: 768px) { .authors-grid { grid-template-columns: 1fr; max-width: 380px; margin: 48px auto 0; } }
-    #cta { background: #1a1a2e; text-align: center; padding: 100px 24px; }
-    .cta-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 3vw, 1.9rem); color: #e2e8f0; line-height: 1.6; max-width: 720px; margin: 0 auto 12px; font-style: italic; }
-    .cta-source { font-size: 0.85rem; color: #a5b4fc; margin-bottom: 48px; letter-spacing: 1px; }
-    .btn-white { display: inline-block; background: #fff; color: #1a1a2e; font-weight: 700; font-size: 1rem; padding: 16px 44px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; margin: 8px; }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
-    .btn-outline-white { display: inline-block; background: transparent; border: 2px solid rgba(255,255,255,0.4); color: #fff; font-weight: 600; font-size: 1rem; padding: 14px 36px; border-radius: 50px; text-decoration: none; transition: background 0.2s; margin: 8px; }
-    .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+    .acc-summary { font-size: 0.95rem; color: #555; line-height: 1.8; margin-bottom: 16px; }
+    .acc-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .acc-meta-item { background: #f0f8f8; border-radius: 6px; padding: 12px 16px; }
+    .acc-meta-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #4a9a9a; margin-bottom: 4px; }
+    .acc-meta-value { font-size: 0.88rem; color: #444; line-height: 1.5; }
+    @media (max-width: 560px) { .acc-meta { grid-template-columns: 1fr; } }
+
+    /* ── AUTHORS ── */
+    .authors-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 8px; }
+    .author-card {
+      background: #fff; border-radius: 12px; padding: 28px 24px;
+      border: 1px solid #e8e4df; transition: box-shadow 0.2s;
+    }
+    .author-card:hover { box-shadow: 0 6px 24px rgba(74,154,154,0.1); }
+    .author-photo {
+      width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px;
+      background: linear-gradient(135deg, #c8e6e6, #7ecaca);
+      border: 2px dashed #4a9a9a;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; color: #4a9a9a; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .author-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #2c2c2c; margin-bottom: 4px; text-align: center; }
+    .author-title { font-size: 0.78rem; font-weight: 600; color: #4a9a9a; margin-bottom: 3px; text-align: center; line-height: 1.4; }
+    .author-uni { font-size: 0.78rem; color: #9a9490; margin-bottom: 14px; text-align: center; }
+    .author-desc { font-size: 0.85rem; color: #555; line-height: 1.65; border-top: 1px solid #f0ece8; padding-top: 14px; }
+    @media (max-width: 768px) { .authors-grid { grid-template-columns: 1fr; max-width: 360px; } }
+
+    /* ── CTA ── */
+    .cta-block {
+      background: linear-gradient(135deg, #2c3a3a 0%, #3d5555 100%);
+      border-radius: 16px; padding: 64px 56px; margin: 80px 0;
+    }
+    .cta-quote {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      color: #f0f8f8; line-height: 1.65; font-style: italic; margin-bottom: 40px;
+    }
+    .cta-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-teal {
+      display: inline-block; background: #7ecaca; color: #1a2a2a;
+      font-weight: 700; font-size: 0.9rem; padding: 14px 36px;
+      border-radius: 40px; text-decoration: none; letter-spacing: 0.3px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-teal:hover { background: #4a9a9a; color: #fff; transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-block; background: transparent;
+      border: 1.5px solid rgba(126,202,202,0.5); color: #7ecaca;
+      font-weight: 500; font-size: 0.9rem; padding: 13px 32px;
+      border-radius: 40px; text-decoration: none; transition: background 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(126,202,202,0.12); }
+    @media (max-width: 640px) { .cta-block { padding: 40px 28px; } }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e0ddd8; padding: 32px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: #aaa; flex-wrap: wrap; gap: 12px;
+    }
+    footer a { color: #4a9a9a; text-decoration: none; }
+    @media (max-width: 640px) { footer { padding: 24px; } }
+
+    /* ── TOC SIDEBAR ── */
+    .page-wrapper {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      align-items: start;
+      padding: 0 32px;
+    }
+    .toc-sidebar {
+      position: sticky; top: 72px;
+      padding: 40px 24px 40px 0;
+      border-right: 1px solid #e0ddd8;
+    }
+    .toc-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: #9a9490; margin-bottom: 20px;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { margin-bottom: 4px; }
+    .toc-list a {
+      font-size: 0.82rem; color: #888; text-decoration: none;
+      line-height: 1.5; display: block; padding: 4px 0;
+      border-left: 2px solid transparent; padding-left: 10px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .toc-list a:hover, .toc-list a.active {
+      color: #4a9a9a; border-left-color: #7ecaca;
+    }
+    .toc-divider { border: none; border-top: 1px solid #e8e4df; margin: 16px 0; }
+    .toc-list .toc-sub a {
+      font-size: 0.76rem; color: #aaa; padding-left: 20px;
+    }
+    .toc-list .toc-sub a:hover { color: #4a9a9a; border-left-color: transparent; }
+    .page-content { padding: 0 0 0 40px; }
+    @media (max-width: 860px) {
+      .page-wrapper { grid-template-columns: 1fr; padding: 0 24px; }
+      .toc-sidebar { display: none; }
+      .page-content { padding: 0; }
+    }
+
+    /* ── TOC ACCORDION ── */
+    .toc-acc { width: 100%; }
+    .toc-part { margin-bottom: 2px; }
+    .toc-part-btn {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: #4a9a9a;
+      padding: 9px 0 7px; font-family: 'Inter', sans-serif;
+      border-bottom: 1px solid #e8e4df;
+    }
+    .toc-part-btn:hover { color: #2c2c2c; }
+    .toc-caret { font-size: 0.58rem; transition: transform 0.25s; }
+    .toc-part-btn.collapsed .toc-caret { transform: rotate(-90deg); }
+    .toc-ch-list {
+      list-style: none; overflow: hidden;
+      max-height: 0; transition: max-height 0.35s ease;
+    }
+    .toc-ch-list.open { max-height: 400px; margin-bottom: 6px; }
+    .toc-ch-list li { margin: 0; }
+    .toc-ch-list a {
+      display: block; font-size: 0.76rem; color: #888;
+      text-decoration: none; padding: 5px 0 5px 10px;
+      border-left: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s; line-height: 1.4;
+    }
+    .toc-ch-list a:hover { color: #4a9a9a; border-left-color: #7ecaca; }
+
+    /* ── READ PANEL ── */
+    .read-panel {
+      display: none; margin-top: 24px;
+      border-top: 2px solid #7ecaca; padding-top: 28px;
+    }
+    .read-panel.open { display: block; }
+    .read-toggle {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #f0f8f8; border: 1.5px solid #7ecaca;
+      color: #4a9a9a; font-size: 0.82rem; font-weight: 600;
+      padding: 9px 20px; border-radius: 40px; cursor: pointer;
+      font-family: 'Inter', sans-serif; margin-top: 16px;
+      transition: background 0.2s;
+    }
+    .read-toggle:hover { background: #e0f2f2; }
+    .read-toggle .rt-icon { transition: transform 0.2s; }
+    .read-toggle.open .rt-icon { transform: rotate(180deg); }
+    .read-body {
+      font-size: 1rem; color: #444; line-height: 1.9;
+      max-width: 680px;
+    }
+    .read-body p { margin-bottom: 18px; }
+    .read-body h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem;
+      color: #2c2c2c; margin: 28px 0 10px; font-weight: 700;
+    }
+    .read-body blockquote {
+      border-left: 3px solid #7ecaca; padding-left: 20px;
+      margin: 24px 0; font-style: italic; color: #555;
+    }
+    .citation-block {
+      margin-top: 28px; background: #f7f6f4;
+      border: 1px solid #e8e4df; border-radius: 8px; padding: 20px 24px;
+    }
+    .citation-title {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: #4a9a9a; margin-bottom: 14px;
+    }
+    .citation-list { list-style: none; }
+    .citation-list li {
+      font-size: 0.8rem; color: #666; line-height: 1.65;
+      padding: 6px 0; border-bottom: 1px solid #eee;
+    }
+    .citation-list li:last-child { border-bottom: none; }
+    .citation-list li strong { color: #2c2c2c; }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">Messy Jobs</a>
   <ul class="nav-links">
@@ -99,82 +341,260 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
+  <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="hero-tag">Now Available</div>
-    <h1 class="hero-title">Messy Jobs</h1>
-    <p class="hero-subtitle">The Work that AI Cannot Reach</p>
-    <div class="hero-divider"></div>
-    <p class="hero-quote">
-      The future is not shaped by technology alone.
-    </p>
-    <a href="#cta" class="btn-primary">Get Your Copy &rarr;</a>
+    <div class="hero-text">
+<h1 class="hero-title">Messy Jobs</h1>
+      <p class="hero-subtitle">The Work that AI Cannot Reach</p>
+    </div>
   </div>
 </section>
 
-<section id="welcome">
-  <div class="container" style="max-width:780px;">
-    <p class="section-label">From the Authors</p>
-    <p class="welcome-dedication">To our kids and all those who will start their working lives in this new world. Our concern for their future motivated us to write the book.</p>
-    <div class="welcome-body">
-      <p>The speed of change of AI technology is rapid. Managers are worried, workers are scared, parents are concerned, and policymakers are confused. This situation may last for a long time, and we write this book to help them make better decisions and discover new opportunities.</p>
+<!-- META BAR -->
+<div class="page-wrapper">
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc-sidebar">
+    <p class="toc-label">Contents</p>
+    <div class="toc-acc">
+      <!-- Part I -->
+      <div class="toc-part" id="toc-p1">
+        <button class="toc-part-btn" onclick="toggleTocPart('toc-p1')">
+          <span>Part I</span><span class="toc-caret">&#9660;</span>
+        </button>
+        <ul class="toc-ch-list open" id="toc-p1-list">
+          <li><a href="#chapters" onclick="showTab('part1',null)">Ch.1 &mdash; Cheap Cognition</a></li>
+          <li><a href="#chapters" onclick="showTab('part1',null)">Ch.2 &mdash; Disappearing Single-Task Jobs</a></li>
+          <li><a href="#chapters" onclick="showTab('part1',null)">Ch.3 &mdash; What Holds Jobs Together</a></li>
+          <li><a href="#chapters" onclick="showTab('part1',null)">Ch.4 &mdash; Robots Below</a></li>
+          <li><a href="#chapters" onclick="showTab('part1',null)">Ch.5 &mdash; Robots Above</a></li>
+        </ul>
+      </div>
+      <!-- Part II -->
+      <div class="toc-part" id="toc-p2">
+        <button class="toc-part-btn collapsed" onclick="toggleTocPart('toc-p2')">
+          <span>Part II</span><span class="toc-caret">&#9660;</span>
+        </button>
+        <ul class="toc-ch-list" id="toc-p2-list">
+          <li><a href="#chapters" onclick="showTab('part2',null)">Ch.6 &mdash; Coordination as Authority</a></li>
+          <li><a href="#chapters" onclick="showTab('part2',null)">Ch.7 &mdash; The Messiest Job of All</a></li>
+          <li><a href="#chapters" onclick="showTab('part2',null)">Ch.8 &mdash; Authenticity</a></li>
+        </ul>
+      </div>
+      <!-- Part III -->
+      <div class="toc-part" id="toc-p3">
+        <button class="toc-part-btn collapsed" onclick="toggleTocPart('toc-p3')">
+          <span>Part III</span><span class="toc-caret">&#9660;</span>
+        </button>
+        <ul class="toc-ch-list" id="toc-p3-list">
+          <li><a href="#chapters" onclick="showTab('part3',null)">Ch.9 &mdash; Compressed Signals</a></li>
+          <li><a href="#chapters" onclick="showTab('part3',null)">Ch.10 &mdash; Workslop</a></li>
+          <li><a href="#chapters" onclick="showTab('part3',null)">Ch.11 &mdash; The Mediocrity Trap</a></li>
+          <li><a href="#chapters" onclick="showTab('part3',null)">Ch.12 &mdash; The Career Ladder is Broken</a></li>
+        </ul>
+      </div>
+      <hr class="toc-divider"/>
+      <ul class="toc-list">
+        <li><a href="#authors">Authors</a></li>
+        <li><a href="#cta">Get the Book</a></li>
+      </ul>
     </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+  <div class="meta-bar">
+    <span class="meta-authors">Luis Garicano &nbsp;·&nbsp; Jin Li &nbsp;·&nbsp; Yanhui Wu</span>
+    <span class="meta-sep">|</span>
+    <span class="meta-tag">Economics</span>
+    <span class="meta-tag">AI &amp; Work</span>
+    <span class="meta-tag">Organisations</span>
+  </div>
+
+  <!-- WELCOME -->
+  <div class="section-block editorial-col" id="welcome">
+    <p class="section-eyebrow">From the Authors</p>
+    <p class="dedication">To our kids and all those who will start their working lives in this new world. Our concern for their future motivated us to write the book.</p>
+    <p class="body-text">The speed of change of AI technology is rapid. Managers are worried, workers are scared, parents are concerned, and policymakers are confused. This situation may last for a long time, and we write this book to help them make better decisions and discover new opportunities.</p>
+    <p class="body-text">The future is not shaped by technology alone. Whatever the timelines, understanding the consequences of AI requires economic reasoning about scarcity, about complementarities and bottlenecks, about incentives, and about the organisation of work. These are the concepts we use. Our specific examples will age — these concepts will not.</p>
     <div class="signatures">
       <div class="sig-block"><div class="sig-placeholder">Signature</div><span class="sig-name">Luis</span></div>
       <div class="sig-block"><div class="sig-placeholder">Signature</div><span class="sig-name">Jin</span></div>
       <div class="sig-block"><div class="sig-placeholder">Signature</div><span class="sig-name">Yanhui</span></div>
     </div>
   </div>
-</section>
 
-<section id="chapters">
-  <div class="container">
-    <p class="section-label">Inside the Book</p>
-    <h2 class="section-title">Explore the Chapters</h2>
+  <hr class="rule"/>
+
+  <!-- CHAPTERS -->
+  <div class="section-block" id="chapters">
+    <p class="section-eyebrow">Inside the Book</p>
+    <h2 class="section-heading">Explore the Chapters</h2>
     <div class="tabs-nav">
       <button class="tab-btn active" onclick="showTab('part1',this)">Part I &mdash; The Messy Job Spectrum</button>
       <button class="tab-btn" onclick="showTab('part2',this)">Part II &mdash; Sources of Human Value</button>
       <button class="tab-btn" onclick="showTab('part3',this)">Part III &mdash; Organising the Human-AI Bundle</button>
     </div>
+
     <div id="part1" class="tab-panel active">
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 1 &mdash; Cheap Cognition<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Introduces the <em>autonomy threshold</em> &mdash; the point at which AI can deliver a finished output without a human checking the result. Draws lessons from the Industrial Revolution and IT revolution to frame what AI makes scarce.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Everyone &mdash; this chapter sets the framework for the entire book</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">AI doesn&rsquo;t destroy value &mdash; it shifts scarcity. The question is: what becomes scarce next?</div></div></div></div></div>
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 2 &mdash; The Disappearing Single-Task Jobs<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Explores how jobs consisting of one well-defined, verifiable task are most exposed to AI. Tier 1 jobs &mdash; technical translation, image classification, clause drafting &mdash; have clear inputs and measurable outputs that AI can optimise against.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Freelancers, early-career professionals, and anyone in highly specialised narrow work</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">The cleaner the task, the lower the autonomy threshold &mdash; and the sooner AI crosses it</div></div></div></div></div>
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 3 &mdash; What Holds Jobs Together<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Examines why tasks are bundled into jobs, and what makes some bundles strong and others weak. Strong bundles resist unbundling because their tasks share context, knowledge, and accountability.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Managers and HR professionals redesigning roles in the AI era</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">AI unbundles some jobs and rebundles others &mdash; understanding your bundle is your first defence</div></div></div></div></div>
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 4 &mdash; Robots Below<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">When AI handles the routine and the expert handles the exceptions, AI amplifies human exceptional knowledge &mdash; giving entrepreneurs, surgeons, and senior engineers greater leverage.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Senior professionals wondering whether AI threatens or empowers them</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">If you are the exception-handler, AI working below you multiplies your value</div></div></div></div></div>
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 5 &mdash; Robots Above<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">When AI handles sophisticated cognitive tasks, it empowers less-trained workers who previously lacked access to expert-level reasoning. A nurse with AI diagnostic support can now handle cases that once required a specialist.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Mid-level professionals and policy-makers interested in labour market inequality</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">AI above may create a new middle class &mdash; giving less-trained workers access to expert cognition</div></div></div></div></div>
+      <div class="accordion-item"><button class="accordion-header open" onclick="toggleAcc(this)">Chapter 1 &mdash; Cheap Cognition <span class="accordion-icon">+</span></button><div class="accordion-body open"><p class="acc-summary">Introduces the <em>autonomy threshold</em> — the point at which AI can deliver a finished output without a human checking the result. Draws lessons from the Industrial Revolution and IT revolution to frame what AI makes scarce.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Everyone — this chapter sets the framework for the entire book</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">AI doesn't destroy value — it shifts scarcity. The question is: what becomes scarce next?</div></div></div>
+          <button class="read-toggle" onclick="toggleRead(this)"><span>Read Full Chapter</span> <span class="rt-icon">&#9660;</span></button>
+          <div class="read-panel">
+            <div class="read-body">
+              <h3>Two Precedents</h3>
+              <h3>Industrial Revolution: technology lifts everyone (eventually)</h3>
+              <p>Before the Industrial Revolution, apprentice weavers would spend years learning their trade. A master transferred skills over a decade of training. The best clothes would sell at high prices, because few people could produce that level of quality. Skill and experience were scarce.</p>
+              <p>Then machines arrived. The Edmund Cartwright power loom, invented in 1784 and widely adopted by the 1830s, meant that a teenager could learn to handle the loom in days and produce in a day a volume of cloth that would have required weeks from a master artisan. The skilled Lancashire weavers faced ruin as their cumulative experience became almost useless.<sup>5</sup></p>
+              <p>However, after a period of stagnating wages that lasted roughly forty years from about 1800 to 1840, something unexpected happened that pessimistic observers like Friedrich Engels and Karl Marx had not predicted: the sons and grandchildren of the weavers did not remain poor. By the end of the nineteenth century, the real income of most workers had doubled. An unqualified worker of 1900 had much more purchasing power than a qualified artisan of 1800. Machines made workers&#8217; lives better.<sup>6</sup></p>
+              <p>How did this happen? As the number of machines per worker grew, each worker could produce more cloth. The machine could do the heavy lifting, but the worker remained necessary. Somebody had to put the cotton in and make sure the machine continued operating. Her work was complementary to the machine.</p>
+              <p>And why did workers rather than capital owners capture the gains? Institutions played an important role.<sup>7</sup> But the relative scarcity of capital and workers was critical. While the supply of workers was limited, capital, in the form of machines and factories, could be built and reproduced. With enough time and money, anybody can make another factory, another textile mill. As the earnings of capitalists went up, investors built more capital equipment, and competition persisted until returns to capital went back to normal. Workers were the scarce factor. So, workers gained.</p>
+              <h3>IT Revolution: technology helps the more skilled</h3>
+              <p>Compare this to the information technology (IT) revolution. From the introduction of mass-produced personal computers like the Apple II in 1977 and the IBM PC in 1981, computers spread into factories and offices. Like the mechanical loom, they automated work that previously required human skill. But their impact on wages was very different. From 1980 to 2020, in the United States, the salaries of graduates increased by 60 percent in real terms, while the salaries of workers with secondary education barely increased. The earnings gap between skilled and unskilled workers, what economists call the &#8220;skill premium,&#8221; doubled.<sup>8</sup></p>
+              <p>Why did the IT revolution not follow the same pattern as the Industrial Revolution? Because the IT revolution generated a different kind of scarcity. The mechanical loom complemented all workers. Anybody could learn to use it in a few days. Computers helped skilled workers more than unskilled workers. To use a database or analytical software, you need high cognitive skills.</p>
+              <p>Computers made knowledge acquisition cheap, while leaving knowledge utilization, the hard work of applying knowledge to solving real problems, entirely in human hands. The result was that computers amplified the people who could think. A financial analyst with a spreadsheet was worth far more than an analyst without one, but only to the analyst who knew what to model. A lawyer with a database of case law could research faster, but this helped only the lawyer who knew which precedents mattered. The technology complemented intelligence and hence the workers who gained more from it were those who already had it.</p>
+              <p>The consequence was that the labor market was divided by information technology. The relative demand for workers with high skills, those who could use computers as tools, went up. The relative demand for the office workers, accountants, and administrative assistants whose routine cognitive work was substituted by computers dropped. The relative demand for workers at the very base of the distribution, those doing physical labor that computers could not touch &#8212; janitors, health assistants, and restaurant workers, did not decrease. The result was polarization.<sup>9</sup></p>
+              <p>The two revolutions led to two different outcomes. The Industrial Revolution was, eventually, good for all workers because all workers complemented machines. The IT revolution was very good for some workers, far less good for many others, because only skilled workers complemented computers. Our time became an era of polarization.</p>
+              <p>Which precedent is more relevant to the AI revolution? If AI is like the power loom, complementing everyone, then after a painful transition, broadly shared prosperity follows. If AI is like the personal computer, complementing only those who already have scarce skills, then polarization deepens. The AI revolution creates a third possibility. While IT cheapened codifiable information processing but required human cognition to operate it, AI can perform many codifiable cognitive tasks by itself. That makes some forms of cognition abundant and shifts scarcity towards other human traits.</p>
+              <h3>Autonomy Threshold</h3>
+              <p>Adaptive cruise control helps you drive. It adjusts your speed to match traffic, maintains safe distances, and handles acceleration and braking. It makes you a better and safer driver. But it changes relatively little economically because you remain in the driver&#8217;s seat. Your time is still the limit on how much driving gets done.</p>
+              <p>A fully autonomous vehicle transforms the economics entirely. Because the car no longer needs a human, the supply of &#8220;driving services&#8221; is no longer limited by human time but only by machine capacity.</p>
+              <p>The boundary between the two is the point at which AI switches from assisting humans to operating alone. To be precise, the point at which AI can deliver a finished output whose quality, at the given cost, makes hiring a human to check, correct, or own the result too expensive.<sup>10</sup> This boundary is what we in this book will call the &#8220;autonomy threshold.&#8221;</p>
+              <p>The autonomy threshold applies to tasks, not to workers. Workers do many jobs, and jobs contain many tasks. A worker&#8217;s exposure depends on how many of the tasks she is paid for cross the autonomy threshold, and on whether the remaining tasks can be cleanly separated or whether the bundle they form is &#8220;strong&#8221;, as we shall define in Chapter 3.</p>
+              <p>Below the threshold, AI is in &#8220;assistance&#8221; mode. It helps humans, but the technology preserves them as the suppliers of the finished product. The human reviews the work, catches errors, and takes responsibility for the outcome. In this mode, the economics look much like the IT revolution. Employers need fewer hours of human time per unit of output, but the output expands to fill the freed capacity. The analyst who once wrote two reports a week now writes many more.</p>
+              <p>But when AI crosses the autonomy threshold, that is, when it can deliver a finished solution without a human checking and owning the outcome, everything changes. Below the threshold, AI complements humans. Above it, AI can replace humans on that task. Even when this is the case, it does not necessarily replace the whole job or the whole worker. A doctor may not be writing any longer her clinical notes, and yet continue doing the rest of the tasks of the job. In this case, AI can be a substitute at the task level while increasing the worker&#8217;s productivity.</p>
+              <h3>Three Tiers of the Autonomy Threshold</h3>
+              <p>Every job sits at a different point on the messiness spectrum, depending on the autonomy thresholds of its component tasks and the cost of separating them. A job whose threshold is low, such as a single, well-defined, verifiable task, falls to AI early. A job whose threshold is high, for instance a tangle of interdependent tasks involving people, politics, and friction, resists automation even when the technology improves enormously. The question for any worker is: how high is the threshold of my job, and how fast is the technology climbing toward it?</p>
+              <p><strong>Tier One: single-task jobs.</strong> At the left are the jobs that consist of a single task or a narrow cluster of closely related tasks with verifiable outputs: technical translations, coding a predefined problem, classifying images, and drafting a contractual clause. For these jobs, the autonomy threshold is low. As a result, AI has already crossed the threshold for some of them. Once the threshold is crossed, the human has little to sell. Job posts for writing and coding on a major freelancing platform fell by 21 percent relative to manual-intensive jobs within eight months of ChatGPT&#8217;s launch.<sup>11</sup></p>
+              <p><strong>Tier Two: bundles of tasks.</strong> In the second tier are the jobs that consist of multiple tasks bundled together inside a single role. A medical doctor does not just diagnose illnesses. She also triages, communicates with patients, consults with colleagues, trains residents, and bears legal responsibility for diagnosis. AI may cross the autonomy threshold for some diagnosis tests while remaining below it for the other tasks in the bundle. In the &#8220;robots below&#8221; configuration, AI takes over the routine problems of the job while the human handles the exceptions. In the &#8220;robots above&#8221; configuration, AI handles the more sophisticated parts of the cognitive work.</p>
+              <p><strong>Tier Three: nexus of relations.</strong> In the third tier are the jobs where the autonomy threshold is so high that almost the entire job falls below it. Take the head of engineering at a manufacturing plant. She must decide who to hire, which machines to buy, how to lay them down in the plant, negotiate with the workers and the higher-ups on the solutions proposed, and mobilize the resources to implement them. AI might draft her reports, optimize her schedules, and analyze her data. But the reports, schedules, and data were never the hard part. As Boris Cherney from Anthropic put it in February 2026: <em>&#8220;Someone has to prompt the Claudes, talk to customers, coordinate with other teams, decide what to build next. Engineering is changing and great engineers are more important than ever.&#8221;</em><sup>13</sup></p>
+              <h3>The Messy Demand: Satiation versus Jevons</h3>
+              <p>Cheap cognition reduces the cost of goods that are intensive in cognitive labor, such as software or legal documents. Many problems that would have been impossible to solve in the past become feasible and worth attacking, because the cost of trying drops.</p>
+              <p>In the <em>satiation</em> case, the cost of light fell by a factor of 40,000 over 150 years &#8212; yet the illumination industry has completely lost its economic value.<sup>14</sup> An American household spends less in real terms on illumination than a Victorian family. In 1900, American farms employed 40 percent of the total labor force; today, just 1.1 percent.<sup>15</sup> If cognition follows a similar path, sectors that AI automates will lose economic weight.</p>
+              <p>In the <em>Jevons</em> case, electronic spreadsheets in the early 1980s automated financial calculations that took days &#8212; yet the demand for financial analysis exploded. Firms could model scenarios they had never considered. The analyst was complementary to the tool. Jevons won.<sup>16</sup> As the cost of a &#8220;unit of thought&#8221; drops toward zero, we find a thousand new uses for cheap cognition.</p>
+            </div>
+            <div class="citation-block">
+              <div class="citation-title">Citation Notes</div>
+              <ul class="citation-list">
+                <li><strong>4</strong> On Claude Code and AI-assisted research workflows, see Anthropic product documentation (2026).</li>
+                <li><strong>5</strong> On the Edmund Cartwright power loom and the decline of Lancashire weavers, see E.P. Thompson, <em>The Making of the English Working Class</em> (Victor Gollancz, 1963).</li>
+                <li><strong>6</strong> On the long-run rise in real wages after the Industrial Revolution, see Robert C. Allen, &#8220;Engels&#8217; Pause: Technical Change, Capital Accumulation, and Inequality in the British Industrial Revolution 1780&#8211;1850,&#8221; <em>Explorations in Economic History</em> 46 (2009): 418&#8211;35.</li>
+                <li><strong>7</strong> On the role of institutions in distributing industrial gains to workers, see Daron Acemoglu and James A. Robinson, <em>Why Nations Fail</em> (Crown Publishers, 2012).</li>
+                <li><strong>8</strong> On the doubling of the skill premium from 1980 to 2020, see Lawrence Katz and Alan Krueger, &#8220;The Rise and Nature of Alternative Work Arrangements in the United States,&#8221; <em>ILR Review</em> 72, no. 2 (2019).</li>
+                <li><strong>9</strong> On labour market polarisation from the IT revolution, see David H. Autor, Frank Levy, and Richard J. Murnane, &#8220;The Skill Content of Recent Technological Change,&#8221; <em>Quarterly Journal of Economics</em> 118, no. 4 (2003): 1279&#8211;1333.</li>
+                <li><strong>10</strong> On the formal definition of the autonomy threshold, see the authors&#8217; framework developed throughout this book.</li>
+                <li><strong>11</strong> On the decline in freelance writing and coding postings after ChatGPT, see Demirci, Hannane, and Zhu (2025).</li>
+                <li><strong>13</strong> Boris Cherney, Anthropic, February 2026.</li>
+                <li><strong>14</strong> On the 40,000-fold reduction in the cost of light, see William D. Nordhaus, &#8220;Do Real-Output and Real-Wage Measures Capture Reality? The History of Lighting Suggests Not,&#8221; in <em>The Economics of New Goods</em>, ed. Bresnahan and Gordon (University of Chicago Press, 1997).</li>
+                <li><strong>15</strong> On the decline of agricultural employment, see US Bureau of Labor Statistics, Employment by Major Industry Sector (2024).</li>
+                <li><strong>16</strong> On the Jevons effect and coal consumption, see William Stanley Jevons, <em>The Coal Question</em> (Macmillan, 1865).</li>
+              </ul>
+            </div>
+          </div>
+        </div></div>
+      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 2 &mdash; The Disappearing Single-Task Jobs <span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Explores how jobs consisting of one well-defined, verifiable task are most exposed to AI. Tier 1 jobs — technical translation, image classification, clause drafting — have clear inputs and measurable outputs that AI can optimise against.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Freelancers, early-career professionals, and anyone in highly specialised narrow work</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">The cleaner the task, the lower the autonomy threshold — and the sooner AI crosses it</div></div></div></div></div>
+      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 3 &mdash; What Holds Jobs Together <span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Examines why tasks are bundled into jobs, and what makes some bundles strong and others weak. Strong bundles resist unbundling because their tasks share context, knowledge, and accountability.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Managers and HR professionals redesigning roles in the AI era</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">AI unbundles some jobs and rebundles others — understanding your bundle is your first defence</div></div></div></div></div>
+      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 4 &mdash; Robots Below <span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">When AI handles the routine and the expert handles the exceptions, AI amplifies human exceptional knowledge — giving entrepreneurs, surgeons, and senior engineers greater leverage while automating what sits below their expertise.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Senior professionals wondering whether AI threatens or empowers them</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">If you are the exception-handler, AI working below you multiplies your value</div></div></div></div></div>
+      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 5 &mdash; Robots Above <span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">When AI handles sophisticated cognitive tasks, it empowers less-trained workers who previously lacked access to expert-level reasoning. A nurse with AI diagnostic support can now handle cases that once required a specialist.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Mid-level professionals and policy-makers interested in labour market inequality</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">AI above may create a new middle class — giving less-trained workers access to expert cognition</div></div></div></div></div>
     </div>
+
     <div id="part2" class="tab-panel">
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 6 &mdash; Coordination as Authority<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Organisations are political systems, not just machines. This chapter explains why AI cannot replace human authority &mdash; the ability to make decisions that stick because they come from a person with legitimate power and accountability.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Leaders whose job involves making decisions that others must accept and act on</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">Authority is not knowledge &mdash; it is legitimacy, and legitimacy must be human</div></div></div></div></div>
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 7 &mdash; The Messiest Job of All<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Introduces the <em>implementer</em> &mdash; the person who navigates politics, builds coalitions, and makes change actually happen &mdash; as a distinct and newly scarce type of worker. Includes a case study on BBVA escaping pilot purgatory.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Change managers and executives frustrated that good ideas never get implemented</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">The bottleneck was never the plan &mdash; it was always the implementation</div></div></div></div></div>
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 8 &mdash; Authenticity<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Some jobs survive not because AI cannot technically do them, but because humans demand that a human does them. Live concerts, personal therapy, artisan craft &mdash; these carry intrinsic value derived from human origin.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Creative professionals, educators, and anyone whose work involves human connection</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">When AI can do it perfectly, human imperfection becomes the product</div></div></div></div></div>
+      <div class="accordion-item"><button class="accordion-header open" onclick="toggleAcc(this)">Chapter 6 &mdash; Coordination as Authority <span class="accordion-icon">+</span></button><div class="accordion-body open"><p class="acc-summary">Organisations are political systems, not just machines. This chapter explains why AI cannot replace human authority — the ability to make decisions that stick because they come from a person with legitimate power and accountability.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Leaders whose job involves making decisions that others must accept and act on</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">Authority is not knowledge — it is legitimacy, and legitimacy must be human</div></div></div>
+          <button class="read-toggle" onclick="toggleRead(this)"><span>Read Full Chapter</span> <span class="rt-icon">&#9660;</span></button>
+          <div class="read-panel">
+            <div class="read-body">
+              <h3>The Organisation as a Political System</h3>
+              <p>Think about what happens when two departments in any large organisation disagree. Both have legitimate goals. Both have real information the other lacks. Both have incentives shaped by how they are measured. No algorithm can tell you whose view is correct, because the disagreement is not about facts &#8212; it is about values, priorities, and power.</p>
+              <p>Human authority exists to resolve exactly these conflicts. A decision made by someone with legitimate authority sticks &#8212; not because it is always right, but because the organisation has agreed in advance to accept it. That acceptance is the foundation on which all coordination rests.</p>
+              <p>Think of an organization as a political system, a coalition of individuals and groups with different objectives that need to cooperate to survive. A police force must simultaneously satisfy the mayor, the city council, civil liberties groups, the neighborhoods it patrols, and its own officers. Each constituency has a legitimate claim. None of them is simply wrong. And yet decisions must be made, resources allocated, and priorities set. This is not a technical problem that can be solved by better data. It is a political problem that can only be resolved by someone with the authority to say: this is what we are doing.</p>
+              <h3>The Agent Economy, and Its Limits</h3>
+              <p>AI agents can now handle workflows that once required middle management: scheduling, routing information, tracking progress, generating reports. This is enormously useful. But it creates a dangerous illusion &#8212; that because AI can manage the information flow, it can manage the organisation.</p>
+              <p>It cannot. The information flow was never the hard part. The hard part is what happens when two people disagree about what the information means, or when an employee refuses to follow a directive, or when a key client demands an exception to the standard process. In these moments, the question is not &#8220;what does the system recommend?&#8221; but &#8220;who is responsible for this decision, and do I trust them?&#8221;</p>
+              <p>Consider a concrete example. An AI agent might optimally schedule two meetings in a way that creates a conflict with a key client relationship that the AI does not know about. A human manager would navigate the conflict using contextual knowledge and authority. The AI generates the conflict; the human must resolve it. This is not a limitation that will be fixed by a better model. It is a structural feature of organisations composed of humans.</p>
+              <h3>Why AI Cannot Replace Human Authority</h3>
+              <p>Authority is not just information. You can give a computer all the information a manager has and it will still lack what matters most: the legitimate right to make a binding decision that others will accept and implement. This legitimacy is not derived from knowledge &#8212; it is derived from accountability.</p>
+              <p>When a manager makes a decision, she takes ownership of the outcome. If it goes wrong, she faces consequences: reputational, professional, and sometimes legal. This accountability creates a strong incentive to integrate all relevant information, consider the second-order effects, and make a decision that others can live with even if they disagree. An AI agent has no such skin in the game.</p>
+              <p>There is also a relational dimension. Authority works because it operates within a web of relationships built over time. The manager who has worked with her team for three years, who has shown up when things were hard, who has been honest about mistakes &#8212; that manager can ask people to do things they would not otherwise do. This relational capital is not transferable to an AI, no matter how sophisticated.</p>
+              <h3>Jobs and Earnings in Messy Organisations</h3>
+              <p>The implication for jobs is stark. The most valuable people in the AI economy are not those with the most specialised technical knowledge &#8212; that knowledge is increasingly commoditised. They are the people who can hold organisations together: who can make decisions that others accept, who can build and maintain the trust that enables cooperation, and who can navigate the political landscape of competing legitimate interests.</p>
+              <p>These jobs will not disappear. If anything, they become more important as AI takes over more of the technical and analytical work, leaving the relational and political work more clearly as the core of what organisations need from humans. The earnings premium for &#8220;messy job&#8221; workers &#8212; managers, executives, negotiators, implementers &#8212; will increase, not decrease, as AI becomes more capable.</p>
+              <p>This is not a comfortable conclusion for those who believe that AI will create a more meritocratic world by reducing the importance of social skills and political navigation. It suggests instead that the human capacity for legitimate authority &#8212; authority rooted in accountability, relationship, and trust &#8212; becomes the scarcest and most valuable commodity in the AI economy.</p>
+            </div>
+            <div class="citation-block">
+              <div class="citation-title">Citation Notes</div>
+              <ul class="citation-list">
+                <li>On organizations as political systems, see Jeffrey Pfeffer, <em>Power in Organizations</em> (Pitman, 1981); and Henry Mintzberg, <em>Power In and Around Organizations</em> (Prentice-Hall, 1983).</li>
+                <li>On the limits of AI in organizational coordination, see Erik Brynjolfsson and Andrew McAfee, <em>The Second Machine Age</em> (W.W. Norton, 2014).</li>
+                <li>On relational contracts and authority, see Simon, &#8220;A Formal Theory of the Employment Relationship,&#8221; <em>Econometrica</em> 19, no. 3 (1951): 293&#8211;305.</li>
+                <li>On the growing importance of social and relational skills, see David J. Deming, &#8220;The Growing Importance of Social Skills in the Labor Market,&#8221; <em>Quarterly Journal of Economics</em> 132, no. 4 (2017): 1593&#8211;1640.</li>
+                <li>On the earnings premium for managers in the AI era, see the authors&#8217; framework developed throughout this book.</li>
+              </ul>
+            </div>
+          </div>
+        </div></div>
+      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 7 &mdash; The Messiest Job of All <span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Introduces the <em>implementer</em> — the person who navigates politics, builds coalitions, and makes change actually happen — as a distinct and newly scarce type of worker. Includes a case study on BBVA escaping pilot purgatory.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Change managers and executives frustrated that good ideas never get implemented</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">The bottleneck was never the plan — it was always the implementation</div></div></div></div></div>
+      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 8 &mdash; Authenticity <span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Some jobs survive not because AI cannot technically do them, but because humans demand that a human does them. Live concerts, personal therapy, artisan craft — these carry intrinsic value derived from human origin.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Creative professionals, educators, and anyone whose work involves human connection</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">When AI can do it perfectly, human imperfection becomes the product</div></div></div></div></div>
     </div>
+
     <div id="part3" class="tab-panel">
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 9 &mdash; Compressed Signals<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">When AI makes it easy for everyone to produce polished work, the signals employers use to screen candidates lose their power. This chapter examines how organisations must redesign their hiring processes.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">HR professionals, recruiters, and job-seekers navigating AI-assisted hiring</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">If everyone can signal excellence, the signal collapses &mdash; organisations must find new ones</div></div></div></div></div>
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 10 &mdash; Workslop<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">AI makes it easy to produce work that looks good but isn&rsquo;t. This chapter analyses how verification costs explode when AI assists workers, and how organisations must redesign quality control.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Managers and team leads responsible for quality in knowledge-work environments</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">The hardest problem with AI-assisted work is not output quality &mdash; it is verifying it</div></div></div></div></div>
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 11 &mdash; The Mediocrity Trap<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">AI front-loads progress &mdash; tasks get 80% done quickly, but the last 20% is as hard as ever. This creates a systematic trap where organisations celebrate fast early results and never finish properly.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Project managers and executives setting quality standards in AI-assisted workflows</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">AI makes starting easy &mdash; the last mile is still human, and it still matters</div></div></div></div></div>
-      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 12 &mdash; The Career Ladder is Broken<span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">Junior roles have traditionally been how organisations grow talent through learning-by-doing. AI is automating exactly those entry-level tasks. This chapter asks what happens to the pipeline when the bottom rung disappears.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Students, early-career workers, and the managers who develop them</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">The apprenticeship model is breaking down &mdash; organisations that replace it will win the talent war</div></div></div></div></div>
+      <div class="accordion-item"><button class="accordion-header open" onclick="toggleAcc(this)">Chapter 9 &mdash; Compressed Signals <span class="accordion-icon">+</span></button><div class="accordion-body open"><p class="acc-summary">When AI makes it easy for everyone to produce polished work, the signals employers use to screen candidates lose their power. This chapter examines how organisations must redesign their hiring processes.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">HR professionals, recruiters, and job-seekers navigating AI-assisted hiring</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">If everyone can signal excellence, the signal collapses — organisations must find new ones</div></div></div>
+          <button class="read-toggle" onclick="toggleRead(this)"><span>Read Full Chapter</span> <span class="rt-icon">&#9660;</span></button>
+          <div class="read-panel">
+            <div class="read-body">
+              <h3>The Signals We Send</h3>
+              <p>Every day, workers and job seekers send signals to potential employers: a polished CV, a confident cover letter, a well-crafted portfolio, a prestigious degree. These signals work &#8212; when they work &#8212; because they are costly to produce, and the cost correlates with the underlying quality being signalled.</p>
+              <p>In ancient China, the general Sima Rangju had just been given command of a demoralised army. When the king&#8217;s favourite courtier arrived late to a review &#8212; having delayed to socialise &#8212; Rangju executed the courtier&#8217;s attendant. This was not a demonstration of capability. It was a demonstration of willingness to bear an enormous cost. Only someone genuinely committed to military discipline would accept the risk of offending the king. After the executions, nobody in the army doubted him again.<sup>147</sup></p>
+              <h3>The Economics of Showing Off</h3>
+              <p>Michael Spence, who won a Nobel Prize for formalising this logic, showed that the same principle governs much of economic life.<sup>148</sup> The MBA does not just prove you can endure pain. It proves that you are the type of person for whom the pain is worth it. A strong student expects to gain more through better learning and a steeper career trajectory, so the tuition and forgone earnings are a worthy investment. A weaker student faces the same price tag with a lower expected return, so they opt out. The degree separates by creating a cost worth bearing only for those with the underlying quality.</p>
+              <p>The same logic explains why firms pay above-market wages (efficiency wages), why people give expensive gifts rather than cash, and why start-ups burn money on visible office spaces. These costly signals work precisely because they are too expensive for the wrong type to fake.</p>
+              <h3>When AI Compresses Signals</h3>
+              <p>AI writing assistance has made it cheap to produce a polished cover letter, a strong portfolio, or a confident research proposal. Research showed that AI writing assistance on r&#233;sum&#233;s significantly increased hires &#8212; the signal was compressed.<sup>149</sup> When a mediocre candidate can produce a document indistinguishable from an excellent one, the document stops being informative.</p>
+              <p>The same compression affects credentials. If an AI can generate a passable literature review in hours, the literature review section of a dissertation stops signalling the depth of a student&#8217;s reading. If an AI can draft a contract in minutes, the drafting task stops distinguishing a junior lawyer from a senior one.</p>
+              <p>There is a deeper problem. When signals collapse, the market loses its ability to sort. Employers cannot tell who is good. Workers cannot credibly communicate their quality. The result is adverse selection: employers lower their offers because they cannot distinguish, good workers exit because the offers do not reflect their quality, and the market for talent unravels.</p>
+              <h3>How Organisations Must Adapt Their Screening</h3>
+              <p>The answer is not to ban AI tools &#8212; that is both unenforceable and counterproductive. The answer is to invest in signals that AI cannot cheaply replicate: verifiable track records in real conditions, real-time interaction under uncertainty, and demonstrated judgment in genuinely ambiguous situations.</p>
+              <p>Work trials, paid probationary projects, and structured interviews designed around specific past experiences are harder to fake than documents. Organisations that redesign their screening around these channels will hire better. Workers who understand this logic will invest accordingly &#8212; in doing things that are verifiable, in building reputations through observable performance, and in cultivating the relational trust that no AI can generate on their behalf.</p>
+              <p>The irony is that AI, which makes written signals cheap, may ultimately make <em>doing</em> more important than <em>describing</em>. The resume was always a proxy for the work. Now that the proxy is freely available, organisations must find ways to evaluate the work itself.</p>
+            </div>
+            <div class="citation-block">
+              <div class="citation-title">Citation Notes</div>
+              <ul class="citation-list">
+                <li><strong>145</strong> On signalling in the dating market, see Paul Oyer, <em>Everything I Ever Needed to Know About Economics I Learned from Online Dating</em> (Harvard Business Review Press, 2014).</li>
+                <li><strong>146</strong> On the eleven-minute standing ovation and the arrest of the factory director, see Aleksandr Solzhenitsyn, <em>The Gulag Archipelago</em>, vol. 1, trans. Thomas P. Whitney (Harper &amp; Row, 1973).</li>
+                <li><strong>147</strong> On Sima Rangju&#8217;s enforcement of military discipline, see Sima Qian, <em>Shi Ji (Records of the Grand Historian)</em>, chap. 64.</li>
+                <li><strong>148</strong> On Michael Spence&#8217;s Nobel-winning signalling theory, see Michael Spence, <em>Market Signaling: Informational Transfer in Hiring and Related Screening Processes</em> (Harvard University Press, 1974).</li>
+                <li><strong>149</strong> On AI writing assistance increasing hires, see Emma Wiles, Zanele T. Munyikwa, and John J. Horton, &#8220;Algorithmic Writing Assistance on Jobseekers&#8217; Resumes Increases Hires,&#8221; NBER Working Paper 30886 (2023).</li>
+              </ul>
+            </div>
+          </div>
+        </div></div>
+      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 10 &mdash; Workslop <span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">AI makes it easy to produce work that looks good but isn't. This chapter analyses how verification costs explode when AI assists workers, and how organisations must redesign quality control.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Managers and team leads responsible for quality in knowledge-work environments</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">The hardest problem with AI-assisted work is not output quality — it is verifying it</div></div></div></div></div>
+      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 11 &mdash; The Mediocrity Trap <span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">AI front-loads progress — tasks get 80% done quickly, but the last 20% is as hard as ever. This creates a systematic trap where organisations celebrate fast early results and never finish properly.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Project managers and executives setting quality standards in AI-assisted workflows</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">AI makes starting easy — the last mile is still human, and it still matters</div></div></div></div></div>
+      <div class="accordion-item"><button class="accordion-header" onclick="toggleAcc(this)">Chapter 12 &mdash; The Career Ladder is Broken <span class="accordion-icon">+</span></button><div class="accordion-body"><p class="acc-summary">AI is automating exactly the entry-level tasks through which junior workers traditionally learned their craft. This chapter asks what happens to the career pipeline when the bottom rung disappears, and how organisations can rebuild it.</p><div class="acc-meta"><div class="acc-meta-item"><div class="acc-meta-label">Who Should Read This</div><div class="acc-meta-value">Students, early-career workers, and the managers who develop them</div></div><div class="acc-meta-item"><div class="acc-meta-label">Key Takeaway</div><div class="acc-meta-value">The apprenticeship model is breaking down — organisations that replace it will win the talent war</div></div></div></div></div>
     </div>
   </div>
-</section>
 
-<section id="authors">
-  <div class="container">
-    <p class="section-label">Meet the Authors</p>
-    <h2 class="section-title">Three economists. Three Scholars. Three parents.</h2>
+  <hr class="rule"/>
+
+  <!-- AUTHORS -->
+  <div class="section-block" id="authors">
+    <p class="section-eyebrow">Meet the Authors</p>
+    <h2 class="section-heading">Three economists. Three Scholars. Three parents.</h2>
     <div class="authors-grid">
       <div class="author-card">
         <div class="author-photo">Photo</div>
         <div class="author-name">Luis Garicano</div>
         <div class="author-title">Professor of Public Policy</div>
         <div class="author-uni">London School of Economics</div>
-        <p class="author-desc">Has spent his career studying how organisations work &mdash; and why they so often don&rsquo;t. Has advised governments and large organisations on how technology reshapes the way work gets done.</p>
+        <p class="author-desc">Has spent his career studying how organisations work — and why they so often don't. Has advised governments and large organisations on how technology reshapes the way work gets done.</p>
       </div>
       <div class="author-card">
         <div class="author-photo">Photo</div>
         <div class="author-name">Jin Li</div>
         <div class="author-title">Director of HKU Centre for AI, Management and Organization</div>
         <div class="author-uni">University of Hong Kong</div>
-        <p class="author-desc">Thinks about incentives, hierarchies, and what it takes to make people actually do their best work. Researches why organisations so often fail to get the best out of their people &mdash; and what fixes that.</p>
+        <p class="author-desc">Thinks about incentives, hierarchies, and what it takes to make people actually do their best work. Researches why organisations so often fail to get the best out of their people — and what fixes that.</p>
       </div>
       <div class="author-card">
         <div class="author-photo">Photo</div>
@@ -185,32 +605,105 @@
       </div>
     </div>
   </div>
-</section>
 
-<section id="cta">
-  <div class="container">
-    <p class="cta-quote">The world is not running out of problems that need solutions. If you bring judgment, determination, and the willingness to be held responsible for unpredictable outcomes &mdash; you will not be replaced. You will be needed more than ever.</p>
-    <a href="#" class="btn-white">Get Your Copy &rarr;</a>
-    <a href="#chapters" class="btn-outline-white">Explore the Chapters</a>
+  <!-- CTA -->
+  <div class="cta-block" id="cta">
+    <p class="cta-quote">"The world is not running out of problems that need solutions. If you bring judgment, determination, and the willingness to be held responsible for unpredictable outcomes — you will not be replaced. You will be needed more than ever."</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-teal">Get Your Copy &rarr;</a>
+      <a href="#chapters" class="btn-ghost">Explore the Chapters</a>
+    </div>
   </div>
-</section>
+
+  </div><!-- end page-content -->
+</div><!-- end page-wrapper -->
+
+<!-- FOOTER -->
+<footer>
+  <span>&copy; 2026 Luis Garicano, Jin Li &amp; Yanhui Wu. All rights reserved.</span>
+  <span>London School of Economics &nbsp;&middot;&nbsp; University of Hong Kong</span>
+</footer>
 
 <script>
+  function toggleTocPart(id) {
+    var list = document.getElementById(id + '-list');
+    var btn = document.getElementById(id).querySelector('.toc-part-btn');
+    var isOpen = list.classList.contains('open');
+    list.classList.toggle('open', !isOpen);
+    btn.classList.toggle('collapsed', isOpen);
+  }
+
+  function openTocForTab(tabId) {
+    var map = { 'part1':'toc-p1', 'part2':'toc-p2', 'part3':'toc-p3' };
+    var target = map[tabId];
+    ['toc-p1','toc-p2','toc-p3'].forEach(function(id) {
+      var list = document.getElementById(id + '-list');
+      var btn = document.getElementById(id).querySelector('.toc-part-btn');
+      if (id === target) {
+        list.classList.add('open');
+        btn.classList.remove('collapsed');
+      } else {
+        list.classList.remove('open');
+        btn.classList.add('collapsed');
+      }
+    });
+  }
+
+  function toggleRead(btn) {
+    var panel = btn.nextElementSibling;
+    var isOpen = panel.classList.contains('open');
+    panel.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    btn.querySelector('span:first-child').textContent = isOpen ? 'Read Full Chapter' : 'Close Chapter';
+  }
+
   function showTab(id, btn) {
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
     document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
+    if (btn) btn.classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(function(b){
+      if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf("'" + id + "'") !== -1) {
+        b.classList.add('active');
+      }
+    });
+    openTocForTab(id);
+    var sec = document.getElementById('chapters');
+    if (sec) sec.scrollIntoView({behavior:'smooth', block:'start'});
+    return false;
   }
   function toggleAcc(header) {
     const body = header.nextElementSibling;
     const isOpen = header.classList.contains('open');
+    // close all siblings
     header.closest('.tab-panel').querySelectorAll('.accordion-header').forEach(h => {
       h.classList.remove('open');
       h.nextElementSibling.classList.remove('open');
     });
-    if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
+    // open clicked one (stays open, only closes when another opens)
+    if (!isOpen) {
+      header.classList.add('open');
+      body.classList.add('open');
+    } else {
+      // if already open and clicked again, keep it open
+      header.classList.add('open');
+      body.classList.add('open');
+    }
   }
+
+  // TOC active highlight on scroll
+  const sections = document.querySelectorAll('[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    tocLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
 </script>
 </body>
 </html>
