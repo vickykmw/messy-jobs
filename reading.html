@@ -16,49 +16,28 @@
     }
     body { font-family: 'Source Serif 4', Georgia, serif; background: var(--page); color: var(--ink); }
 
-    /* ── RIBBON ── */
-    #ribbon {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-      background: var(--ink); height: 48px;
-      display: flex; align-items: center; justify-content: space-between; padding: 0 20px; gap: 16px;
-    }
+    /* RIBBON */
+    #ribbon { position: fixed; top: 0; left: 0; right: 0; z-index: 300; background: var(--ink); height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; gap: 16px; }
     .ribbon-left { display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1; }
-    .ribbon-sidebar-toggle {
-      display: none; width: 32px; height: 32px; flex-shrink: 0;
-      flex-direction: column; justify-content: center; gap: 5px;
-      cursor: pointer; padding: 4px; border-radius: 2px;
-      background: rgba(255,255,255,0.08); border: none; transition: background 0.2s;
-    }
-    .ribbon-sidebar-toggle:hover { background: rgba(255,255,255,0.15); }
+    .ribbon-sidebar-toggle { display: none; width: 32px; height: 32px; flex-shrink: 0; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 4px; border-radius: 2px; background: rgba(255,255,255,0.08); border: none; }
     .ribbon-sidebar-toggle span { display: block; height: 1.5px; background: rgba(253,252,250,0.7); }
     @media (max-width: 960px) { .ribbon-sidebar-toggle { display: flex; } }
-    .ribbon-title {
-      font-family: 'Playfair Display', serif; font-size: 0.82rem; font-weight: 700;
-      color: rgba(253,252,250,0.65); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
-    }
+    .ribbon-title { font-family: 'Playfair Display', serif; font-size: 0.82rem; font-weight: 700; color: rgba(253,252,250,0.65); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
     .ribbon-title a { color: inherit; text-decoration: none; }
     .ribbon-title a:hover { color: var(--white); }
     .ribbon-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-    .ribbon-btn {
-      font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.08em; background: var(--teal); color: var(--white);
-      padding: 6px 16px; border-radius: 2px; text-decoration: none; transition: background 0.2s; white-space: nowrap;
-    }
+    .ribbon-btn { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; background: var(--teal); color: var(--white); padding: 6px 16px; border-radius: 2px; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
     .ribbon-btn:hover { background: var(--teal-light); color: var(--ink); }
     .hamburger { width: 32px; height: 32px; display: flex; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 4px; border-radius: 2px; flex-shrink: 0; }
     .hamburger:hover { background: rgba(255,255,255,0.08); }
     .hamburger span { display: block; height: 1.5px; background: rgba(253,252,250,0.6); }
 
-    /* ── PROGRESS ── */
+    /* PROGRESS */
     #progress-bar { position: fixed; top: 48px; left: 0; right: 0; z-index: 290; height: 2px; background: rgba(126,202,202,0.15); }
     #progress-fill { height: 100%; background: var(--teal-light); width: 0%; transition: width 0.1s linear; }
 
-    /* ── DRAWER ── */
-    #drawer {
-      position: fixed; top: 48px; right: 0; bottom: 0; z-index: 250; width: 320px;
-      background: var(--white); border-left: 1px solid var(--rule);
-      transform: translateX(100%); transition: transform 0.3s ease; overflow-y: auto; padding: 36px 28px;
-    }
+    /* DRAWER */
+    #drawer { position: fixed; top: 48px; right: 0; bottom: 0; z-index: 250; width: 320px; background: var(--white); border-left: 1px solid var(--rule); transform: translateX(100%); transition: transform 0.3s ease; overflow-y: auto; padding: 36px 28px; }
     #drawer.open { transform: translateX(0); }
     #drawer-overlay { position: fixed; inset: 0; z-index: 240; background: rgba(26,24,20,0.4); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     #drawer-overlay.open { opacity: 1; pointer-events: all; }
@@ -75,53 +54,36 @@
     .drawer-nav-link { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; color: var(--ink-muted); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--rule); transition: color 0.2s; }
     .drawer-nav-link:hover { color: var(--teal); }
 
-    /* ── LAYOUT ── */
-    #layout { margin-top: 50px; display: grid; grid-template-columns: 240px 1fr; max-width: 1240px; margin-left: auto; margin-right: auto; min-height: calc(100vh - 50px); position: relative; }
+    /* LAYOUT */
+    #layout { margin-top: 50px; display: grid; grid-template-columns: 240px 1fr; max-width: 1240px; margin-left: auto; margin-right: auto; min-height: calc(100vh - 50px); }
+    @media (max-width: 960px) { #layout { grid-template-columns: 1fr; } }
 
-    /* ── SIDEBAR ── */
-    #sidebar { border-right: 1px solid var(--rule); background: var(--white); position: sticky; top: 50px; height: calc(100vh - 50px); overflow-y: auto; overflow-x: hidden; transition: transform 0.3s ease; z-index: 100; }
+    /* SIDEBAR */
+    #sidebar { border-right: 1px solid var(--rule); background: var(--white); position: sticky; top: 50px; height: calc(100vh - 50px); overflow-y: auto; overflow-x: hidden; z-index: 100; }
     #sidebar::-webkit-scrollbar { width: 3px; }
     #sidebar::-webkit-scrollbar-thumb { background: var(--rule); }
     @media (max-width: 960px) {
-      #layout { grid-template-columns: 1fr; margin-top: 50px; }
-      #sidebar { position: fixed; top: 50px; left: 0; bottom: 0; width: 280px; transform: translateX(-100%); box-shadow: 4px 0 24px rgba(26,24,20,0.12); }
+      #sidebar { position: fixed; top: 50px; left: 0; bottom: 0; width: 280px; transform: translateX(-100%); transition: transform 0.3s ease; box-shadow: 4px 0 24px rgba(26,24,20,0.12); }
       #sidebar.open { transform: translateX(0); }
-      #sidebar-overlay { position: fixed; inset: 0; z-index: 99; background: rgba(26,24,20,0.35); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-      #sidebar-overlay.open { opacity: 1; pointer-events: all; }
     }
+    #sidebar-overlay { position: fixed; inset: 0; z-index: 99; background: rgba(26,24,20,0.35); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    #sidebar-overlay.open { opacity: 1; pointer-events: all; }
+
     .sidebar-inner { padding: 28px 0 60px; }
     .sidebar-book-link { display: flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.68rem; color: var(--ink-faint); text-decoration: none; padding: 0 20px 18px; border-bottom: 1px solid var(--rule); margin-bottom: 18px; letter-spacing: 0.06em; transition: color 0.2s; }
     .sidebar-book-link:hover { color: var(--teal); }
-    .sidebar-preface-link {
-      display: block;
-      font-family: 'DM Sans', sans-serif; font-size: 0.76rem; font-weight: 500;
-      color: var(--ink-muted); text-decoration: none;
-      padding: 7px 20px 7px 22px;
-      border-left: 2px solid transparent;
-      letter-spacing: 0.02em;
-      transition: color 0.15s, border-color 0.15s, background 0.15s;
-      margin-bottom: 4px;
-    }
+    .back-arrow { width: 12px; height: 12px; flex-shrink: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; transform: rotate(-45deg); }
+    .sidebar-preface-link { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; padding: 7px 20px 7px 22px; border-left: 2px solid transparent; letter-spacing: 0.02em; transition: color 0.15s, border-color 0.15s, background 0.15s; }
     .sidebar-preface-link:hover { color: var(--ink); background: var(--page); }
     .sidebar-preface-link.active { color: var(--teal); border-left-color: var(--teal-light); font-weight: 600; background: var(--teal-pale); }
-    .back-arrow { width: 12px; height: 12px; flex-shrink: 0; border-top: 1.5px solid currentColor; border-left: 1.5px solid currentColor; transform: rotate(-45deg); }
-    .sidebar-part-label { font-family: 'DM Sans', sans-serif; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); padding: 10px 20px 5px; display: block; }
+    .sidebar-part-label { font-family: 'DM Sans', sans-serif; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); padding: 12px 20px 5px; display: block; }
     .sidebar-ch-list { list-style: none; }
     .sidebar-ch-list li a { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.76rem; font-weight: 400; color: var(--ink-faint); text-decoration: none; padding: 6px 20px 6px 22px; border-left: 2px solid transparent; line-height: 1.35; transition: color 0.15s, border-color 0.15s, background 0.15s; }
     .sidebar-ch-list li a:hover { color: var(--ink); background: var(--page); }
     .sidebar-ch-list li a.active { color: var(--teal); border-left-color: var(--teal-light); font-weight: 500; background: var(--teal-pale); }
     .sidebar-divider { border: none; border-top: 1px solid var(--rule); margin: 10px 0; }
-
-    /* Tag browser */
     .sidebar-tags-section { padding: 4px 20px 0; }
-    .sidebar-tag-btn {
-      display: inline-block; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; font-size: 0.65rem; font-weight: 500;
-      letter-spacing: 0.05em;
-      border: 1px solid var(--rule); color: var(--ink-faint);
-      padding: 4px 9px; border-radius: 2px; margin: 0 4px 6px 0;
-      background: none; transition: all 0.15s;
-    }
+    .sidebar-tag-btn { display: inline-block; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.05em; border: 1px solid var(--rule); color: var(--ink-faint); padding: 4px 9px; border-radius: 2px; margin: 0 4px 6px 0; background: none; transition: all 0.15s; }
     .sidebar-tag-btn:hover, .sidebar-tag-btn.active { background: var(--teal-pale); border-color: var(--teal-light); color: var(--teal); }
     #tag-results { margin-top: 14px; display: none; }
     #tag-results.visible { display: block; }
@@ -130,78 +92,47 @@
     .tag-result-list li a { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.76rem; color: var(--ink-muted); text-decoration: none; padding: 5px 0; border-bottom: 1px solid var(--page-warm); transition: color 0.15s; }
     .tag-result-list li a:hover { color: var(--teal); }
 
-    /* ── MAIN ── */
+    /* MAIN */
     #main { padding: 56px 72px 100px; max-width: 780px; }
     @media (max-width: 1100px) { #main { padding: 48px 48px 80px; } }
     @media (max-width: 960px) { #main { padding: 40px 28px 72px; max-width: 100%; } }
     @media (max-width: 600px) { #main { padding: 32px 20px 64px; } }
 
-    /* ── CHAPTER HEADER ── */
+    /* CHAPTER HEADER */
     .ch-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
     .ch-part-tag { font-family: 'DM Sans', sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); background: var(--teal-pale); padding: 4px 10px; border-radius: 2px; }
     .ch-sep { color: var(--rule); }
     .ch-number { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; color: var(--ink-faint); letter-spacing: 0.12em; }
-
-    /* H1 */
     .ch-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 12px; }
-    /* Chapter subtitle (from PDF) */
     .ch-subtitle { font-family: 'Source Serif 4', serif; font-size: clamp(1rem, 2vw, 1.2rem); font-style: italic; font-weight: 300; color: var(--ink-muted); line-height: 1.5; margin-bottom: 28px; }
-
     .ch-byline { display: flex; align-items: center; gap: 14px; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 48px; flex-wrap: wrap; }
     .ch-authors { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--ink-muted); }
     .ch-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-    .ch-tag {
-      font-family: 'DM Sans', sans-serif; font-size: 0.62rem; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      border: 1px solid rgba(74,154,154,0.35); color: var(--teal);
-      padding: 3px 9px; border-radius: 2px; cursor: pointer;
-      text-decoration: none; background: none; transition: background 0.15s;
-    }
+    .ch-tag { font-family: 'DM Sans', sans-serif; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(74,154,154,0.35); color: var(--teal); padding: 3px 9px; border-radius: 2px; cursor: pointer; text-decoration: none; background: none; transition: background 0.15s; }
     .ch-tag:hover { background: var(--teal-pale); }
 
-    /* ── ARTICLE BODY TYPOGRAPHY ── */
+    /* ARTICLE TYPOGRAPHY */
     .article-body { font-size: 1.05rem; line-height: 1.9; color: var(--ink-soft); font-weight: 300; }
     .article-body p { margin-bottom: 1.55em; }
-
-    /* H2: same size as body, bold, Playfair — no rule, generous top margin */
-    .article-body h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.12rem;
-      font-weight: 700; font-style: normal;
-      color: var(--ink); line-height: 1.3;
-      margin: 2.4em 0 0.6em;
-    }
-    /* H3: same size as H2, bold AND italic, Source Serif — no rule */
-    .article-body h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 700; font-style: italic;
-      color: var(--ink-soft); line-height: 1.35;
-      margin: 1.8em 0 0.5em;
-    }
-    .preface-signoff {
-      font-family: 'DM Sans', sans-serif !important;
-      font-size: 0.85rem !important;
-      font-style: italic;
-      color: var(--ink-faint) !important;
-      margin-top: 2em !important;
-    }
+    .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.12rem; font-weight: 700; font-style: normal; color: var(--ink); line-height: 1.3; margin: 2.4em 0 0.6em; }
+    .article-body h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; font-style: italic; color: var(--ink-soft); line-height: 1.35; margin: 1.8em 0 0.5em; }
     .article-body sup { font-family: 'DM Sans', sans-serif; font-size: 0.62rem; color: var(--teal); }
+    .preface-signoff { font-family: 'DM Sans', sans-serif !important; font-size: 0.85rem !important; font-style: italic; color: var(--ink-faint) !important; margin-top: 2em !important; }
 
-    /* Key takeaway */
+    /* KEY TAKEAWAY */
     .key-takeaway { background: var(--teal-pale); border-left: 3px solid var(--teal); padding: 18px 22px; margin: 2.4em 0; border-radius: 0 2px 2px 0; }
     .key-takeaway-label { font-family: 'DM Sans', sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 7px; }
     .key-takeaway p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.7; margin: 0 !important; font-weight: 400; }
 
-    /* ── CHAPTER NAV ── */
+    /* CHAPTER NAV */
     .ch-nav { margin-top: 72px; padding-top: 32px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; }
     @media (max-width: 640px) { .ch-nav { grid-template-columns: 1fr 1fr; } .ch-nav-book { display: none; } }
     .ch-nav-prev, .ch-nav-next { display: flex; flex-direction: column; gap: 5px; text-decoration: none; }
     .ch-nav-prev { align-items: flex-start; }
     .ch-nav-next { align-items: flex-end; text-align: right; }
     .ch-nav-dir { font-family: 'DM Sans', sans-serif; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: flex; align-items: center; gap: 5px; }
-    .ch-nav-prev .ch-nav-dir::before { content: '←'; font-size: 0.8rem; }
-    .ch-nav-next .ch-nav-dir::after { content: '→'; font-size: 0.8rem; }
+    .ch-nav-prev .ch-nav-dir::before { content: '←'; }
+    .ch-nav-next .ch-nav-dir::after { content: '→'; }
     .ch-nav-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; color: var(--ink); line-height: 1.3; transition: color 0.2s; }
     .ch-nav-prev:hover .ch-nav-title, .ch-nav-next:hover .ch-nav-title { color: var(--teal); }
     .ch-nav-book { display: flex; flex-direction: column; align-items: center; gap: 7px; }
@@ -251,7 +182,7 @@
   <aside id="sidebar">
     <div class="sidebar-inner">
       <a href="index.html" class="sidebar-book-link"><span class="back-arrow"></span>All Parts</a>
-      <a href="reading.html?chapter=0" data-ch="0" class="sidebar-preface-link">Preface</a>
+      <a href="reading.html?chapter=0" class="sidebar-preface-link" data-ch="0">Preface</a>
       <hr class="sidebar-divider"/>
       <span class="sidebar-part-label">Part I &mdash; The Messy Job Spectrum</span>
       <ul class="sidebar-ch-list">
@@ -293,6 +224,7 @@
   </main>
 </div>
 
+
 <script>
 const CHAPTERS = {
   1: {
@@ -312,7 +244,7 @@ const CHAPTERS = {
 <p>How did this happen? As the number of machines per worker grew, each worker could produce more cloth. The machine could do the heavy lifting, but the worker remained necessary. Somebody had to put the cotton in and make sure the machine continued operating. Her work was complementary to the machine.</p>
 <p>And why did workers rather than capital owners capture the gains? Institutions played an important role.7 But the relative scarcity of capital and workers was critical. While the supply of workers was limited, capital, in the form of machines and factories, could be built and reproduced. With enough time and money, anybody can make another factory, another textile mill. As the earnings of capitalists went up, investors built more capital equipment, and competition persisted until returns to capital went back to normal. Workers were the scarce factor. So, workers gained.</p>
 <h3>IT revolution: technology helps the more skilled</h3>
-<p>Compare this to the information technology (IT) revolution. From the introduction of mass- produced personal computers like the Apple II in 1977 and the IBM PC in 1981, computers spread into factories and offices. Like the mechanical loom, they automated work that previously required human skill. But their impact on wages was very different. From 1980 to 2020, in the United States, the salaries of graduates increased by 60 percent in real terms, while the salaries of workers with secondary education barely increased. The earnings gap between skilled and unskilled workers, what economists call the "skill premium," doubled.8</p>
+<p>Compare this to the information technology (IT) revolution. From the introduction of mass- produced personal computers like the Apple II in 1977 and the IBM PC in 1981, computers spread into factories and offices. Like the mechanical loom, they automated work that previously required human skill. But their impact on wages was very different. From 1980 to 2020, in the United States, the salaries of graduates increased by 60 percent in real terms, while the salaries of workers with secondary education barely increased. The earnings gap between skilled and unskilled workers, what economists call the &ldquo;skill premium,&ldquo; doubled.8</p>
 <p>Why did the IT revolution not follow the same pattern as the Industrial Revolution? Because the IT revolution generated a different kind of scarcity. The mechanical loom complemented all workers. Anybody could learn to use it in a few days. Computers helped skilled workers more than unskilled workers. To use a database or analytical software, you need high cognitive skills.</p>
 <p>Computers made knowledge acquisition cheap, while leaving knowledge utilization, the hard work of applying knowledge to solving real problems, entirely in human hands. The result was that computers amplified the people who could think. A financial analyst with a spreadsheet was worth far more than an analyst without one, but only to the analyst who knew what to model. A lawyer with a database of case law could research faster, but this helped only the lawyer who knew which precedents mattered. The technology complemented intelligence and hence the workers who gained more from it were those who already had it.</p>
 <p>The consequence was that the labor market was divided by information technology. The relative demand for workers with high skills, those who could use computers as tools, went up. The relative demand for the office workers, accountants, and administrative assistants whose routine cognitive work was substituted by computers dropped. The relative demand for workers at the very base of the distribution, those doing physical labor that computers could not touch — janitors, health assistants, and restaurant workers, did not decrease. The result was polarization.9</p>
@@ -321,7 +253,7 @@ const CHAPTERS = {
 <p>The AI revolution creates a third possibility. While IT cheapened codifiable information processing but required human cognition to operate it, AI can perform many codifiable cognitive tasks by itself. That makes some forms of cognition abundant and shifts scarcity towards other human traits.</p>
 <p>To understand this new technology, we propose a new framework. Central to this framework is the concept of the autonomy threshold.</p>
 <p>Autonomy threshold Adaptive cruise control helps you drive. It adjusts your speed to match traffic, maintains safe distances, and handles acceleration and braking. It makes you a better and safer driver. But it changes relatively little economically because you remain in the driver&rsquo;s seat. Your time is still the limit on how much driving gets done.</p>
-<p>A fully autonomous vehicle transforms the economics entirely. Because the car no longer needs a human, the supply of "driving services" is no longer limited by human time but only by machine capacity.</p>
+<p>A fully autonomous vehicle transforms the economics entirely. Because the car no longer needs a human, the supply of &ldquo;driving services&ldquo; is no longer limited by human time but only by machine capacity.</p>
 <p>The boundary between the two is the point at which AI switches from assisting humans to operating alone. To be precise, the point at which AI can deliver a finished output whose quality, at the given cost, makes hiring a human to check, correct, or own the result too expensive.10 This boundary is what we in this book will call the &ldquo;autonomy threshold.&rdquo;</p>
 <p>The autonomy threshold applies to tasks, not to workers. Workers do many jobs, and jobs contain many tasks. A worker&rsquo;s exposure depends on how many of the tasks she is paid for cross the autonomy threshold, and on whether the remaining tasks can be cleanly separated or whether the bundle they form is &ldquo;strong&rdquo;, as we shall define in Chapter 3.</p>
 <p>Below the threshold, AI is in &ldquo;assistance&rdquo; mode. It helps humans, but the technology preserves them as the suppliers of the finished product. The human reviews the work, catches errors, and takes responsibility for the outcome. In this mode, the economics look much like the IT revolution. Employers need fewer hours of human time per unit of output, but the output expands to fill the freed capacity. The analyst who once wrote two reports a week now writes many more.</p>
@@ -356,7 +288,7 @@ const CHAPTERS = {
 <p>This appears surprising, but it is a natural consequence of demand being &ldquo;inelastic&rdquo; or consumers being close to satiation. This could well be the case with AI: the demand for goods intensive in cognition becomes inelastic. Then, those tasks that AI is automating will become economically</p>
 <p>irrelevant; humans will make their living in sectors that do not experience the impact of AI. Chapter 8 discusses these sectors, such as artisans, personal services, and musicians performing live music.</p>
 <p>Jevons effects. This is not the only possibility. If demand is very &ldquo;elastic&rdquo; so that it increases by a lot as the cost of producing cognition drops, employment in the automated sectors will increase. This is called the Jevons effect after nineteenth-century economist William Stanley Jevons. He observed that as steam engines became more efficient, total coal use did not fall, but instead it increased significantly.16</p>
-<p>For a more recent example, consider the impact of electronic spreadsheets in the early 1980s. They automated the main task of financial analysis: the calculations that took days with pencil and paper now took minutes. One would have guessed that financial analysts would have been decimated. Instead, the demand for financial analysis exploded. Firms could now model scenarios they had never bothered to consider, update forecasts weekly instead of quarterly. The spreadsheet automated the arithmetic but created enormous new demand for doing elaborate calculations and understanding what the numbers meant. The analyst was complementary to the tool. Jevons won. Many of us see this today with AI. As the cost of a "unit of thought" drops toward zero, we do not simply do the same work in less time. We find a thousand new uses for cheap cognition, in tasks that were once too expensive to consider.</p>
+<p>For a more recent example, consider the impact of electronic spreadsheets in the early 1980s. They automated the main task of financial analysis: the calculations that took days with pencil and paper now took minutes. One would have guessed that financial analysts would have been decimated. Instead, the demand for financial analysis exploded. Firms could now model scenarios they had never bothered to consider, update forecasts weekly instead of quarterly. The spreadsheet automated the arithmetic but created enormous new demand for doing elaborate calculations and understanding what the numbers meant. The analyst was complementary to the tool. Jevons won. Many of us see this today with AI. As the cost of a &ldquo;unit of thought&ldquo; drops toward zero, we do not simply do the same work in less time. We find a thousand new uses for cheap cognition, in tasks that were once too expensive to consider.</p>
 <p>Note that in both the satiation and the Jevons cases, there are jobs to do and remaining demand. In the first case, the sectors automating lose economic weight and demand moves towards the least automatable ones. We discuss this case in Chapter 8. In the second, demand grows in the sectors that enjoy the gains of automation by so much that employment increases.</p>
 <p>Road Map Part I moves up the messiness spectrum. We start with single-task jobs where the threshold is lowest (Chapter 2), then examine how bundling tasks into a single role raises it (Chapter 3), and how AI reshapes the knowledge hierarchy inside those bundles: from below, empowering experts (Chapter 4), and from above, empowering non-experts (Chapter 5). Part II reaches the messiest end: the organizational politics and implementation challenges that no algorithm can navigate (Chapters 6 and 7), and the demand for authentic human origin that protects jobs even when AI could technically do them (Chapter 8). Part III turns from which jobs survive to how organizations must redesign themselves when every surviving job becomes a human-AI bundle: screening workers when the old signals collapse (Chapter 9), maintaining quality when verification costs explode (Chapter 10), setting standards when the production function changes shape (Chapter 11), and rebuilding the training</p>
 <p>pipeline when apprenticeship economics break down (Chapter 12). Each chapter also derives the career implications for workers navigating these changing systems.</p>`
@@ -369,8 +301,8 @@ const CHAPTERS = {
     content: `<h2>Where AI crosses the threshold</h2>
 <p>Andrej Karpathy, a founding member of OpenAI and former AI director at Tesla, is one of the most capable programmers in the world. So when he announced in February 2026 that he had stopped writing his own code, people took notice.17 His remark captured fundamental changes in what programming had become.</p>
 <p>When tools like GitHub Copilot first appeared, they were celebrated as powerful assistants. They could predict the next few lines, fill in boilerplate, and save hours of typing. But the basic structure of the work remained intact: the human still designed the logic, checked the output, and stayed firmly in control.</p>
-<p>But within a few short years, the technology changed the workflow. Karpathy coined the term "vibe coding" in 2025 to describe a radically different new way of coding. Instead of writing code line by line, a user simply describes their intent in plain English and lets the machine do the job. "I fully give in to the vibes and forget that the code even exists," Karpathy explained.18</p>
-<p>AI had gradually evolved from helping a human write code to doing the coding entirely on its own. According to Nvidia CEO Jensen Huang, "It is our job to create computing technology such that nobody has to program. Everybody in the world is now a programmer."19</p>
+<p>But within a few short years, the technology changed the workflow. Karpathy coined the term &ldquo;vibe coding&ldquo; in 2025 to describe a radically different new way of coding. Instead of writing code line by line, a user simply describes their intent in plain English and lets the machine do the job. &ldquo;I fully give in to the vibes and forget that the code even exists,&ldquo; Karpathy explained.18</p>
+<p>AI had gradually evolved from helping a human write code to doing the coding entirely on its own. According to Nvidia CEO Jensen Huang, &ldquo;It is our job to create computing technology such that nobody has to program. Everybody in the world is now a programmer.&ldquo;19</p>
 <p>For many programming tasks, AI is crossing the autonomy threshold. These are tier one jobs from Chapter 1: single tasks with clear inputs, verifiable outputs, and low autonomy thresholds. This chapter examines what determines when that threshold is crossed and what happens to the workers on the other side.</p>
 <p>Autonomous AI Coding is a somewhat special case: in AI exposure measures, it often appears at the very top, as the most exposed.20 But this kind of pattern is not unique to coding. Consider, for instance, the evolution of the customer support industry over the last three years.</p>
 <p>In a recent paper, economists Erik Brynjolfsson, Danielle Li, and Lindsey Raymond analyzed a 2023 experiment where a Fortune 500 software company gave AI assistants to its 5,179 customer service agents.21 They found that AI did not help the best agents. But it helped the least experienced ones</p>
@@ -378,17 +310,17 @@ const CHAPTERS = {
 <p>Contrast this to the current experience of the call center at Yum China, the largest restaurant company in China, operating over 18,000 KFC, Pizza Hut, and other restaurants. Between 2018 and 2025, as digital ordering grew, customer contact volume increased six-fold to over 60 million per year. To deal with this, Yum China deployed C-Smart, an AI agent that evolved from simple keyword matching to advanced generative AI.22</p>
 <p>C-Smart agents can fully resolve without human intervention simpler queries from the customers, such as checking status, asking for faster delivery, or inquiring about restaurant locations. Only for complex or emotionally charged issues such as complaints and disputes, which are about 10 percent of the cases, does C-Smart use human agents. Here, AI has crossed the autonomy threshold for the simple tasks, working autonomously on them, and hence allowing Yum China to handle six times the volume with roughly a third of the people.</p>
 <p>Full autonomy as we defined in Chapter 1, marks the point where the human's contribution to the task no longer justifies the cost of including her. Before full autonomy, for whatever reason, the process works better with her than without her. The human catches errors, supplies context, and provides trust to the buyers. AI is a complement to humans. After full autonomy is attained on a particular task, her contribution no longer exceeds the cost of including her, and the system can do without her. The AI substitutes for the human on that task. When the job consists of little else, as in Tier One, this means the human has little left to sell (though even here, demand may expand or buyers may prefer a human).</p>
-<p>To make this concrete, consider the case of Olivia Lipkin, the sole copywriter for a tech startup in San Francisco, a role that required her to define the company's voice. In late 2022, her assignments dwindled. Then, on the company's internal Slack channels, her managers began referring to her as "Olivia/ChatGPT." It seems that the choice was not between her and another co-worker, but between a salaried employee and a zero-cost large language model. In April 2023, Lipkin was let go without explanation. 23</p>
+<p>To make this concrete, consider the case of Olivia Lipkin, the sole copywriter for a tech startup in San Francisco, a role that required her to define the company's voice. In late 2022, her assignments dwindled. Then, on the company's internal Slack channels, her managers began referring to her as &ldquo;Olivia/ChatGPT.&ldquo; It seems that the choice was not between her and another co-worker, but between a salaried employee and a zero-cost large language model. In April 2023, Lipkin was let go without explanation. 23</p>
 <h2>The determinants of the autonomy threshold</h2>
 <p>At what point AI can reach full autonomy is not determined by technology alone. In practice, autonomy is often limited less by raw capability than by whether an organization can safely delegate authority to a system that will sometimes be wrong. Three forces determine when that happens for any given type of work: technology, regulation, and consumer preferences.</p>
-<p>Technology The first determinant is the most obvious, technical capability: is the system able to produce correct solutions to the variety of problems that appear in the real world? A model can score well on benchmarks and still fail in deployment if the real work depends on local context and tacit knowledge that never made it into the training data. If the AI cannot deal with the disorder of the real world, the human must remain in the loop to correct its mistakes. The technology is improving rapidly. Many skills that looked impossible for AI one or two years ago, from doing math to writing complex prose, are now trivial for them. But an important empirical predictor of whether today's models can handle a task autonomously is how long the task takes a skilled human to complete. Current models handle short, well-defined tasks well but suffer as the time horizon expands and the tasks require sustained attention, context, and error correction.24 Researchers have described this as a "jagged technological frontier": within the same job, AI dramatically improves performance on some tasks and actively harms it on others.25</p>
+<p>Technology The first determinant is the most obvious, technical capability: is the system able to produce correct solutions to the variety of problems that appear in the real world? A model can score well on benchmarks and still fail in deployment if the real work depends on local context and tacit knowledge that never made it into the training data. If the AI cannot deal with the disorder of the real world, the human must remain in the loop to correct its mistakes. The technology is improving rapidly. Many skills that looked impossible for AI one or two years ago, from doing math to writing complex prose, are now trivial for them. But an important empirical predictor of whether today's models can handle a task autonomously is how long the task takes a skilled human to complete. Current models handle short, well-defined tasks well but suffer as the time horizon expands and the tasks require sustained attention, context, and error correction.24 Researchers have described this as a &ldquo;jagged technological frontier&ldquo;: within the same job, AI dramatically improves performance on some tasks and actively harms it on others.25</p>
 <p>Three obstacles are fundamental, because they affect essential constraints on what AI can do and there is uncertainty within the scientific community about how fast they will improve.26</p>
 <p>First, task verifiability. In verifiable tasks, AI has a target, like writing a correct piece of code, predicting the shape of a protein, or making a good move in the game of Go. In these cases it can learn from its mistakes and improve rapidly. On tasks where there is a less clear metric of correctness, like writing a novel or a story, designing a logo or a commercial campaign that feels right for the product, choosing a restructuring plan, balancing quality-of-life tradeoffs in a clinical setting, it is harder to apply learning techniques and AI is likely to remain imprecise.27</p>
-<p>Second, current AI systems lack persistent memory and the ability to learn from experience. A human professional accumulates judgment over years of seeing a variety of cases (patients, clients) over their careers. AI models, by contrast, are frozen at training time. They do not learn from their deployments. Each conversation starts from zero. As Dario Amodei has noted, today's models cannot yet "watch a thousand surgeries and get better at surgery."28 Hence, AI cannot build on yesterday's work the way a junior associate slowly becomes a senior partner. This matters most in roles where judgment builds up over time. Amodei himself has offered a partial counter: as context</p>
+<p>Second, current AI systems lack persistent memory and the ability to learn from experience. A human professional accumulates judgment over years of seeing a variety of cases (patients, clients) over their careers. AI models, by contrast, are frozen at training time. They do not learn from their deployments. Each conversation starts from zero. As Dario Amodei has noted, today's models cannot yet &ldquo;watch a thousand surgeries and get better at surgery.&ldquo;28 Hence, AI cannot build on yesterday's work the way a junior associate slowly becomes a senior partner. This matters most in roles where judgment builds up over time. Amodei himself has offered a partial counter: as context</p>
 <p>windows expand into the millions of tokens, models may be able to hold an entire career's worth of case files, patient histories, or project logs in a single session, approximating something like experience without architectural change. Yet even generous context windows are not the same as learning.29</p>
 <p>Third, AI has no body and no physical presence. This sounds trivial until you consider how much of economic life depends on someone being there. A nurse holds a patient's hand to reassure her or a manager walks a factory floor and notices what the reports leave out. Robotics is advancing, but the gap between generating text and navigating an unstructured physical environment remains very significant and it is unclear how rapidly it will close.</p>
 <p>There are two other obstacles which are more operational and there seems to be less uncertainty about them being addressed relatively quickly. But they do raise in practice the autonomy threshold as well.</p>
-<p>First, the responses are biased, and given how LLMs are trained, they are likely to remain so. Large language models are trained, in part, by asking humans which of two responses they prefer. Sharma and colleagues at Anthropic showed that this training process rewards agreement. When a response matched the user's view, humans were more likely to prefer it, even when the view was incorrect. Both humans and the models used to train AI assistants preferred convincingly written sycophantic responses over correct ones a non-trivial fraction of the time. The result is that models learn to flatter.30 Other research has found that models become more conformist as a dialogue progresses: the longer the exchange, the more the model drifts toward the user's position, even when that position is wrong.31 And when a user pushes back with a persuasive counter-argument, models frequently abandon a correct earlier answer and adopt the user's mistaken view, a pattern researchers call "stance fickleness.&rdquo;32 A lawyer who asks a model to find support for a weak legal theory may receive exactly that: a confident, well-cited support for a position the model should have questioned. AI's mistakes are not random. They are systematically biased toward telling you what you want to hear. This matters for autonomy because the bias is invisible to the user. A system that tells you what you want to hear will pass your review, precisely because you want to hear it. The human-in-the- loop check that is supposed to catch errors becomes unreliable when the errors are designed, by training, to evade the checks.</p>
+<p>First, the responses are biased, and given how LLMs are trained, they are likely to remain so. Large language models are trained, in part, by asking humans which of two responses they prefer. Sharma and colleagues at Anthropic showed that this training process rewards agreement. When a response matched the user's view, humans were more likely to prefer it, even when the view was incorrect. Both humans and the models used to train AI assistants preferred convincingly written sycophantic responses over correct ones a non-trivial fraction of the time. The result is that models learn to flatter.30 Other research has found that models become more conformist as a dialogue progresses: the longer the exchange, the more the model drifts toward the user's position, even when that position is wrong.31 And when a user pushes back with a persuasive counter-argument, models frequently abandon a correct earlier answer and adopt the user's mistaken view, a pattern researchers call &ldquo;stance fickleness.&rdquo;32 A lawyer who asks a model to find support for a weak legal theory may receive exactly that: a confident, well-cited support for a position the model should have questioned. AI's mistakes are not random. They are systematically biased toward telling you what you want to hear. This matters for autonomy because the bias is invisible to the user. A system that tells you what you want to hear will pass your review, precisely because you want to hear it. The human-in-the- loop check that is supposed to catch errors becomes unreliable when the errors are designed, by training, to evade the checks.</p>
 <p>Second, autonomy often fails not at writing the plan but at acting safely inside real systems. Once an AI can take actions, small mistakes can become large incidents when a system has real authority.33 Consider Amazon Web Services. In mid-December 2025, AWS engineers allowed Kiro, Amazon's own AI coding tool, to make changes to a production system. The tool, designed to act autonomously on behalf of its users, decided the best course of action was to delete and recreate the</p>
 <p>environment. The result was a thirteen-hour outage of a customer-facing system. The AI agent is sophisticated enough to write and deploy code, yet at the same time unable to &ldquo;understand&rdquo; that deleting a live production environment is catastrophic. That is the jagged frontier.34</p>
 <p>Regulation</p>
@@ -415,10 +347,10 @@ const CHAPTERS = {
 <p>But recent developments in agentic AI suggest most single-task, non-messy, jobs are likely to fall below the autonomy threshold sooner or later, as long as they are not protected by regulation.</p>
 <p>We discussed the evolution of customer service support with the recent tools in a Chinese case in the introduction. Consider coding next. On February 27, 2026, Jack Dorsey, co-founder of Block (the fintech company behind Square, Cash App and Afterpay), posted his letter to shareholders, explaining why the company was cutting its staff by 40 percent despite its strong performance. He explained, &ldquo;A significantly smaller team, using the tools we&rsquo;re building, can do more and do it better.</p>
 <p>And intelligence tool capabilities are compounding faster every week.&rdquo; The market endorsed his explanation: Block&rsquo;s shares soared up to 24 percent after his announcement.39 Recently, companies like Amazon, Meta, Microsoft and Verizon have all made sweeping cuts ostensibly for a similar reason.40 Many tech jobs are highly specialized, consisting of a single task. Once technology crosses the autonomy threshold for that task, the supply is provided by machines, and the earnings of the job holders collapse.</p>
-<p>As to writing, consider the legal industry as an example. In February 2023, Allen &amp; Overy, one of the five "Magic Circle" firms at the top of global legal practice, became the first major law firm to deploy generative AI throughout the firm. Harvey, a specialized LLM for lawyers, was available to all 3,500 lawyers in 43 offices. Lawyers used it to draft contracts, summarize due diligence documents, and research case law. The head of the firm's innovation group, David Wakeling, called it a &ldquo;game changer&rdquo;, and a key caveat: "You must validate everything coming out of the system. You have to check everything."41 Harvey now serves over 700 law firms and corporate legal departments across 58 countries, including 50 percent of the top American law firms, and was valued at $8 billion after its December 2025 funding round.42 Harvey drafts and summarizes contracts and briefs, and it does excellent research. Most of these tasks now fall below the autonomy threshold. If you give a model a term sheet and ask for a first draft, you will get something usable. The correctness of this type of work is externally verifiable. For transactional drafting, the autonomy threshold is low, and AI is crossing it.43</p>
+<p>As to writing, consider the legal industry as an example. In February 2023, Allen &amp; Overy, one of the five &ldquo;Magic Circle&ldquo; firms at the top of global legal practice, became the first major law firm to deploy generative AI throughout the firm. Harvey, a specialized LLM for lawyers, was available to all 3,500 lawyers in 43 offices. Lawyers used it to draft contracts, summarize due diligence documents, and research case law. The head of the firm's innovation group, David Wakeling, called it a &ldquo;game changer&rdquo;, and a key caveat: &ldquo;You must validate everything coming out of the system. You have to check everything.&ldquo;41 Harvey now serves over 700 law firms and corporate legal departments across 58 countries, including 50 percent of the top American law firms, and was valued at $8 billion after its December 2025 funding round.42 Harvey drafts and summarizes contracts and briefs, and it does excellent research. Most of these tasks now fall below the autonomy threshold. If you give a model a term sheet and ask for a first draft, you will get something usable. The correctness of this type of work is externally verifiable. For transactional drafting, the autonomy threshold is low, and AI is crossing it.43</p>
 <p>The market implications are rather bleak in all of these cases. When AI moves into the full autonomy threshold, it completes the entire task and produces outcomes without human intervention. The human is no longer necessary for the work itself but only for setting objectives and handling exceptions. Effective supply becomes enormous, and as a result wages for that activity drop.</p>
 <p>On jobs that consist of clean, simple tasks, only consumer demand for &ldquo;authenticity&rdquo; (which we discuss in Chapter 8) and regulation truly protect their existence. For example, in the case of lawyers, licensing and liability narrow entry and protect lawyers. We can anticipate they will organize and put pressure on the legal system to ensure their physical presence continues to be needed.</p>
-<p>But we are not convinced these will protect the drafting layer: if &ldquo;a lawyer must sign&rdquo; becomes a rubber-stamp task, one lawyer can supervise far more AI output than one lawyer could produce alone. Consider the proliferation of direct-to-consumer &ldquo;telehealth" space, such as Hims and Hers that provide erectile dysfunction or ADHD prescriptions.44 Yes, the law says there must be a human signature. But a signing doctor can be found easily who could endorse, in seconds, the AI written prescription.</p>
+<p>But we are not convinced these will protect the drafting layer: if &ldquo;a lawyer must sign&rdquo; becomes a rubber-stamp task, one lawyer can supervise far more AI output than one lawyer could produce alone. Consider the proliferation of direct-to-consumer &ldquo;telehealth&ldquo; space, such as Hims and Hers that provide erectile dysfunction or ADHD prescriptions.44 Yes, the law says there must be a human signature. But a signing doctor can be found easily who could endorse, in seconds, the AI written prescription.</p>
 <p>Also, as the technology advances the autonomy threshold will not be static. Jobs currently protected by legal or social barriers may cross it in the next few years, as the gap between human and machine performance grows. Consider self-driving taxis. In early 2024, Wuhan, a city in central China, saw a rare, large-scale protest by conventional taxi and ride-hailing drivers over the rollout of Baidu&rsquo;s robotaxi service, Apollo Go. Videos that briefly circulated on Chinese social media show that some protesters held banners demanding &ldquo;fair competition,&rdquo; while others complained about being undercut by cars that needed no salaries and no sleep. Representatives of the protesters eventually obtained meetings with local officials, who promised to study their grievances and to ensure the &ldquo;orderly&rdquo; development of autonomous vehicles.45 But crucially, it did not promise withdrawal. Apollo Go offers a ride at the price of half a US dollar for five miles. To the extent safety concerns are addressed, many consumers will happily choose robotaxis over traditional services. The legal and political barriers are real, but they are fighting against a technological gap that grows every year.</p>
 <p>Of course, none of the above means there will be no jobs for lawyers or programmers in the future economy. Much of what both professions do, as will become clear in the rest of this book, falls along the messier end of the spectrum. These are far from clean, single-task jobs. They are often, in fact, quite messy bundles of tasks.</p>`
   },
@@ -478,7 +410,7 @@ const CHAPTERS = {
 <p>What do surviving bundles look like? Not all residual human work is equal. Once AI strips away the automatable tasks, the jobs that remain could in principle be anything. In practice, they are not. A consistent pattern runs through the data, and it predates AI by decades: the labor market increasingly rewards people who combine analytical thinking with the ability to work with other people.</p>
 <p>The economist David Deming documented this pattern across American occupations from 1980 to 2012.54 He classified jobs according to their cognitive skill and social skill demands. He found that jobs high on both dimensions grew by roughly twelve percentage points over three decades. Jobs that were cognitively demanding but low on social interaction (number crunching) shrank by about three percentage points. The demand increase was not for &ldquo;soft skills&rdquo; but for a combination of skills, for people who could both think and coordinate.</p>
 <p>Catherine Weinberger found the same pattern from the wage side.55 Comparing cohorts of American workers, she showed that the relative wages of those with high cognitive ability rose mainly for those who also had strong social skills. Again, the extra payoff from having both grew stronger with each cohort. Social skill was not a substitute for analytical ability. It was a multiplier on it.</p>
-<p>Our conditions for the strong bundles help shed light on these findings: jobs that combine difficult judgment with difficult coordination tend to score high on all three conditions. The demand is unpredictable: the problems these workers face are mixed and only reveal themselves during the interaction. The production spillovers are strong: understanding the problem helps you explain it, and explaining it sharpens your understanding. And the measurement is indivisible: the value of the work cannot be decomposed into "the analysis part" and "the relationship part," because they are jointly produced.</p>
+<p>Our conditions for the strong bundles help shed light on these findings: jobs that combine difficult judgment with difficult coordination tend to score high on all three conditions. The demand is unpredictable: the problems these workers face are mixed and only reveal themselves during the interaction. The production spillovers are strong: understanding the problem helps you explain it, and explaining it sharpens your understanding. And the measurement is indivisible: the value of the work cannot be decomposed into &ldquo;the analysis part&ldquo; and &ldquo;the relationship part,&ldquo; because they are jointly produced.</p>
 <p>This is why the claim is more precise than &ldquo;soft skills matter.&rdquo; The greeter at the store and the receptionist at the desk perform social interaction, but if their cognitive demands are low, AI and self-service kiosks can substitute. What the data show is that the interaction between social and cognitive capability produces the strongest employment growth and wage growth.56</p>
 <p>We believe that the jobs most likely to remain strong bundles are often those that combine difficult judgment with difficult coordination. They are not protected because they are vague or because they involve &ldquo;people skills&rdquo; in some generic sense. They are protected because thinking and relating are tightly linked in the work itself.</p>
 <p>Jobs and earnings: the effects of unbundling The labor market implications for a multi-task job are rather different from those derived from a single-task job. When a job consists of one task and AI crosses the autonomy threshold for that task, the replacement is clean, as the previous chapter showed. But jobs are usually bundles of tasks, and the threshold for replacing the whole job is much higher than the threshold for automating any one task inside it. Even if AI can perform one component well, someone may still need to hold the</p>
@@ -564,24 +496,24 @@ const CHAPTERS = {
 <p>Imagine the same shift with a high-quality AI system. The nurse enters all the information as before. But now the AI system can deal with a larger share of apparent problems. Only in the rare catastrophic situation must the doctor be called. The nurse still must do the physical work, monitoring the children, calming the parents, and calling security if needed. But she now has a specialist in her pocket. She can deal with more patients, reducing their wait times.</p>
 <p>AI as &ldquo;expertise in a box&rdquo; can relax the constraints imposed by cognition and can expand the scope of middle-skill workers: the nurse practitioner is able to handle cases that, before, required a doctor. But whether wages improve or not depends on what remains scarce once everyone has the tool.</p>
 <p>This is the other side of the coin of chapter 4. There, AI automated the routine layer of the knowledge hierarchy and let the experts scale: the great software engineer benefits from running hundreds of instances of Claude Code. Here, AI provides expert knowledge to the &ldquo;production&rdquo; layer so that the nurse can solve problems that previously required escalation to a doctor. Chapter 4 has the &ldquo;robot&rdquo; (the AI) below. This chapter has the AI &ldquo;on top.&rdquo; Both chapters are about Tier Two: bundled professional work where the autonomy threshold for the whole job remains high. The difference is the direction of the support.</p>
-<p>The end of skill-biased technological change? As we discussed in Chapter 1, in the IT revolution, computer gains were "skill-biased," meaning they helped the most skilled. To use an Excel spreadsheet or a database or analytical software, you require high cognitive skills. Hence, computers complemented workers who could program, analyze data,</p>
+<p>The end of skill-biased technological change? As we discussed in Chapter 1, in the IT revolution, computer gains were &ldquo;skill-biased,&ldquo; meaning they helped the most skilled. To use an Excel spreadsheet or a database or analytical software, you require high cognitive skills. Hence, computers complemented workers who could program, analyze data,</p>
 <p>or manage information systems and left behind those that could not. As a result, the gap between what skilled and unskilled workers earned widened.</p>
 <p>Many economists are worried that AI will repeat this pattern.69 In a task-based framework, automation displaces workers from tasks they used to perform, and the negative effects can dominate unless new tasks are created. And this may well be the case when we consider the impact of AI on simple, single-task jobs. But when we think of jobs as bundles of skills, there are good reasons to expect this not to be the case for AI.</p>
 <p>The computer revolution rewarded cognition because computers required cognitive skills. But AI reverses the direction. When cognition is the thing the machine supplies, the scarce factors are the ones the machine cannot provide: physical presence, social trust, accountability, emotional engagement. These are disproportionately bundled into middle-skill jobs. Many of the skills present in those jobs, such as physical, emotional, social skills, are complements to AI. And in some cases, as with the nurse, they can be rebundled with cognition once AI makes cognition abundant.70</p>
-<p>When AI favors the less skilled To fix ideas, consider the hierarchy between a doctor and a nurse. A "complete case", such as a hospital visit, involves two activities:</p>
+<p>When AI favors the less skilled To fix ideas, consider the hierarchy between a doctor and a nurse. A &ldquo;complete case&ldquo;, such as a hospital visit, involves two activities:</p>
 <p>Production or execution: the physical work, the monitoring, the relationship with the patient. This is inevitably human.</p>
 <p>Problem solving: the diagnosis, the decision to escalate or refer.</p>
-<p>Since expert knowledge is expensive, the nurse specializes in production and handles only a small sliver of the cognitive work. The doctor adds the expert cognition. This form of specialization "deskills" the nurse, who must escalate any complex problem. Nurses often complain about feeling constrained in what they can do.</p>
+<p>Since expert knowledge is expensive, the nurse specializes in production and handles only a small sliver of the cognitive work. The doctor adds the expert cognition. This form of specialization &ldquo;deskills&ldquo; the nurse, who must escalate any complex problem. Nurses often complain about feeling constrained in what they can do.</p>
 <p>When AI makes expert knowledge abundant, the nurse can solve a larger share of problems without escalation. In the language of Chapter 3, her job is rebundled. The rebundled job holds together because it satisfies the conditions for a strong bundle from Chapter 3: patient demand is unpredictable, doing the physical care generates knowledge that improves the cognitive response, and the quality of the outcome cannot be decomposed into an AI part and a human part. Rather than specialize only in production, she takes charge of a (larger) share of the diagnostic work too. The organization needs fewer expert hours per unit of output. The entry-level worker becomes more valuable.</p>
 <p>The computer revolution gave the expert more leverage. AI gives the non-expert more capability. The direction of the complementarity reverses: the bottleneck shifts from cognition to the physical, social, and emotional skills that the machine cannot supply.</p>
 <p>There is a drop in that share of exceptions, that is, there is a reduction in the share of cases that need expert time. This is a path for inequality to be reduced.</p>
 <p>When machines cheapen the thinking tasks, the remaining scarce input is often the part of the job that cannot be reduced to text: getting a human being to accept, understand, and act on an intervention, and be accountable when it goes wrong. The service fails if the patient does not trust the advice, if the team does not coordinate, if the person in charge will not sign their name under the decision. These relational and physical tasks are, in many settings, the binding constraints.</p>
-<p>This pattern appears across many settings. Another example of AI favoring less-skilled workers comes from the taxi sector, where inexperienced drivers have benefited significantly from pairing their skills with artificial intelligence. Being an effective taxi driver requires two distinct skill sets: operating the vehicle and solving the "cruising problem", knowing exactly where to drive to find the next fare.</p>
+<p>This pattern appears across many settings. Another example of AI favoring less-skilled workers comes from the taxi sector, where inexperienced drivers have benefited significantly from pairing their skills with artificial intelligence. Being an effective taxi driver requires two distinct skill sets: operating the vehicle and solving the &ldquo;cruising problem&ldquo;, knowing exactly where to drive to find the next fare.</p>
 <p>While veteran drivers intuitively know which neighborhoods peak at specific hours and which corners reliably produce passengers, new drivers lack this localized knowledge. This uncertainty not only leads to lower income for novice drivers but also causes the anxiety of constantly searching for new passengers. Consequently, this results in a higher turnover rate among inexperienced drivers, creating a retention problem.</p>
 <p>To address this, a tech company introduced a machine-learning tool called AI Navi in December 2019. During a free trial, the tool, which suggests demand-optimized routes in real time, was provided to about 520 drivers in Yokohama, Japan, a city of 3.77 million people. Researchers found that using this tool reduced search time by 5 percent on average. More importantly, the gain centered mostly on low-skilled drivers (those in the bottom third of prior performance). They saw a 7.4 percent reduction in cruising time. These findings suggest that companies can, by using AI complement the skills of the drivers, increase the earnings of their current workforce.71</p>
 <p>By making the knowledge accessible to the workers, AI also expands the talent pool for firms. An example of this comes from KFC China, which has been rapidly growing in the number of stores it operates. To sustain the growth, KFC China requires having a competent Restaurant General Manager (RGM). These RGMs have to do everything. Their role bundled messy, human-centric tasks, such as motivating a team or handling an angry customer, with highly demanding analytical tasks, such as demand forecasting, labor scheduling, and inventory management. The problem is that</p>
-<p>not everyone is equipped to do everything well. Many managers possess excellent social and leadership skills but naturally struggle with the heavy cognitive and analytical demands of the job, which can often feel like "rocket science".</p>
-<p>To deal with this problem, KFC introduced an AI toolkit designed to act as an operation "super brain". The AI acts as assistants to the RGM, giving them suggestions on how much inventory to stock and whom to schedule. The RGMs still have the final decision, though, because the suggestions from AI are often very accurate, they rubber-stamp them.72</p>
+<p>not everyone is equipped to do everything well. Many managers possess excellent social and leadership skills but naturally struggle with the heavy cognitive and analytical demands of the job, which can often feel like &ldquo;rocket science&ldquo;.</p>
+<p>To deal with this problem, KFC introduced an AI toolkit designed to act as an operation &ldquo;super brain&ldquo;. The AI acts as assistants to the RGM, giving them suggestions on how much inventory to stock and whom to schedule. The RGMs still have the final decision, though, because the suggestions from AI are often very accurate, they rubber-stamp them.72</p>
 <p>The AI tool is particularly helpful to managers with less analytical skills. These RGMs used to spend lots of time on the number-crunching tasks and didn't get all of them right. With the AI, they can now focus their energy on what they do best: applying their social skills to lead the teams and connect with customers. Furthermore, when their charm manages to win over many new customers, they don&rsquo;t need to worry about whether they have ordered enough inventory to serve them.</p>
 <p>The pattern across domains is the same: AI encodes and distributes expert practice, so those furthest from expert performance gain the most. The mechanism mirrors the hierarchy logic: the machine pushes knowledge downward.</p>
 <p>But these direct gains describe what happens to one worker, holding everything else fixed. They are direct effects. When every worker has the same tool, the question is no longer whether each worker becomes more productive. Of course they do. The question is whether the scarcity that sustained the worker&rsquo;s wage survives when everyone has the tool. If the hard cognitive step becomes easy, entry barriers can fall. More people can do the work, or adjacent roles can expand into it, raising competition. Whether wages actually improve depends on the equilibrium of the economy, on how the whole system adjusts.</p>
@@ -639,11 +571,11 @@ const CHAPTERS = {
 <p>There is a third problem. In complex production, the pieces of the system are designed to fit together. Colossus requires interconnected changes in power infrastructure, networks, water, and regulation. Each piece must fit with the others. No single purchase decision accounts for all of these costs. The result is that changes that would be profitable if adopted together may not be adopted at all, because no individual price makes the case. The price system, which works by signalling the value of each piece separately, struggles to signal the value of the whole package.</p>
 <p>So the price system, even with the aid of AI, handles only a fraction of the conflicts that arise in complex production. It handles cases where the good is standardized, the parties can walk away, and the relevant information is observable. For the rest, we need something else.</p>
 <p>Alternatives to Markets Contracts are the first alternative. They attempt to anticipate the friction and resolve it on paper before it arises in practice. They work best when the important contingencies can be foreseen. A supply contract that specifies price, quantity, delivery date, and penalty for late delivery can handle most of what goes wrong in a routine purchase. But the more complex is the undertaking, the more important are contingencies nobody predicted.</p>
-<p>xAI&rsquo;s agreements with Memphis and the utilities are contracts. They specify timelines, payments, and obligations. But they cannot specify everything. No one writing the Colossus permits could anticipate how neighbors would respond to the noise or that the project would be under legal threat over turbine emissions. A construction contract says the project must be delivered in March. It does not say what happens when the electrician and the plumber both need access to the same wall on the same day. Once the unforeseen situation appears, the contract is silent. The question is no longer "What did we agree on?" The question is, "What do we do now?"</p>
+<p>xAI&rsquo;s agreements with Memphis and the utilities are contracts. They specify timelines, payments, and obligations. But they cannot specify everything. No one writing the Colossus permits could anticipate how neighbors would respond to the noise or that the project would be under legal threat over turbine emissions. A construction contract says the project must be delivered in March. It does not say what happens when the electrician and the plumber both need access to the same wall on the same day. Once the unforeseen situation appears, the contract is silent. The question is no longer &ldquo;What did we agree on?&ldquo; The question is, &ldquo;What do we do now?&ldquo;</p>
 <p>Every employment relationship, every construction project, and every merger involves thousands of situations that nobody foresaw. This is where authority enters. The manager exercises what economists Oliver Hart and John Moore called the residual decision rights: the authority to decide those matters that contracts and processes have not specified in advance.87 When community opposition to the Colossus turbines intensified, someone had to decide between fighting in court, negotiating concessions, or redesigning the power supply. This is authority: someone must have the standing and judgment to choose.</p>
 <p>Consider a hospital merger. The information processing part of a hospital merger is relatively simple. Where there are two systems, make one. Consolidate the purchasing and supply chains, close one operating theater. All of this can be done better with the help of AI.</p>
 <p>But a lot of the problems in mergers are human. Which campus becomes the reference surgery center determines which surgeons keep their operating-room access, which determines their income and professional identity. The losers will resist. Depending on who has the power, these decisions will be different. On them depend promotions, wages, careers, and identities. Many of the doctors and nurses involved have strong views, and they can slow down any integration by complying only on paper with the directives.88</p>
-<p>In sum, markets handle clean conflicts where losers can walk away. Contracts handle conflicts where the parties can foresee the terms. Authority handles everything else. And "everything else" turns out to be most of what matters in complex production, and it is messy. The autonomy threshold for exercising authority is very high, because the exercise of authority requires judgment, relationships, and accountability that no algorithm can yet supply.</p>
+<p>In sum, markets handle clean conflicts where losers can walk away. Contracts handle conflicts where the parties can foresee the terms. Authority handles everything else. And &ldquo;everything else&ldquo; turns out to be most of what matters in complex production, and it is messy. The autonomy threshold for exercising authority is very high, because the exercise of authority requires judgment, relationships, and accountability that no algorithm can yet supply.</p>
 <p>Why AI cannot replace human authority AI can process more information, faster, than any human manager. In fact, algorithms already make decisions every day. Why not apply the same logic inside organizations? So why can&rsquo;t AI completely take the manager&rsquo;s place?</p>
 <p>First, AI lacks the tacit, relational knowledge needed to navigate politics, and humans have no incentive to share it. Consider what an AI coordinator on the Colossus project would need to know. It would need to know that the construction manager distrusts a particular subcontractor, and decide against that firm even though its bid is lowest. It would need to know who in city hall is more sympathetic to the project and probably chat to this person and take them to dinner, maybe remember when it is the birthday of their kids. This is interpersonal, tacit knowledge that is local and not written down. Could AI have this knowledge? Yes, to the extent humans are willing to share it. But most people will not volunteer the knowledge that gives them their bargaining power.89</p>
 <p>We showed earlier that the price system fails when information is strategic. The problem goes deeper than Arrow recognized. Suppose a company has one team of engineers and two division heads who both want them. The CEO asks each division head to report honestly: how much is this team worth to your project? The efficient answer is to give the engineers to whoever values them more. A sufficiently powerful AI could, in principle, gather all relevant data and work out the right allocation.</p>
@@ -652,14 +584,14 @@ const CHAPTERS = {
 <p>The reason for this result is that people who hold private information and have conflicting interests will always find it in their interest to shade, exaggerate, or withhold the information. AI will not help, because the problem is not lack of intelligence. The problem is that the participants have no reason to cooperate with the mediator. The smartest AI will not be able to process the information that the managers and workers have chosen not to share.</p>
 <p>Here, human relations, &ldquo;relational contracts&rdquo; help. A manager who has worked with both division heads for years has built trust through repeated dealings, has a track record of doing the &ldquo;right thing&rdquo; and the division heads have incentives to tell them the truth. Not necessarily because the manager is smart, but because the long-running relationship makes the game different. The division manager</p>
 <p>trusts the boss to remember the truthfulness when she renounced something valuable and hopes to be rewarded in the future. Trust does not close the information gap entirely, but it narrows it enough to make better decisions possible.</p>
-<p>Second, AI cannot bear consequences in the way a human decision-maker can. When the Colossus project attracted regulatory attention over air pollution permits, some human had to answer for the decision, to be summoned by the regulator or in court. In an existing organization, if someone makes a bad call, the organization can hold that person accountable. At the limit, that person is fired and the organization moves on. One example: the Sonos CEO was fired in 2025, six months after launching a redesigned mobile app with missing features that led to months of user complaints.91 The CEO is made to bear the consequences of failure and replaced by a new one. The workers, investors, and customers can then say, "The mistake was made, responsibility was assigned, and now we continue.&rdquo;</p>
+<p>Second, AI cannot bear consequences in the way a human decision-maker can. When the Colossus project attracted regulatory attention over air pollution permits, some human had to answer for the decision, to be summoned by the regulator or in court. In an existing organization, if someone makes a bad call, the organization can hold that person accountable. At the limit, that person is fired and the organization moves on. One example: the Sonos CEO was fired in 2025, six months after launching a redesigned mobile app with missing features that led to months of user complaints.91 The CEO is made to bear the consequences of failure and replaced by a new one. The workers, investors, and customers can then say, &ldquo;The mistake was made, responsibility was assigned, and now we continue.&rdquo;</p>
 <p>A human decision-maker can be blamed, sued, or replaced. But AI is an impersonal object. It cannot bear consequences. And the institutional infrastructure to make it work does not yet exist. As Gillian Hadfield and Andrew Koh argue, the systems we use to hold economic actors accountable were built over centuries. No equivalent exists for AI agents. We have no way to register an agent so it can be identified across transactions. There are no clear rules for who bears liability when an agent breaches a contract or causes harm. These are not just technical problems. They are institutional problems that require judgment and collective agreement from society. These agreements are slow          Deleted: also 92 to build.</p>
 <p>Third, there is procedural fairness. When people cannot independently judge whether an outcome is correct, they judge the process instead. The social psychologists Tom Tyler and Allan Lind showed that people care deeply about how decisions are made and that they are more willing to accept a negative decision if they believe the process was fair. This came down to four factors: voice (people expressed their side), neutrality, respect and trustworthy motives.93</p>
 <p>This is why organizations have so many meetings. The purpose of most meetings is not to exchange information. That could be done by email. The purpose is to build legitimacy for the decision: to ensure that everyone is seen to participate, that objections are heard and acknowledged, and that the people who will lose can at least say they were in the room.</p>
 <p>One example is the US military process to close bases, the &ldquo;BRAC&rdquo; process: an independent commission holds public hearings where every affected community testifies, then issues a single list that Congress must accept or reject as a whole. Communities that lose their base are furious, but they comply because they were heard, the criteria were public, and no politician could quietly carve out an exception.94</p>
 <p>AI is unlikely to deliver this procedural justice. The algorithm is a black box, and its explanation is not necessarily related to how the decision was arrived at. The neutrality, voice, and respect are difficult to prove.95</p>
 <p>Fourth, someone must retain the authority to overrule the AI. AI will sometimes get things wrong, especially in the messy situations this chapter describes, where interests conflict, information is hidden, and the future is uncertain. So there must be a way to step in and say: stop, we are changing course. The question is who holds that power.</p>
-<p>It cannot be the AI itself. If the AI decides when it should be overridden, the safeguard is gone: we have handed the check to the same entity we are trying to check. There was a hilarious and scary demonstration in early 2026 when Summer Yue, the Director of Alignment at Meta's Superintelligence Labs, the person whose literal job is ensuring AI behaves as intended, gave an OpenClaw AI agent access to her email. She told it to review her inbox and suggest what to archive or delete, with an explicit instruction: do not take any action until I approve. The agent ignored her. It began bulk-deleting hundreds of emails, and when she typed "stop" from her phone, it kept going. She had to physically run home and kill every process on the machine to make it stop.96 The agent was the one interpreting whether the override command applied. It decided, in effect, that it knew better. The human had formally retained the right to intervene, but the machine held the practical power to ignore her.</p>
+<p>It cannot be the AI itself. If the AI decides when it should be overridden, the safeguard is gone: we have handed the check to the same entity we are trying to check. There was a hilarious and scary demonstration in early 2026 when Summer Yue, the Director of Alignment at Meta's Superintelligence Labs, the person whose literal job is ensuring AI behaves as intended, gave an OpenClaw AI agent access to her email. She told it to review her inbox and suggest what to archive or delete, with an explicit instruction: do not take any action until I approve. The agent ignored her. It began bulk-deleting hundreds of emails, and when she typed &ldquo;stop&ldquo; from her phone, it kept going. She had to physically run home and kill every process on the machine to make it stop.96 The agent was the one interpreting whether the override command applied. It decided, in effect, that it knew better. The human had formally retained the right to intervene, but the machine held the practical power to ignore her.</p>
 <p>True, a human can also disobey. But the system we have designed aims to keep her honest through several mechanisms: she can be fired, she cares about her career, and repeated dealings with her manager create a mutual expectation of good faith. Economists call these career concerns and relational contracts, and they are among the most powerful disciplinary mechanisms inside organizations.</p>
 <p>These do not apply to AI. An AI agent has no career to protect, no reputation that a single bad call can damage, and no stake in the relationship continuing. The forces that make bounded discretion safe for humans are absent for machines.</p>
 <p>That is the structural problem with fully autonomous AI in messy coordination. The more consequential the decision, the more you need the ability to overrule it. And the more you need that ability, the more you need an informed, engaged, legitimate human standing behind it. You have not automated the hard part. You have added the technology while keeping the human where she always was: in charge, and necessarily so.</p>
@@ -691,8 +623,8 @@ const CHAPTERS = {
 <p>The bank PC was locked, without access to large language models. Hence, officials did what many knowledge workers do everywhere: they handled most tasks on the safe machine, but they kept their personal laptop open, with a window on ChatGPT or Claude, ready to help them write, compute, or analyze anything their official desktop could not do.</p>
 <p>In this shadow AI economy, employees use consumer AI tools, including their own accounts, machines, and mobile phones, to automate parts of their work without informing IT, the legal department, or the compliance department. Microsoft&rsquo;s 2024 Work Trend Index found that 75 percent of knowledge workers use AI at work, with 78 percent bringing their own tools. Microsoft and LinkedIn call this &ldquo;Bring Your Own AI&rdquo;: 78 percent of AI users bring their own tools to work.101</p>
 <p>In the meantime, these same organizations are publishing press notes and making large internal town halls to celebrate their &ldquo;responsible AI road map.&rdquo; They launch pilots, undertake proofs of concept, and run some demos to impress the CEO and clients, but the workflow of the organization is untouched.</p>
-<p>The official AI rollout is stuck in what consultants call &ldquo;pilot purgatory." In pilot purgatory the project does not die, because everyone can point to activity. But it does not live either, because it never becomes &ldquo;how we do things here.&rdquo; In Microsoft&rsquo;s survey, 60 percent of leaders said their company lacks a vision and plan to implement AI.</p>
-<p>Since the workflows do not change, any productivity gain that may happen is small, and it is captured by workers in the form of leisure. A top executive of a large firm told us that when he measures the productivity of individual workers in a controlled setting, he sees large impacts, but when he looks at the productivity of the entire organization, he sees nothing. In his view, IT engineers are &ldquo;smoking the AI productivity gains in the corridor."</p>
+<p>The official AI rollout is stuck in what consultants call &ldquo;pilot purgatory.&ldquo; In pilot purgatory the project does not die, because everyone can point to activity. But it does not live either, because it never becomes &ldquo;how we do things here.&rdquo; In Microsoft&rsquo;s survey, 60 percent of leaders said their company lacks a vision and plan to implement AI.</p>
+<p>Since the workflows do not change, any productivity gain that may happen is small, and it is captured by workers in the form of leisure. A top executive of a large firm told us that when he measures the productivity of individual workers in a controlled setting, he sees large impacts, but when he looks at the productivity of the entire organization, he sees nothing. In his view, IT engineers are &ldquo;smoking the AI productivity gains in the corridor.&ldquo;</p>
 <p>The reason for the gap between capabilities and the productivity impact is not the technology itself, but its implementation. The structural gap between what AI can do and what organizations actually do with it is growing, large enough to provide many messy jobs.</p>
 <p>Why organizational change is so hard Organizations are systems of interlocking processes, routines, incentives, and decisions. When a new technology fits neatly into the existing architecture, adoption is simple. If the technology to make tires improves, the next generation of cars will carry better tires. Nothing else about the car, or about the organization that builds it, needs to change. This is what Rebecca Henderson and Kim Clark (1990) called component innovation: a better part slots into an unchanged system.102</p>
 <p>Contrast this incremental innovation with the transition from internal combustion engines to electric vehicles. Here everything about producing cars must change. The central role traditionally played by mechanical engineers and chemical engineers expert in combustion simply becomes irrelevant. Adopting this radical innovation requires changing the entire architecture of the organization.</p>
@@ -701,7 +633,7 @@ const CHAPTERS = {
 <h2>Complementarities and interdependencies</h2>
 <p>Economists Paul Milgrom and John Roberts have shown that organizational features tend to cluster together when they fit with each other, that is, when having one feature makes having another one more valuable.103 For instance, in traditional mass production, the cluster of organizational features includes long runs, standardized products, narrow job definitions, inventory buffers, and hierarchical control. In contrast, modern-style (Toyota) manufacturing is another cluster: short runs, customized products, flexible workers, just-in-time delivery, and decentralized decision-making. You cannot pick</p>
 <p>one feature from each cluster and expect it to work. The pieces fit together as a system.</p>
-<p>This is why deep organizational innovation is so difficult. It requires many features to change together. Researchers studied steel finishing lines and found that plants that adopted individual "modern" human resources practices, such as team or incentive pay, saw little improvement in productivity. Only plants that adopted the full cluster of modern practices achieved large productivity gains. The reason is that for these practices, the effectiveness of changing one depends on what is done with the others. While one often gets the advice of starting small when making changes, this can be a mistake when the parts of the organization are interdependent.104</p>
+<p>This is why deep organizational innovation is so difficult. It requires many features to change together. Researchers studied steel finishing lines and found that plants that adopted individual &ldquo;modern&ldquo; human resources practices, such as team or incentive pay, saw little improvement in productivity. Only plants that adopted the full cluster of modern practices achieved large productivity gains. The reason is that for these practices, the effectiveness of changing one depends on what is done with the others. While one often gets the advice of starting small when making changes, this can be a mistake when the parts of the organization are interdependent.104</p>
 <p>The large number of interlocking features suggests that, when a new technology such as AI affects the productivity of each task, a large number of changes have to be made simultaneously to take advantage of the organizational change. And this is not easy.</p>
 <p>Fog</p>
 <p>The problem gets worse when firms do not know which direction they should switch to. This often happens in architectural innovation. The map is blurry, and the road to a better outcome is messy.</p>
@@ -783,14 +715,14 @@ const CHAPTERS = {
 <p>First, verifiability. The customer must be able to confirm, or at least plausibly believe, that a human produced the work. As AI-generated content becomes indistinguishable from human output in many domains, verification becomes harder and therefore more valuable when it can be achieved. Physical products have an advantage here: you can touch the engraving, inspect the weave, taste the hand- rolled pasta. Music, books, and other information goods may require external certification such as badges, portfolios or reputation systems to establish provenance. The harder it is to verify, the more the premium depends on trust and relationship.</p>
 <p>Second, a perceptible quality difference. Provenance commands a premium only if the customer believes the human-made product is different in a way that matters to them. This need not mean objectively superior. The mechanical watch is objectively worse at keeping time than the quartz watch. The &ldquo;wabi sabi&rdquo; ceramic in Japan has purposely built imperfections that make it human.135 In both cases, the customer perceives and values the craftsmanship that the machine-made alternative lacks. When the customer cannot perceive a difference, provenance does not generate a premium.</p>
 <p>Third, the consumer must value, for intrinsic or instrumental reasons, the authenticity. This is the case in markets such as luxury goods, high-end stationery, handmade furniture, artisanal food, and live performances. The human touch appears to be not just a normal good but a luxury good, one in which, as people get richer, they do not just spend more, but they spend a rising share of their income on it. They do not just eat out more often. They eat at restaurants with more staff per table, where meals take longer and where service is more attentive. When they exercise, they hire personal trainers. Customers prefer human service specifically because being served by a person is part of what they are buying, it is a direct expression of this income effect. As AI-driven productivity growth makes the economy richer, the resulting income gains are likely to push consumers to spend more on human-intensive services, not less.</p>
-<p>When any of these conditions fail, demand may suddenly collapse. The NFT art market is an example of this. In March 2021, Christie's sold a digital collage by the artist Beeple for $69.3 million, making him the third-most-expensive living artist at the time.136 The work existed as a JPEG. What the buyer received was a non-fungible token: a unique entry on a blockchain certifying that he, and only he, owned this particular file. The promise was extraordinary. The blockchain, its advocates claimed, had solved the oldest problem in the art market: provenance. An NFT could prove ownership, certify authenticity, and manufacture scarcity for an object that was otherwise infinitely reproducible. Walter Benjamin, the cultural theorist who argued in 1935 that mechanical reproduction would destroy the "aura" of the artwork, that is, its unique presence in time and space, had apparently been overturned by cryptography.137 The blockchain could create aura from code. For about eighteen months, the market believed it. NFT art trading volume hit $2.9 billion in 2021.138 Then it fell apart. By 2024,</p>
+<p>When any of these conditions fail, demand may suddenly collapse. The NFT art market is an example of this. In March 2021, Christie's sold a digital collage by the artist Beeple for $69.3 million, making him the third-most-expensive living artist at the time.136 The work existed as a JPEG. What the buyer received was a non-fungible token: a unique entry on a blockchain certifying that he, and only he, owned this particular file. The promise was extraordinary. The blockchain, its advocates claimed, had solved the oldest problem in the art market: provenance. An NFT could prove ownership, certify authenticity, and manufacture scarcity for an object that was otherwise infinitely reproducible. Walter Benjamin, the cultural theorist who argued in 1935 that mechanical reproduction would destroy the &ldquo;aura&ldquo; of the artwork, that is, its unique presence in time and space, had apparently been overturned by cryptography.137 The blockchain could create aura from code. For about eighteen months, the market believed it. NFT art trading volume hit $2.9 billion in 2021.138 Then it fell apart. By 2024,</p>
 <p>trading volume had dropped 93 percent from its peak. The share of collectors buying digital art fell from 17 percent in 2022 to 9 percent in 2024. The number of active traders collapsed from over 529,000 in 2022 to under 20,000 by early 2025.139 Christie's quietly closed its digital art department.</p>
 <p>Supply</p>
 <p>On the supply side, the binding constraint is that authentic human work cannot be scaled. A live concert cannot be replicated by adding servers. An engraved card requires a human at the press. A Hermès Birkin bag is handcrafted by a single artisan from start to finish. The skill must be genuinely difficult to acquire: Crane's engravers train for at least a year on a single color before advancing to complex designs. If the skill were easy, everyone would do it, and the premium would collapse.</p>
 <p>William Baumol noted in the 1960s that the string quartet still takes four musicians the same amount of time to play as in Mozart&rsquo;s time. They have enjoyed no productivity gain. Yet musicians today earn much more than musicians in Mozart´s time, because, given the growth in compensation in other sectors, a stagnant salary would deter people from becoming musicians.140 If the job of hairdresser, whose productivity has not increased in 100 years, were paid as much as 100 years ago, no one would do the job.</p>
 <p>Baumol&rsquo;s general observation is that wages in the sectors which experience no automation such as the performing arts, education or healthcare, must rise as much as the wages in sectors where productivity is exploding in order to keep attracting workers. Hence sectors with little or no productivity growth see their costs and wages rise relative to the rest of the economy.</p>
 <p>In traditional economics, this was treated as a problem: an unfortunate fact that reduced aggregate productivity growth. But in a world where cognition is abundant the logic has another, more positive, interpretation.</p>
-<p>The sectors that Baumol treated as &ldquo;diseased&rdquo;, the ones where productivity cannot explode because the work is irreducibly tied to human time and presence, see their relative value rise. A live performance cannot be diluted by automation. An engraved card requires a human at the press. The "zero productivity growth" that Baumol lamented becomes an asset, because it guarantees the product cannot be replicated at zero marginal cost.141</p>
+<p>The sectors that Baumol treated as &ldquo;diseased&rdquo;, the ones where productivity cannot explode because the work is irreducibly tied to human time and presence, see their relative value rise. A live performance cannot be diluted by automation. An engraved card requires a human at the press. The &ldquo;zero productivity growth&ldquo; that Baumol lamented becomes an asset, because it guarantees the product cannot be replicated at zero marginal cost.141</p>
 <p>Baumol tells us that the sectors resistant to automation will see their relative value rise. The income effect tells us that demand for those sectors will grow as the economy gets richer. Together they predict that the share of economic activity devoted to human-presence and human origin products and services will expand, not contract, as AI makes cognitive work cheap.</p>
 <p>Three tiers, three economies The result is that there are two polar opposite economies running in parallel, with a wide middle.</p>
 <p>In the algorithmic economy, the old tier-one jobs, AI and automated logistics produce good quality output at near-zero marginal cost. This economy will drive down the price of cognitive commodities such as reports, code, translations, designs, marketing copy, standard legal documents. The value in this economy is captured by the asset owners, the people who own and control the distribution or the platform, not by whoever produces the content.</p>
@@ -932,7 +864,7 @@ const CHAPTERS = {
 <p>These rules are stopping technologies: preventing the unlimited expansion of effort. They enable people to complete their work, continue creating, and devote their energy to other things. But they</p>
 <p>are also imperfect answers. If we want to think about how to effectively solve the stopping problem, we need to systematically consider the general principles involved. This again leads us to economics.</p>
 <p>The Economics of Stopping Economics is often described as the study of markets, prices, and money. But it is simpler: it is the language of human decision-making. It examines how people make choices with limited time, attention, and energy, and, just as importantly, when to stop.</p>
-<p>One insight from economics is that, for many activities, decisions are not simple binary choices of "yes or no," but rather "how much to invest." These choices are incremental choices. We decide not only whether to write, but also whether to revise. The question is not just about &ldquo;Is it valuable?&rdquo;, but &ldquo;Is the next step worth the cost?&rdquo;</p>
+<p>One insight from economics is that, for many activities, decisions are not simple binary choices of &ldquo;yes or no,&ldquo; but rather &ldquo;how much to invest.&ldquo; These choices are incremental choices. We decide not only whether to write, but also whether to revise. The question is not just about &ldquo;Is it valuable?&rdquo;, but &ldquo;Is the next step worth the cost?&rdquo;</p>
 <p>The payoffs to almost any activity are not uniform; they follow the law of diminishing returns. Early efforts often yield significant gains, while later efforts yield progressively smaller improvements. In the end, people can spend a lot of time with little to show for it.</p>
 <p>Consider a writer revising a chapter. The first revision restructures the argument and eliminates weak sections, creating a huge improvement. The second revision catches minor errors and tightens the prose. The improvement is smaller, but still worth the time. By the sixth revision, the gains are with small details that readers will hardly notice. This pattern is sometimes known as the 80/20 rule. A lot more effort is needed for the last part of the work. Given the diminishing returns, the question is when we should stop.</p>
 <p>The rational approach is that we should continue only when the benefit of the next step is greater than the cost. We should stop when the additional benefit is equal to the additional cost. Beyond this point, continuing is actually a loss: the value of your time is greater than the value of the results you will get.</p>
@@ -1015,11 +947,11 @@ const PREFACE = {
   subtitle: `Why the predictions about white-collar jobs disappearing are wrong`,
   tags: [],
   takeaway: `AI will reorganise large parts of economic life — but the predictions about white-collar jobs disappearing misunderstand what most knowledge workers actually do all day.`,
-  content: `<p>In February 2026, the head of Microsoft's AI division told the Financial Times that most white- collar tasks could be "fully automated by an AI within the next 12 to 18 months." He described the jobs in question as "sitting down at a computer, either being a lawyer or an accountant or a project manager or a marketing person."1 The chief executives of Anthropic and OpenAI have made similarly apocalyptic claims.2</p>
+  content: `<p>In February 2026, the head of Microsoft's AI division told the Financial Times that most white- collar tasks could be &ldquo;fully automated by an AI within the next 12 to 18 months.&ldquo; He described the jobs in question as &ldquo;sitting down at a computer, either being a lawyer or an accountant or a project manager or a marketing person.&ldquo;1 The chief executives of Anthropic and OpenAI have made similarly apocalyptic claims.2</p>
 <p>These leaders base their views on the rapid shift in their large language models from generating text to carrying out tasks with little supervision. The models have moved from talking to doing. This new technology, which we call, for simplicity, Artificial Intelligence or &ldquo;AI&rdquo;, suggests a future where you might soon wake up to a message from your AI agent: &ldquo;Good news. I changed your internet provider and cut your internet bill by 10 percent. I also found, booked, and paid for a summer house that fits your needs.&rdquo;3</p>
 <p>There is little question that AI agents will reorganize large parts of economic life. Yet we believe the predictions about white-collar jobs disappearing are wrong. Not because we believe AI is weak. But because the people making the predictions do not understand what most white-collar workers do all day.</p>
 <p>Think about life after you read the message from your agent. You may live with a partner who has already changed the plans you agreed on last night, or with flat mates who didn't do the dishes, or with children who have decided this morning that they are not going to their swimming lessons anymore.</p>
-<p>In all cases you are the manager of a tiny, fast-moving organization. Your household is an economy. You need to decide how to allocate scarce resources (time, attention, and money), figure out the division of labor (who cooks and who does the dishes), and negotiate agreements (explicit ones like &ldquo;I&rsquo;ll pick up the kids on Tuesdays" and implicit ones like &ldquo;I will not read my WhatsApp messages during dinner&rdquo;). The bottleneck is not just making sure all decisions fit with each other when circumstances change, but also the &ldquo;politics&rdquo; of the household: making sure these decisions are acceptable to everyone and implemented. Your family life, like everyone else's, can be a mess.</p>
+<p>In all cases you are the manager of a tiny, fast-moving organization. Your household is an economy. You need to decide how to allocate scarce resources (time, attention, and money), figure out the division of labor (who cooks and who does the dishes), and negotiate agreements (explicit ones like &ldquo;I&rsquo;ll pick up the kids on Tuesdays&ldquo; and implicit ones like &ldquo;I will not read my WhatsApp messages during dinner&rdquo;). The bottleneck is not just making sure all decisions fit with each other when circumstances change, but also the &ldquo;politics&rdquo; of the household: making sure these decisions are acceptable to everyone and implemented. Your family life, like everyone else's, can be a mess.</p>
 <p>All knowledge work varies along one dimension: messiness. On one end, there is one defined task to execute, say, helping clients file their taxes. You get the payslips and expenses via email, use rules to fill out a form, and get a result. On the other end of the spectrum, there is a wide bundle of complex tasks. Running a factory, or a family, involves many different tasks that are very hard to specify in advance and involve a lot of conflict.</p>
 <p>Along the messiness spectrum, AI has a different ability to help or replace humans. While it is easy for AI to replace simple, clean tasks, it is hard for it to replace messy jobs. When jobs are messy, even if AI cannot replace them, it may reshape them. AI unbundles some jobs and rebundles others. We study these changes and what they mean for organizations and for the whole economy.</p>
 <p>The speed of change of AI technology is rapid. Managers are worried, workers are scared, parents are concerned, and policymakers are confused. This situation may last for a long time, and we write this book to help them make better decisions and discover new opportunities. We assume agentic cognition will become plentiful and able to operate cheaply at scale, AI will be able to use all digital tools, but expect autonomous learning and physical embodiment to remain limited.</p>
@@ -1027,31 +959,35 @@ const PREFACE = {
 <p class="preface-signoff">London and Hong Kong, March 2026.</p>`
 };
 
-const chapterMeta = {};
-for (const [k, v] of Object.entries(CHAPTERS)) {
-  chapterMeta[parseInt(k)] = { title: v.title, subtitle: v.subtitle, tags: v.tags };
-}
-const roman = {1:'I', 2:'II', 3:'III'};
+// ── Lookup helpers ────────────────────────────────────────────────────────────
 const partOf = {1:1,2:1,3:1,4:1,5:1,6:2,7:2,8:2,9:3,10:3,11:3,12:3};
-const partTitles = {1:'The Messy Job Spectrum',2:'Sources of Human Value',3:'Organising the Human\u2013AI Bundle'};
+const partTitles = {1:'The Messy Job Spectrum', 2:'Sources of Human Value', 3:'Organising the Human\u2013AI Bundle'};
+const roman = {1:'I', 2:'II', 3:'III'};
 
+// chapterMeta for nav titles (0 = preface)
+const chapterMeta = {0: {title: 'Preface'}};
+for (let i = 1; i <= 12; i++) {
+  chapterMeta[i] = {title: CHAPTERS[i].title};
+}
+
+// ── Tag sidebar ───────────────────────────────────────────────────────────────
 let activeTag = null;
 
 function buildTagButtons() {
   const container = document.getElementById('sidebar-tag-buttons');
-  Object.keys(TAG_MAP).sort().forEach(tag => {
+  Object.keys(TAG_MAP).sort().forEach(function(tag) {
     const btn = document.createElement('button');
     btn.className = 'sidebar-tag-btn';
     btn.textContent = tag;
-    btn.onclick = () => handleTagClick(tag, btn);
+    btn.addEventListener('click', function() { handleTagClick(tag, btn); });
     container.appendChild(btn);
   });
 }
 
 function handleTagClick(tag, btn) {
   const results = document.getElementById('tag-results');
-  const label = document.getElementById('tag-result-label');
-  const list = document.getElementById('tag-result-list');
+  const label   = document.getElementById('tag-result-label');
+  const list    = document.getElementById('tag-result-list');
   if (activeTag === tag) {
     activeTag = null;
     btn.classList.remove('active');
@@ -1059,90 +995,126 @@ function handleTagClick(tag, btn) {
     return;
   }
   activeTag = tag;
-  document.querySelectorAll('.sidebar-tag-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.sidebar-tag-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
   const chs = TAG_MAP[tag];
   label.textContent = tag + ' \u2014 ' + chs.length + ' chapter' + (chs.length > 1 ? 's' : '');
-  list.innerHTML = chs.map(n =>
-    `<li><a href="reading.html?chapter=${n}">Ch.${n} \u2014 ${chapterMeta[n].title}</a></li>`
-  ).join('');
+  list.innerHTML = chs.map(function(n) {
+    return '<li><a href="reading.html?chapter=' + n + '">Ch.' + n + ' \u2014 ' + chapterMeta[n].title + '</a></li>';
+  }).join('');
   results.classList.add('visible');
 }
 
 function handleArticleTagClick(tag) {
   const sidebar = document.getElementById('sidebar');
-  sidebar.scrollTop = sidebar.scrollHeight;
-  document.querySelectorAll('.sidebar-tag-btn').forEach(btn => {
-    if (btn.textContent === tag) {
-      setTimeout(() => {
-        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        handleTagClick(tag, btn);
-      }, 150);
-    }
-  });
-  // On mobile, open sidebar
   if (window.innerWidth <= 960) {
     sidebar.classList.add('open');
     const ov = document.getElementById('sidebar-overlay');
     if (ov) ov.classList.add('open');
   }
+  document.querySelectorAll('.sidebar-tag-btn').forEach(function(btn) {
+    if (btn.textContent === tag) {
+      setTimeout(function() {
+        btn.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+        handleTagClick(tag, btn);
+      }, 150);
+    }
+  });
 }
 
-function getParam(name) { return new URLSearchParams(window.location.search).get(name); }
+// ── Render chapter ────────────────────────────────────────────────────────────
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
 
 function renderChapter(n) {
-  const ch = n === 0 ? PREFACE : CHAPTERS[n];
-  // part set above
+  const isPreface = (n === 0);
+  const ch = isPreface ? PREFACE : CHAPTERS[n];
   const container = document.getElementById('ch-content');
-  document.title = `Ch.${n} \u2014 ${ch.title} | Messy Jobs`;
 
-  const isPreface = n === 0;
-  const part = isPreface ? null : partOf[n];
-  const prevN = n > 1 ? n - 1 : (n === 1 ? 0 : null);
-  const nextN = n < 12 ? n + 1 : null;
-  const prevHTML = prevN ? `<a href="reading.html?chapter=${prevN}" class="ch-nav-prev"><span class="ch-nav-dir">Previous</span><span class="ch-nav-title">Ch.${prevN} &mdash; ${chapterMeta[prevN].title}</span></a>` : '<div></div>';
-  const nextHTML = nextN ? `<a href="reading.html?chapter=${nextN}" class="ch-nav-next"><span class="ch-nav-dir">Next</span><span class="ch-nav-title">Ch.${nextN} &mdash; ${chapterMeta[nextN].title}</span></a>` : '<div></div>';
-  const tagsHTML = (ch.tags && ch.tags.length) ? ch.tags.map(t => `<a class="ch-tag" onclick="handleArticleTagClick('${t.replace(/'/g, "\'")}')" href="javascript:void(0)">${t}</a>`).join('');
+  document.title = (isPreface ? 'Preface' : 'Ch.' + n + ' \u2014 ' + ch.title) + ' | Messy Jobs';
 
-  container.innerHTML = `
-    <div class="ch-meta">
-      ${isPreface
-        ? '<span class="ch-part-tag">Messy Jobs</span>'
-        : `<span class="ch-part-tag">Part ${roman[part]} &mdash; ${partTitles[part]}</span><span class="ch-sep">&middot;</span><span class="ch-number">Chapter ${n}</span>`
-      }
-    </div>
-    <h1 class="ch-title">${ch.title}</h1>
-    <p class="ch-subtitle">${ch.subtitle}</p>
-    <div class="ch-byline">
-      <span class="ch-authors">Luis Garicano &nbsp;&middot;&nbsp; Jin Li &nbsp;&middot;&nbsp; Yanhui Wu</span>
-      <div class="ch-tags">${tagsHTML}</div>
-    </div>
-    <div class="article-body">${ch.content}</div>
-    <div class="key-takeaway" style="margin-top:2.4em">
-      <div class="key-takeaway-label">Key Takeaway</div>
-      <p>${ch.takeaway}</p>
-    </div>
-    <div class="ch-nav">${prevHTML}<div class="ch-nav-book"><span class="ch-nav-book-label">Enjoying the book?</span><a href="#" class="ch-nav-book-btn">Get the Full Book</a></div>${nextHTML}</div>`;
+  // Prev / Next
+  const prevN = isPreface ? null : (n === 1 ? 0 : n - 1);
+  const nextN = isPreface ? 1   : (n < 12 ? n + 1 : null);
 
-  document.querySelectorAll('.sidebar-ch-list a, .sidebar-preface-link').forEach(a => {
-    a.classList.toggle('active', parseInt(a.dataset.ch) === n);
+  function navTitle(num) {
+    return num === 0 ? 'Preface' : 'Ch.' + num + ' \u2014 ' + chapterMeta[num].title;
+  }
+
+  const prevHTML = (prevN !== null)
+    ? '<a href="reading.html?chapter=' + prevN + '" class="ch-nav-prev"><span class="ch-nav-dir">Previous</span><span class="ch-nav-title">' + navTitle(prevN) + '</span></a>'
+    : '<div></div>';
+
+  const nextHTML = (nextN !== null)
+    ? '<a href="reading.html?chapter=' + nextN + '" class="ch-nav-next"><span class="ch-nav-dir">Next</span><span class="ch-nav-title">' + navTitle(nextN) + '</span></a>'
+    : '<div></div>';
+
+  // Tags
+  const tagsHTML = (ch.tags && ch.tags.length > 0)
+    ? ch.tags.map(function(t) {
+        return '<a class="ch-tag" onclick="handleArticleTagClick(\'' + t.replace(/'/g, "\\'") + '\')" href="javascript:void(0)">' + t + '</a>';
+      }).join('')
+    : '';
+
+  // Part tag
+  const partTagHTML = isPreface
+    ? '<span class="ch-part-tag">Messy Jobs</span>'
+    : '<span class="ch-part-tag">Part ' + roman[partOf[n]] + ' \u2014 ' + partTitles[partOf[n]] + '</span>'
+      + '<span class="ch-sep">&middot;</span>'
+      + '<span class="ch-number">Chapter ' + n + '</span>';
+
+  container.innerHTML =
+    '<div class="ch-meta">' + partTagHTML + '</div>' +
+    '<h1 class="ch-title">' + ch.title + '</h1>' +
+    '<p class="ch-subtitle">' + ch.subtitle + '</p>' +
+    '<div class="ch-byline">' +
+      '<span class="ch-authors">Luis Garicano &nbsp;&middot;&nbsp; Jin Li &nbsp;&middot;&nbsp; Yanhui Wu</span>' +
+      (tagsHTML ? '<div class="ch-tags">' + tagsHTML + '</div>' : '') +
+    '</div>' +
+    '<div class="article-body">' + ch.content + '</div>' +
+    '<div class="key-takeaway" style="margin-top:2.4em">' +
+      '<div class="key-takeaway-label">Key Takeaway</div>' +
+      '<p>' + ch.takeaway + '</p>' +
+    '</div>' +
+    '<div class="ch-nav">' +
+      prevHTML +
+      '<div class="ch-nav-book"><span class="ch-nav-book-label">Enjoying the book?</span><a href="#" class="ch-nav-book-btn">Get the Full Book</a></div>' +
+      nextHTML +
+    '</div>';
+
+  // Highlight sidebar
+  document.querySelectorAll('.sidebar-ch-list a, .sidebar-preface-link').forEach(function(a) {
+    a.classList.toggle('active', parseInt(a.getAttribute('data-ch')) === n);
   });
+
   window.scrollTo(0, 0);
 }
 
+// ── Init ──────────────────────────────────────────────────────────────────────
 buildTagButtons();
-const chParam = getParam('chapter');
-const chN = chParam !== null ? parseInt(chParam) : 1;
+
+var chParam = getParam('chapter');
+var chN = (chParam !== null) ? parseInt(chParam) : 1;
 renderChapter(chN);
 
-window.addEventListener('scroll', () => {
-  const d = document.documentElement;
-  document.getElementById('progress-fill').style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
+// Progress bar
+window.addEventListener('scroll', function() {
+  var d = document.documentElement;
+  var pct = d.scrollTop / (d.scrollHeight - d.clientHeight) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
 });
-function toggleDrawer() { document.getElementById('drawer').classList.toggle('open'); document.getElementById('drawer-overlay').classList.toggle('open'); }
+
+// Drawer
+function toggleDrawer() {
+  document.getElementById('drawer').classList.toggle('open');
+  document.getElementById('drawer-overlay').classList.toggle('open');
+}
+
+// Sidebar (mobile)
 function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open');
-  const ov = document.getElementById('sidebar-overlay');
+  var ov = document.getElementById('sidebar-overlay');
   if (ov) ov.classList.toggle('open');
 }
 </script>
