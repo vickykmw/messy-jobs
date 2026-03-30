@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Messy Jobs — The Work that AI Cannot Reach</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,500;1,7..72,300;1,7..72,400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -25,7 +25,7 @@
     }
 
     body {
-      font-family: 'Source Serif 4', Georgia, serif;
+      font-family: 'Literata', Georgia, serif;
       background: var(--page);
       color: var(--ink);
       font-size: 18px;
@@ -47,14 +47,14 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.95rem; font-weight: 700;
       color: var(--ink); text-decoration: none;
       letter-spacing: 0.02em;
     }
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
     .nav-links a {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.78rem; font-weight: 500;
       color: var(--ink-muted); text-decoration: none;
       letter-spacing: 0.08em; text-transform: uppercase;
@@ -82,7 +82,7 @@
 
     /* ── SECTION LABEL ── */
     .section-label {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.68rem; font-weight: 600;
       letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--accent);
@@ -97,41 +97,45 @@
     /* ── HERO ── */
     #hero {
       margin-top: 52px;
-      min-height: 56vh;
       background: var(--ink);
       position: relative;
       overflow: hidden;
-      display: flex; align-items: flex-end;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('https://user-gen-media-assets.s3.amazonaws.com/gemini_images/7a14bd40-8dc4-4ba0-9749-ac0c85ff528a.png');
-      background-size: cover; background-position: center 40%;
-      opacity: 0.28;
+      min-height: 52vh;
     }
     .hero-grain {
       position: absolute; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.6; pointer-events: none;
+      opacity: 0.6; pointer-events: none; z-index: 1;
     }
-    /* Inner hero content aligns to 1200px — same left edge as all sections */
     .hero-inner {
       position: relative; z-index: 2;
       width: 100%; max-width: var(--max-w);
       margin: 0 auto;
-      padding: 56px 40px 52px;
+      padding: 56px 40px 60px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 64px;
+      align-items: center;
     }
-    @media (max-width: 640px) { .hero-inner { padding: 40px 20px 40px; } }
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 48px 20px 40px;
+        gap: 40px;
+      }
+    }
 
+    /* Left: text column */
+    .hero-text { display: flex; flex-direction: column; justify-content: center; }
     .hero-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: clamp(3.6rem, 9vw, 8rem);
       font-weight: 700; color: var(--white);
       line-height: 0.92; letter-spacing: -0.02em;
       margin-bottom: 22px;
     }
     .hero-subtitle {
-      font-family: 'Source Serif 4', serif;
+      font-family: 'Literata', serif;
       font-size: clamp(1rem, 2vw, 1.3rem);
       font-style: italic; font-weight: 300;
       color: rgba(253,252,250,0.65);
@@ -140,7 +144,7 @@
     }
     .hero-meta { display: flex; align-items: center; flex-wrap: wrap; }
     .hero-authors {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.82rem; font-weight: 400;
       color: rgba(253,252,250,0.55);
       padding-right: 20px; margin-right: 20px;
@@ -148,12 +152,44 @@
     }
     .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
     .hero-tag {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.65rem; font-weight: 500;
       letter-spacing: 0.1em; text-transform: uppercase;
       border: 1px solid rgba(126,202,202,0.45);
       color: var(--accent-light);
       padding: 4px 10px; border-radius: 2px;
+    }
+
+    /* Right: book cover */
+    .hero-cover {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-cover img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      display: block;
+      border-radius: 3px;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.15),
+        0 8px 24px rgba(0,0,0,0.35),
+        0 24px 64px rgba(0,0,0,0.4),
+        4px 0 0 rgba(0,0,0,0.2);
+      transform: perspective(800px) rotateY(-4deg);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .hero-cover img:hover {
+      transform: perspective(800px) rotateY(0deg);
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.1),
+        0 8px 24px rgba(0,0,0,0.25),
+        0 24px 64px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 860px) {
+      .hero-cover { justify-content: flex-start; }
+      .hero-cover img { max-width: 160px; transform: none; }
     }
 
     /* ── FROM THE AUTHORS ── */
@@ -171,31 +207,22 @@
       margin-bottom: 20px;
       text-align: justify;
     }
-    .signatures {
-      display: flex; gap: 32px; margin-top: 36px; flex-wrap: wrap;
-    }
-    .sig-block { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; }
-    .sig-placeholder {
-      width: 116px; height: 48px;
-      background: var(--page);
-      border: 1px dashed var(--rule); border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.58rem; color: var(--ink-faint);
-      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    }
-    .sig-name {
-      font-family: 'Source Serif 4', serif;
-      font-size: 0.8rem; font-style: italic; color: var(--ink-muted);
-    }
+
+
     .preface-link {
       display: inline-block; margin-top: 28px;
-      font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500;
+      font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 500;
       color: var(--accent); text-decoration: none; letter-spacing: 0.04em;
       border-bottom: 1px solid rgba(74,154,154,0.3); padding-bottom: 1px;
       transition: color 0.2s, border-color 0.2s;
     }
     .preface-link:hover { color: var(--ink); border-color: var(--ink); }
+    .author-sign-off {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--ink-muted);
+      margin-top: 32px; letter-spacing: 0.02em;
+    }
 
     /* ── TOPICS / PARTS ── */
     #topics {
@@ -210,14 +237,14 @@
       gap: 24px; flex-wrap: wrap;
     }
     .topics-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: clamp(1.6rem, 3.5vw, 2.4rem);
       font-weight: 700; color: var(--ink);
       line-height: 1.15; margin-top: 10px;
     }
     /* Count sits vertically centred alongside title block */
     .topics-count {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.75rem; color: var(--ink-faint);
       letter-spacing: 0.08em; white-space: nowrap;
       /* align to the title's centre by self-centering in the flex row */
@@ -257,20 +284,20 @@
     .part-card > *:not(.part-card-bar) { position: relative; z-index: 1; }
 
     .part-number {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 3rem; font-weight: 700;
       color: var(--rule); line-height: 1; margin-bottom: 16px;
       transition: color 0.25s;
     }
     .part-card:hover .part-number { color: var(--accent-pale); }
     .part-eyebrow {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.62rem; font-weight: 600;
       letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 10px;
     }
     .part-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1.2rem; font-weight: 700;
       color: var(--ink); line-height: 1.3; margin-bottom: 14px;
     }
@@ -281,7 +308,7 @@
       text-align: justify;
     }
     .part-chapters {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.72rem; color: var(--ink-faint);
       padding-top: 16px; border-top: 1px solid var(--rule);
       display: flex; align-items: center; justify-content: space-between;
@@ -305,7 +332,7 @@
       padding: 72px 0 64px;
     }
     .section-label-light {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.68rem; font-weight: 600;
       letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--accent-light); margin-bottom: 32px;
@@ -332,24 +359,24 @@
       background: rgba(74,154,154,0.2);
       border: 1px solid rgba(74,154,154,0.35);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Sans', sans-serif; font-size: 0.58rem;
+      font-family: 'Inter', sans-serif; font-size: 0.58rem;
       color: var(--accent-light); font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
       margin-bottom: 20px; overflow: hidden;
     }
     .author-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
     .author-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1.1rem; font-weight: 700;
       color: var(--white); margin-bottom: 6px;
     }
     .author-title {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.75rem; font-weight: 500;
       color: var(--accent-light); line-height: 1.4; margin-bottom: 3px;
     }
     .author-uni {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.72rem; color: rgba(255,255,255,0.28);
       margin-bottom: 18px;
     }
@@ -372,7 +399,7 @@
       text-align: center;
     }
     .cta-quote {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: clamp(1.1rem, 2.2vw, 1.5rem);
       font-weight: 400;
       font-style: italic;
@@ -383,7 +410,7 @@
     .btn-primary {
       display: inline-block;
       background: var(--accent); color: var(--white);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
       padding: 14px 36px; border-radius: 2px;
       text-decoration: none; transition: background 0.2s;
@@ -392,7 +419,7 @@
     .btn-outline {
       display: inline-block;
       border: 1.5px solid var(--rule); color: var(--ink-muted);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
       padding: 13px 32px; border-radius: 2px;
       text-decoration: none; transition: border-color 0.2s, color 0.2s;
@@ -411,11 +438,11 @@
       flex-wrap: wrap; gap: 12px;
     }
     .footer-copy {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.75rem; color: rgba(255,255,255,0.28); letter-spacing: 0.04em;
     }
     .footer-inst {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.75rem; color: rgba(255,255,255,0.2); letter-spacing: 0.04em;
     }
     @media (max-width: 640px) { footer { padding: 24px 20px; } }
@@ -438,18 +465,22 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
   <div class="hero-grain"></div>
   <div class="hero-inner">
-    <h1 class="hero-title">Messy<br>Jobs</h1>
-    <p class="hero-subtitle">The Work that AI Cannot Reach</p>
-    <div class="hero-meta">
-      <span class="hero-authors">Luis Garicano &nbsp;·&nbsp; Jin Li &nbsp;·&nbsp; Yanhui Wu</span>
-      <div class="hero-tags">
-        <span class="hero-tag">Economics</span>
-        <span class="hero-tag">AI &amp; Work</span>
-        <span class="hero-tag">Organisations</span>
+    <div class="hero-text">
+      <h1 class="hero-title">Messy<br>Jobs</h1>
+      <p class="hero-subtitle">The Work that AI Cannot Reach</p>
+      <div class="hero-meta">
+        <span class="hero-authors">Luis Garicano &nbsp;·&nbsp; Jin Li &nbsp;·&nbsp; Yanhui Wu</span>
+        <div class="hero-tags">
+          <span class="hero-tag">Economics</span>
+          <span class="hero-tag">AI &amp; Work</span>
+          <span class="hero-tag">Organisations</span>
+        </div>
       </div>
+    </div>
+    <div class="hero-cover">
+      <img src="book_cover.png" alt="Messy Jobs book cover"/>
     </div>
   </div>
 </section>
@@ -459,22 +490,11 @@
   <div class="section-inner">
     <p class="section-label">From the Authors</p>
     <div class="welcome-cols">
-      <p class="body-text">The speed of change of AI technology is rapid. Managers are worried, workers are scared, parents are concerned, and policymakers are confused. This situation may last for a long time, and we write this book to help them make better decisions and discover new opportunities.</p>
-      <p class="body-text">The future is not shaped by technology alone. Whatever the timelines, understanding the consequences of AI requires economic reasoning about scarcity, about complementarities and bottlenecks, about incentives, and about the organisation of work. These are the concepts we use. Our specific examples will age — these concepts will not.</p>
-      <div class="signatures">
-        <div class="sig-block">
-          <div class="sig-placeholder">Signature</div>
-          <span class="sig-name">Luis</span>
-        </div>
-        <div class="sig-block">
-          <div class="sig-placeholder">Signature</div>
-          <span class="sig-name">Jin</span>
-        </div>
-        <div class="sig-block">
-          <div class="sig-placeholder">Signature</div>
-          <span class="sig-name">Yanhui</span>
-        </div>
-      </div>
+      <p class="body-text">Imagine you wake up to a message from your AI agent: &ldquo;Good news. I changed your internet provider and cut your bill by 10 percent. I also found, booked, and paid for a summer house that fits your needs.&rdquo; Now think about what happens next. You may live with a partner who has already changed the plans you agreed on last night, or with flatmates who didn&rsquo;t do the dishes, or with children who have decided this morning that they are not going to their swimming lessons anymore. In all cases you are the manager of a tiny, fast-moving organization &mdash; deciding how to allocate scarce resources, figuring out the division of labor, and negotiating agreements. The bottleneck is not information. It is the politics of the household: making sure decisions are acceptable to everyone and implemented. Your family life, like everyone else&rsquo;s, can be a mess.</p>
+      <p class="body-text">All knowledge work varies along the same dimension: messiness. On one end, there is one defined task to execute &mdash; you get the payslips via email, use rules to fill out a form, and get a result. On the other end, there is a wide bundle of complex tasks: running a factory, or a family, involves work that is very hard to specify in advance and full of conflict. Along the messiness spectrum, AI has a different ability to help or replace humans. While it is easy for AI to replace simple, clean tasks, it is hard for it to replace messy jobs.</p>
+      <p class="body-text">In February 2026, the head of Microsoft&rsquo;s AI division told the Financial Times that most white-collar tasks could be &ldquo;fully automated by an AI within the next 12 to 18 months.&rdquo; We believe these predictions are wrong. Not because we believe AI is weak. But because the people making the predictions do not understand what most white-collar workers do all day.</p>
+      <p class="body-text">The future is not shaped by technology alone. Understanding the consequences of AI requires economic reasoning about scarcity, about complementarities and bottlenecks, about signaling and incentives, and about the organization of work. These are the concepts we use. Our specific examples will age &mdash; these concepts will not.</p>
+      <p class="author-sign-off">Luis Garicano, Jin Li, Yanhui Wu</p>
       <a href="reading.html?chapter=0" class="preface-link">Read the full preface &rarr;</a>
     </div>
   </div>
