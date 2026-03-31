@@ -98,6 +98,9 @@
     #hero {
       margin-top: 52px;
       background: var(--ink);
+      background-image: url('messy_job_hero_bg.png');
+      background-size: cover;
+      background-position: center center;
       position: relative;
       overflow: hidden;
       min-height: 52vh;
@@ -113,8 +116,8 @@
       margin: 0 auto;
       padding: 56px 40px 60px;
       display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 64px;
+      grid-template-columns: 1fr 260px;
+      gap: 40px;
       align-items: center;
     }
     @media (max-width: 860px) {
@@ -199,7 +202,7 @@
       border-bottom: 1px solid var(--rule);
     }
     .welcome-cols {
-      max-width: 680px;
+      /* No max-width cap — fills the full section-inner width, matching topics section */
     }
     .body-text {
       font-size: 1rem; line-height: 1.85;
@@ -395,7 +398,7 @@
       border-bottom: 1px solid var(--rule);
     }
     .cta-inner {
-      max-width: 680px; margin: 0 auto; padding: 0 40px;
+      max-width: 900px; margin: 0 auto; padding: 0 40px;
       text-align: center;
     }
     .cta-quote {
