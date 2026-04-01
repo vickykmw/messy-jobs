@@ -174,6 +174,32 @@
     .ch-nav-book-label{font-family:'Inter',sans-serif;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-faint)}
     .ch-nav-book-btn{display:inline-block;background:var(--teal);color:var(--white);font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.06em;padding:10px 22px;border-radius:2px;text-decoration:none;transition:background 0.2s;white-space:nowrap}
     .ch-nav-book-btn:hover{background:var(--teal-dark)}
+
+    /* MOBILE OVERFLOW FIXES */
+    @media (max-width: 960px) {
+      #main { overflow-x: hidden; word-break: break-word; }
+      .article-body { overflow-x: hidden; }
+      .article-body p, .article-body h2, .article-body h3 {
+        word-break: break-word; overflow-wrap: break-word;
+      }
+      .endnote-text { word-break: break-word; overflow-wrap: break-word; }
+      .endnote-item { flex-wrap: wrap; }
+      /* Fix ch-nav on mobile */
+      .ch-nav {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .ch-nav-book { display: none; }
+      /* Byline wraps cleanly */
+      .ch-byline { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .ch-share-row { margin-left: 0; }
+      /* Tags wrap onto own line */
+      .ch-tags { width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .ch-nav { grid-template-columns: 1fr; }
+      .ch-nav-next { align-items: flex-start; text-align: left; }
+    }
   </style>
 </head>
 <body>
@@ -294,8 +320,8 @@ function renderChapter(n){
     '<p class="ch-subtitle">'+ch.subtitle+'</p>'+
     '<div class="ch-byline"><span class="ch-authors">Luis Garicano &nbsp;&middot;&nbsp; Jin Li &nbsp;&middot;&nbsp; Yanhui Wu</span>'+tagsHTML+shareHTML+'</div>'+
     '<div class="article-body">'+ch.body+'</div>'+
-    (ch.notes ? ch.notes : '')+
     '<div class="key-takeaway" style="margin-top:2.4em"><div class="key-takeaway-label">Key Takeaway</div><p>'+ch.takeaway+'</p></div>'+
+    (ch.notes ? ch.notes : '')+
     '<div class="ch-nav">'+prevHTML+'<div class="ch-nav-book"><span class="ch-nav-book-label">Enjoying the book?</span><a href="#" class="ch-nav-book-btn">Get the Full Book</a></div>'+nextHTML+'</div>';
   // Set dynamic share URLs
   var li=document.getElementById('share-li');if(li)li.href='https://www.linkedin.com/sharing/share-offsite/?url='+pageUrl;
