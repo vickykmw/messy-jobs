@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chapter 11: The Mediocrity Trap — Messy Jobs</title>
+  <meta name="description" content="Allocating effort where it pays"/>
+  <link rel="canonical" href="https://messyjobs.com/chapter-11.html"/>
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Chapter 11: The Mediocrity Trap — Messy Jobs"/>
+  <meta property="og:description" content="Allocating effort where it pays"/>
+  <meta property="og:url" content="https://messyjobs.com/chapter-11.html"/>
+  <meta property="og:image" content="https://messyjobs.com/book_cover.png"/>
+  <meta property="og:site_name" content="Messy Jobs — The Work that AI Cannot Reach"/>
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Chapter 11: The Mediocrity Trap — Messy Jobs"/>
+  <meta name="twitter:description" content="Allocating effort where it pays"/>
+  <meta name="twitter:image" content="https://messyjobs.com/book_cover.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,500;1,7..72,300;1,7..72,400&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{
+      --ink:#1a1814;--ink-soft:#3d3a35;--ink-muted:#6b6560;--ink-faint:#9a958e;
+      --rule:#d8d3cc;--page:#f7f6f4;--page-warm:#f0f8f8;
+      --teal:#4a9a9a;--teal-light:#7ecaca;--teal-pale:#e8f4f4;--teal-dark:#2d6a6a;
+      --white:#fdfcfa;
+    }
+    body{font-family:'Literata',Georgia,serif;background:var(--page);color:var(--ink)}
+    #ribbon{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--ink);height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:16px}
+    .ribbon-left{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+    .ribbon-ch-btn{display:none;align-items:center;gap:6px;padding:5px 10px;cursor:pointer;border-radius:3px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);flex-shrink:0;transition:background 0.2s}
+    .ribbon-ch-btn:hover{background:rgba(255,255,255,0.16)}
+    .ribbon-ch-btn span{font-family:'Inter',sans-serif;font-size:0.65rem;font-weight:500;color:rgba(253,252,250,0.7);letter-spacing:0.06em;white-space:nowrap}
+    @media(max-width:960px){.ribbon-ch-btn{display:flex}}
+    .ribbon-title{font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:700;color:rgba(253,252,250,0.65);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+    .ribbon-title a{color:inherit;text-decoration:none}
+    .ribbon-title a:hover{color:var(--white)}
+    .ribbon-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+    .ribbon-btn{font-family:'Inter',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;background:var(--teal);color:var(--white);padding:6px 16px;border-radius:2px;text-decoration:none;transition:background 0.2s;white-space:nowrap}
+    .ribbon-btn:hover{background:var(--teal-light);color:var(--ink)}
+    .hamburger{width:32px;height:32px;display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:4px;border-radius:2px;flex-shrink:0}
+    .hamburger:hover{background:rgba(255,255,255,0.08)}
+    .hamburger span{display:block;height:1.5px;background:rgba(253,252,250,0.6)}
+    #progress-bar{position:fixed;top:48px;left:0;right:0;z-index:290;height:2px;background:rgba(126,202,202,0.15)}
+    #progress-fill{height:100%;background:var(--teal-light);width:0%;transition:width 0.1s linear}
+    #drawer{position:fixed;top:48px;right:0;bottom:0;z-index:250;width:320px;background:var(--white);border-left:1px solid var(--rule);transform:translateX(100%);transition:transform 0.3s ease;overflow-y:auto;padding:36px 28px}
+    #drawer.open{transform:translateX(0)}
+    #drawer-overlay{position:fixed;inset:0;z-index:240;background:rgba(26,24,20,0.4);opacity:0;pointer-events:none;transition:opacity 0.3s}
+    #drawer-overlay.open{opacity:1;pointer-events:all}
+    .drawer-section{margin-bottom:32px}
+    .drawer-label{font-family:'Inter',sans-serif;font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+    .drawer-author-item{margin-bottom:16px}
+    .drawer-author-name{font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:2px}
+    .drawer-author-role{font-family:'Inter',sans-serif;font-size:0.72rem;color:var(--teal);margin-bottom:2px;line-height:1.4}
+    .drawer-author-uni{font-family:'Inter',sans-serif;font-size:0.68rem;color:var(--ink-faint)}
+    .drawer-cta{background:var(--teal-pale);border:1px solid rgba(74,154,154,0.2);border-radius:2px;padding:18px}
+    .drawer-cta-quote{font-family:'Literata',serif;font-size:0.85rem;font-style:italic;color:var(--ink-soft);line-height:1.65;margin-bottom:14px}
+    .drawer-cta-btn{display:block;width:100%;text-align:center;background:var(--teal);color:var(--white);font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.06em;padding:10px;border-radius:2px;text-decoration:none;transition:background 0.2s}
+    .drawer-cta-btn:hover{background:var(--teal-dark)}
+    .drawer-nav-link{display:block;font-family:'Inter',sans-serif;font-size:0.82rem;color:var(--ink-muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--rule);transition:color 0.2s}
+    .drawer-nav-link:hover{color:var(--teal)}
+    #layout{margin-top:50px;display:grid;grid-template-columns:240px 1fr;max-width:1240px;margin-left:auto;margin-right:auto;min-height:calc(100vh - 50px)}
+    @media(max-width:960px){#layout{grid-template-columns:1fr}}
+    #sidebar{border-right:1px solid var(--rule);background:var(--white);position:sticky;top:50px;height:calc(100vh - 50px);overflow-y:auto;overflow-x:hidden;z-index:100}
+    #sidebar::-webkit-scrollbar{width:3px}
+    #sidebar::-webkit-scrollbar-thumb{background:var(--rule)}
+    @media(max-width:960px){
+      #sidebar{position:fixed;top:50px;left:0;bottom:0;width:280px;transform:translateX(-100%);transition:transform 0.3s ease;box-shadow:4px 0 24px rgba(26,24,20,0.12)}
+      #sidebar.open{transform:translateX(0)}
+    }
+    #sidebar-overlay{position:fixed;inset:0;z-index:99;background:rgba(26,24,20,0.35);opacity:0;pointer-events:none;transition:opacity 0.3s}
+    #sidebar-overlay.open{opacity:1;pointer-events:all}
+    .sidebar-inner{padding:28px 0 60px}
+    .sidebar-book-link{display:flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:0.68rem;color:var(--ink-faint);text-decoration:none;padding:0 20px 18px;border-bottom:1px solid var(--rule);margin-bottom:18px;letter-spacing:0.06em;transition:color 0.2s}
+    .sidebar-book-link:hover{color:var(--teal)}
+    .back-arrow{width:12px;height:12px;flex-shrink:0;border-top:1.5px solid currentColor;border-left:1.5px solid currentColor;transform:rotate(-45deg)}
+    .sidebar-preface-link{display:block;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:500;color:var(--ink-muted);text-decoration:none;padding:7px 20px 7px 22px;border-left:2px solid transparent;transition:color 0.15s,border-color 0.15s,background 0.15s}
+    .sidebar-preface-link:hover{color:var(--ink);background:var(--page)}
+    .sidebar-preface-link.active{color:var(--teal);border-left-color:var(--teal-light);font-weight:600;background:var(--teal-pale)}
+    .sidebar-part-label{font-family:'Inter',sans-serif;font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);padding:12px 20px 5px;display:block}
+    .sidebar-ch-list{list-style:none}
+    .sidebar-ch-list li a{display:block;font-family:'Inter',sans-serif;font-size:0.76rem;font-weight:400;color:var(--ink-faint);text-decoration:none;padding:6px 20px 6px 22px;border-left:2px solid transparent;line-height:1.35;transition:color 0.15s,border-color 0.15s,background 0.15s}
+    .sidebar-ch-list li a:hover{color:var(--ink);background:var(--page)}
+    .sidebar-ch-list li a.active{color:var(--teal);border-left-color:var(--teal-light);font-weight:500;background:var(--teal-pale)}
+    .sidebar-divider{border:none;border-top:1px solid var(--rule);margin:10px 0}
+    .sidebar-tags-section{padding:4px 20px 0}
+    .sidebar-tag-btn{display:inline-block;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.65rem;font-weight:500;letter-spacing:0.05em;border:1px solid var(--rule);color:var(--ink-faint);padding:4px 9px;border-radius:2px;margin:0 4px 6px 0;background:none;transition:all 0.15s}
+    .sidebar-tag-btn:hover,.sidebar-tag-btn.active{background:var(--teal-pale);border-color:var(--teal-light);color:var(--teal)}
+    #tag-results{margin-top:14px;display:none}
+    #tag-results.visible{display:block}
+    .tag-result-label{font-family:'Inter',sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+    .tag-result-list{list-style:none}
+    .tag-result-list li a{display:block;font-family:'Inter',sans-serif;font-size:0.76rem;color:var(--ink-muted);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--page-warm);transition:color 0.15s}
+    .tag-result-list li a:hover{color:var(--teal)}
+    #main{padding:56px 72px 100px;max-width:780px;overflow-x:hidden}
+    @media(max-width:1100px){#main{padding:48px 48px 80px}}
+    @media(max-width:960px){#main{padding:40px 28px 72px;max-width:100%}}
+    @media(max-width:600px){#main{padding:32px 20px 64px}}
+    .ch-meta{display:flex;align-items:center;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+    .ch-part-tag{font-family:'Inter',sans-serif;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);background:var(--teal-pale);padding:4px 10px;border-radius:2px}
+    .ch-sep{color:var(--rule)}
+    .ch-number{font-family:'Inter',sans-serif;font-size:0.68rem;color:var(--ink-faint);letter-spacing:0.12em}
+    .ch-title{font-family:'Inter',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--ink);line-height:1.1;margin-bottom:12px}
+    .ch-subtitle{font-family:'Literata',serif;font-size:clamp(1rem,2vw,1.2rem);font-style:italic;font-weight:300;color:var(--ink-muted);line-height:1.5;margin-bottom:28px}
+    .ch-byline{display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:48px;flex-wrap:wrap;justify-content:space-between}
+    .ch-authors{font-family:'Inter',sans-serif;font-size:0.78rem;color:var(--ink-muted)}
+    .ch-tags{display:flex;gap:6px;flex-wrap:wrap}
+    .ch-tag{font-family:'Inter',sans-serif;font-size:0.62rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border:1px solid rgba(74,154,154,0.35);color:var(--teal);padding:3px 9px;border-radius:2px;cursor:pointer;text-decoration:none;background:none;transition:background 0.15s}
+    .ch-tag:hover{background:var(--teal-pale)}
+    .ch-share-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}
+    .ch-share-label{font-family:'Inter',sans-serif;font-size:0.68rem;font-weight:500;color:var(--ink-faint);letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
+    .ch-share-icons{display:flex;gap:6px;align-items:center}
+    .ch-share-btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:2px;background:var(--page);border:1px solid var(--rule);color:var(--ink-muted);text-decoration:none;transition:background 0.2s,color 0.2s,border-color 0.2s;flex-shrink:0}
+    .ch-share-btn:hover{background:var(--teal);border-color:var(--teal);color:var(--white)}
+    .ch-share-btn svg{width:13px;height:13px}
+    .article-body{font-size:1.05rem;line-height:1.9;color:var(--ink-soft);font-weight:300;word-break:break-word;overflow-wrap:break-word}
+    .article-body p{margin-bottom:1.55em}
+    .article-body h2{font-family:'Inter',sans-serif;font-size:1.12rem;font-weight:700;color:var(--ink);line-height:1.3;margin:2.4em 0 0.6em}
+    .article-body h3{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:700;font-style:italic;color:var(--ink-soft);line-height:1.35;margin:1.8em 0 0.5em}
+    .note-ref{color:var(--teal);text-decoration:none;font-family:'Inter',sans-serif;font-size:0.65rem;font-weight:600;padding:0 1px;transition:color 0.15s}
+    .note-ref:hover{color:var(--teal-dark);text-decoration:underline}
+    .chapter-figure{margin:2.4em 0;text-align:center}
+    .chapter-img{width:100%;max-width:640px;height:auto;display:block;margin:0 auto;border-radius:4px;border:1px solid var(--rule)}
+    .chapter-figcaption{font-family:'Inter',sans-serif;font-size:0.78rem;color:var(--ink-faint);margin-top:10px;letter-spacing:0.02em;font-style:italic}
+    .part-transition{margin-top:3em;padding-top:2em;border-top:2px solid var(--teal)}
+    .part-transition-label{font-family:'Inter',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+    .part-transition-title{font-family:'Inter',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:var(--ink);line-height:1.15}
+    .key-takeaway{background:var(--teal-pale);border-left:3px solid var(--teal);padding:18px 22px;margin:2.4em 0;border-radius:0 2px 2px 0}
+    .key-takeaway-label{font-family:'Inter',sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:7px}
+    .key-takeaway p{font-family:'Literata',serif;font-size:0.95rem;color:var(--ink-soft);line-height:1.7;margin:0!important;font-weight:400}
+    .endnotes{margin-top:56px;padding-top:32px;border-top:1px solid var(--rule)}
+    .endnotes-label{font-family:'Inter',sans-serif;font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px}
+    .endnote-list{list-style:none}
+    .endnote-item{display:flex;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--page-warm);font-family:'Inter',sans-serif;font-size:0.78rem;color:var(--ink-faint);line-height:1.6;word-break:break-word;overflow-wrap:break-word}
+    .endnote-item:last-child{border-bottom:none}
+    .endnote-num{flex-shrink:0;font-weight:600;color:var(--teal);min-width:24px}
+    .endnote-text{flex:1;word-break:break-word}
+    .endnote-back{flex-shrink:0;color:var(--teal);text-decoration:none;font-size:0.85rem;transition:color 0.15s}
+    .endnote-back:hover{color:var(--teal-dark)}
+    .endnote-link{color:var(--teal);text-decoration:underline;text-decoration-color:rgba(74,154,154,0.4);text-underline-offset:2px;word-break:break-all;}
+    .endnote-link:hover{color:var(--teal-dark);text-decoration-color:var(--teal-dark);}
+    .ch-nav{margin-top:72px;padding-top:32px;border-top:1px solid var(--rule);display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center}
+    .ch-nav-prev,.ch-nav-next{display:flex;flex-direction:column;gap:5px;text-decoration:none}
+    .ch-nav-prev{align-items:flex-start}
+    .ch-nav-next{align-items:flex-end;text-align:right}
+    .ch-nav-dir{font-family:'Inter',sans-serif;font-size:0.62rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:5px}
+    .ch-nav-prev .ch-nav-dir::before{content:'\2190'}
+    .ch-nav-next .ch-nav-dir::after{content:'\2192'}
+    .ch-nav-title{font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:600;color:var(--ink);line-height:1.3;transition:color 0.2s}
+    .ch-nav-prev:hover .ch-nav-title,.ch-nav-next:hover .ch-nav-title{color:var(--teal)}
+    .ch-nav-book{display:flex;flex-direction:column;align-items:center;gap:7px}
+    .ch-nav-book-label{font-family:'Inter',sans-serif;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-faint)}
+    .ch-nav-book-btn{display:inline-block;background:var(--teal);color:var(--white);font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.06em;padding:10px 22px;border-radius:2px;text-decoration:none;transition:background 0.2s;white-space:nowrap}
+    .ch-nav-book-btn:hover{background:var(--teal-dark)}
+    @media(max-width:960px){
+      .ch-byline{flex-direction:column;align-items:flex-start;gap:10px}
+      .ch-share-row{margin-left:0}
+      .ch-tags{width:100%}
+      .ch-nav{grid-template-columns:1fr 1fr}
+      .ch-nav-book{display:none}
+    }
+    @media(max-width:600px){
+      .ch-nav{grid-template-columns:1fr}
+      .ch-nav-next{align-items:flex-start;text-align:left}
+    }
+  </style>
+</head>
+<body>
+
+<div id="ribbon">
+  <div class="ribbon-left">
+    <button class="ribbon-ch-btn" onclick="toggleSidebar()" aria-label="Browse chapters">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(253,252,250,0.75)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span>Chapters</span>
+    </button>
+    <div class="ribbon-title"><a href="index.html">Messy Jobs &mdash; The Work that AI Cannot Reach</a></div>
+  </div>
+  <div class="ribbon-right">
+    <a href="#" class="ribbon-btn">Get the Book</a>
+    <div class="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></div>
+  </div>
+</div>
+<div id="progress-bar"><div id="progress-fill"></div></div>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<div id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div id="drawer">
+  <div class="drawer-section">
+    <div class="drawer-label">Meet the Authors</div>
+    <div class="drawer-author-item"><div class="drawer-author-name">Luis Garicano</div><div class="drawer-author-role">Professor of Public Policy</div><div class="drawer-author-uni">London School of Economics</div></div>
+    <div class="drawer-author-item"><div class="drawer-author-name">Jin Li</div><div class="drawer-author-role">Director, HKU Centre for AI, Management and Organization</div><div class="drawer-author-uni">University of Hong Kong</div></div>
+    <div class="drawer-author-item"><div class="drawer-author-name">Yanhui Wu</div><div class="drawer-author-role">Area Head of HKUBS Economics</div><div class="drawer-author-uni">University of Hong Kong</div></div>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-label">Get the Book</div>
+    <div class="drawer-cta">
+      <p class="drawer-cta-quote">&ldquo;You will not be replaced. You will be needed more than ever.&rdquo;</p>
+      <a href="#" class="drawer-cta-btn">Order Now &rarr;</a>
+    </div>
+  </div>
+  <div class="drawer-section">
+    <div class="drawer-label">Navigate</div>
+    <a href="index.html" class="drawer-nav-link">&larr; Back to Book Overview</a>
+    <a href="index.html#topics" class="drawer-nav-link">Choose a Different Part</a>
+  </div>
+</div>
+
+<div id="layout">
+  <aside id="sidebar"><div class="sidebar-inner">
+      <a href="index.html" class="sidebar-book-link"><span class="back-arrow"></span>All Parts</a>
+      <a href="preface.html" class="sidebar-preface-link">Preface</a>
+      <hr class="sidebar-divider"/>
+      <span class="sidebar-part-label">Part I &mdash; The Messy Job Spectrum</span>
+      <ul class="sidebar-ch-list">
+        <li><a href="chapter-1.html">Ch.1 &mdash; Cheap Cognition</a></li><li><a href="chapter-2.html">Ch.2 &mdash; Single-Task Jobs</a></li>
+        <li><a href="chapter-3.html">Ch.3 &mdash; What Holds Jobs Together</a></li><li><a href="chapter-4.html">Ch.4 &mdash; Robots Below</a></li>
+        <li><a href="chapter-5.html">Ch.5 &mdash; Robots Above</a></li>
+      </ul>
+      <hr class="sidebar-divider"/>
+      <span class="sidebar-part-label">Part II &mdash; Sources of Human Value</span>
+      <ul class="sidebar-ch-list">
+        <li><a href="chapter-6.html">Ch.6 &mdash; Coordination as Authority</a></li><li><a href="chapter-7.html">Ch.7 &mdash; The Messiest Job of All</a></li>
+        <li><a href="chapter-8.html">Ch.8 &mdash; Authenticity</a></li>
+      </ul>
+      <hr class="sidebar-divider"/>
+      <span class="sidebar-part-label">Part III &mdash; Organising the Human&ndash;AI Bundle</span>
+      <ul class="sidebar-ch-list">
+        <li><a href="chapter-9.html">Ch.9 &mdash; Compressed Signals</a></li><li><a href="chapter-10.html">Ch.10 &mdash; Workslop</a></li>
+        <li><a href="chapter-11.html" class="active">Ch.11 &mdash; The Mediocrity Trap</a></li><li><a href="chapter-12.html">Ch.12 &mdash; The Career Ladder</a></li>
+      </ul>
+      <hr class="sidebar-divider"/>
+      <span class="sidebar-part-label">Browse by Topic</span>
+      <div class="sidebar-tags-section" id="tag-area">
+        <div id="sidebar-tag-buttons"></div>
+        <div id="tag-results"><div class="tag-result-label" id="tag-result-label"></div>
+          <ul class="tag-result-list" id="tag-result-list"></ul></div>
+      </div>
+    </div></aside>
+  <main id="main">
+    <div class="ch-meta"><span class="ch-part-tag">Part III &mdash; Organising the Human–AI Bundle</span><span class="ch-sep">&middot;</span><span class="ch-number">Chapter 11</span></div>
+    <h1 class="ch-title">The Mediocrity Trap</h1>
+    <p class="ch-subtitle">Allocating effort where it pays</p>
+    <div class="ch-byline">
+      <span class="ch-authors">Luis Garicano &nbsp;&middot;&nbsp; Jin Li &nbsp;&middot;&nbsp; Yanhui Wu</span>
+      <div class="ch-tags"><span class="ch-tag">Quality Control</span><span class="ch-tag">Leadership</span><span class="ch-tag">Organisations</span></div>
+      <div class="ch-share-row"><span class="ch-share-label">Share</span><div class="ch-share-icons"><a class="ch-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmessyjobs.com%2Fchapter-11.html" target="_blank" rel="noopener" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.27V1.73C24 .77 23.21 0 22.22 0z"/></svg></a><a class="ch-share-btn" href="https://twitter.com/intent/tweet?text=Messy%20Jobs%20%E2%80%94%20The%20Mediocrity%20Trap%20%7C%20The%20Work%20that%20AI%20Cannot%20Reach&url=https%3A%2F%2Fmessyjobs.com%2Fchapter-11.html" target="_blank" rel="noopener" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a class="ch-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmessyjobs.com%2Fchapter-11.html" target="_blank" rel="noopener" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a class="ch-share-btn" href="https://www.instagram.com/" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="ch-share-btn" href="weixin://dl/chat" target="_blank" rel="noopener" title="WeChat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.49.49 0 0 1 .177-.554C23.043 18.378 24 16.795 24 15.054c0-3.291-3.338-6.096-7.062-6.196zm-3.569 3.905c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg></a><a class="ch-share-btn" href="https://wa.me/?text=Messy%20Jobs%20%E2%80%94%20The%20Mediocrity%20Trap%20%7C%20The%20Work%20that%20AI%20Cannot%20Reach+https%3A%2F%2Fmessyjobs.com%2Fchapter-11.html" target="_blank" rel="noopener" title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a></div></div>
+    </div>
+    <div class="article-body"><p>In 2022, at the Colorado State Fair, Jason Allen won a prize with his AI-generated work. When he was awarded the prize, he made the claim: &ldquo;AI won, and humans lost.&ldquo;<sup><a href="#note-165" id="ref-165" class="note-ref">165</a></sup></p>
+<p>When the news was released, it created outrage. One Twitter user commented, &ldquo;10 years ago when I was telling people I switched to doing digital art this is what they assumed I did, just pressed a button and generated art\... now I guess they are giving awards for doing just that.&ldquo; But the truth is far more complicated than that. Jason Allen wasn't just pressing one button.</p>
+<p>This project took 100 hours, most of which he spent struggling with the model output. He spent 80 hours on prompting, sifting through hundreds of &ldquo;not-at-all-satisfactory&ldquo; samples, and finally achieved that unique, surreal lighting effect. Once the figure was dressed in flowing robes, he imported the work into Photoshop for a final 20 hours of manual refinement. It was a meticulous process of adjusting shadows and fixing details.</p>
+<p>Allen's story forces us to confront a new organizational reality. We already know that AI makes it easier to get started. But its impact on finishing work is less clear. When a machine can give you a 90 percent perfect piece in 10 seconds, where does the motivation to spend 10 hours honing the remaining 10 percent come from? The real question may not be how to get to that 10 percent, but is that 10 percent worth the effort?</p>
+<p>The previous two chapters have shown that organizations are getting worse at reading the quality of work and verifying results. The signal is compressed. The cost of verification is high. This chapter asks the question: how must organizations set standards and evaluate output when AI changes the shape of the production function? And given those changing standards, where should individuals really spend their time?</p>
+<h2>The Price of Perfection</h2>
+<p>Long before machines could paint, humans were dealing with the problem of perfectionism. Great work has never depended on talent alone; it depends on how much discomfort and delay someone is willing to endure for a slightly better result. If masterpieces have a secret fuel, it is obsession.</p>
+<p>Stanley Kubrick was the high priest of this approach. During the filming of Eyes Wide Shut, he demanded take after take for even the simplest gestures. Tom Cruise described walking through a doorway dozens of times until Kubrick felt the moment was right. The production stretched to 46 consecutive weeks, setting a Guinness World Record.<sup><a href="#note-166" id="ref-166" class="note-ref">166</a></sup></p>
+<p>There is a flattering modern name for this: grit. Psychologist Angela Duckworth defines grit as the passion and perseverance to achieve long-term goals. It is the refusal to accept the tenth draft because the eleventh might be better. Duckworth argues this quality predicts success better than natural IQ. Grit can lead to great work, but it casts a long shadow.<sup><a href="#note-167" id="ref-167" class="note-ref">167</a></sup></p>
+<p>Even the most determined drive eventually has to end. At a certain point, a difficult question appears: Is this small increment of &ldquo;better&ldquo; really worth what it costs?</p>
+<p>At Pixar Animation Studios, artists call this trap &ldquo;the beautifully shaded penny.&ldquo; It describes a situation where an artist pours days of labor into a detail the audience will never see, like a penny on a nightstand in the background. In Monsters, Inc., artists carefully designed individual surface effects for ninety CD cases in a character's apartment. But the CD cases appear for less than three seconds, and on screen, only a few of them are at all visible. The effort was impressive, and it was a good story to tell. But the value to the audience was near zero, and the cost to Pixar was real.<sup><a href="#note-168" id="ref-168" class="note-ref">168</a></sup></p>
+<p>The shadow-penny problem has many victims. Gustave Flaubert, the French writer, was known to pace his study for hours, reading sentences aloud until the rhythm felt right, sometimes discarding whole days' work for a single misplaced adjective. In his letters, he complained that entire days were lost while struggling over &ldquo;five or six lines.&ldquo; It took him five years to complete Madame Bovary.<sup><a href="#note-169" id="ref-169" class="note-ref">169</a></sup> Leonardo da Vinci produced thousands of sketches but fewer than twenty completed paintings because of his exacting standards. In modern times, George R. R. Martin's long-suffering readers may never see the next Game of Thrones volume.</p>
+<p>To deal with the shadow-penny problem, creators had invented diverse methods to force themselves to stop. At Pixar, producer John Walker introduced a system involving popsicle sticks. He attached a row of sticks to a wall, each representing one person-week of labor. If a director wanted to polish a background detail, Walker pointed to the wall: Which stick should we use? More time on the background meant less time on the main character. Production now requires a trade-off of finite resources.<sup><a href="#note-170" id="ref-170" class="note-ref">170</a></sup></p>
+<p>Graham Greene found another solution. He divided his works into &ldquo;novels&ldquo; and &ldquo;entertainments.&ldquo; The novels carried profound artistic aspirations; the entertainments were thrillers written quickly and without the same crushing pressure. By labeling some of his works as &ldquo;light,&ldquo; Greene freed himself from the demand that every single project justify unlimited effort.<sup><a href="#note-171" id="ref-171" class="note-ref">171</a></sup></p>
+<p>These rules are stopping technologies: preventing the unlimited expansion of effort. They enable people to complete their work, continue creating, and devote their energy to other things. But they are also imperfect answers. If we want to think about how to effectively solve the stopping problem, we need to systematically consider the general principles involved. This again leads us to economics.</p>
+<h2>The Economics of Stopping</h2>
+<p>Economics is often described as the study of markets, prices, and money. But it is simpler: it is the language of human decision-making. It examines how people make choices with limited time, attention, and energy, and, just as importantly, when to stop.</p>
+<p>One insight from economics is that, for many activities, decisions are not simple binary choices of \&ldquo;yes or no,\&ldquo; but rather \&ldquo;how much to invest.\&ldquo; These choices are incremental choices. We decide not only whether to write, but also whether to revise. The question is not just about &ldquo;Is it valuable?&ldquo;, but &ldquo;Is the next step worth the cost?&ldquo;</p>
+<p>The payoffs to almost any activity are not uniform; they follow the law of diminishing returns. Early efforts often yield significant gains, while later efforts yield progressively smaller improvements. In the end, people can spend a lot of time with little to show for it.</p>
+<p>Consider a writer revising a chapter. The first revision restructures the argument and eliminates weak sections, creating a huge improvement. The second revision catches minor errors and tightens the prose. The improvement is smaller, but still worth the time. By the sixth revision, the gains are with small details that readers will hardly notice. This pattern is sometimes known as the 80/20 rule. A lot more effort is needed for the last part of the work. Given the diminishing returns, the question is when we should stop.</p>
+<p>The rational approach is that we should continue only when the benefit of the next step is greater than the cost. We should stop when the additional benefit is equal to the additional cost. Beyond this point, continuing is actually a loss: the value of your time is greater than the value of the results you will get.</p>
+<p>The stopping point is not just a property of the task. It is also a property of the person doing it, specifically, of what else they could be doing instead. Economists find that older individuals, retirees, and the unemployed systematically spend more time shopping and searching for lower prices. This is not because they benefit more from finding a bargain, though they might. The more likely reason is simply that they have more time. An hour spent searching costs a retiree very little. It costs a busy banker a great deal. Both stop when the benefit of continuing falls below the cost, but that cost is different for each of them.</p>
+<p>And diminishing returns in quality do not always mean diminishing returns in value. An Olympic sprinter who shaves 0.02 seconds off her time has made a negligible improvement in absolute performance. But if that 0.02 seconds is the difference between gold and fourth place, the return in value is huge. Similarly, a pitch that is 5 percent more polished than the next firm\'s pitch wins the entire contract. In these cases, the quality curve is flat, but the reward curve rises sharply. This means that rational effort allocation is not simply a matter of examining the quality curve. You also need to know the reward structure. And this, as we will see, is a key issue in the age of AI.</p>
+<h2>When AI Frontload Progress</h2>
+<p>How does AI affect the decision of when to continue and when to stop? The answer lies in how AI reshapes the trajectory of progress.</p>
+<h3>The New Shape of Progress</h3>
+<p>Starting a project used to be the most challenging part of creative work. Creators put in lots of thought at the beginning to explore and generate ideas. Once an idea is settled, the execution process starts. The execution can be slow and sometimes tedious. There are lots of details to hammer out. But it is controllable, and progress is steady.</p>
+<p>The old 80/20 pattern reflected this. Getting to 80 percent of quality required the bulk of the creative effort: figuring out ideas and concepts, and producing the rough first version. The remaining 20 percent was refinement: polishing prose, fixing edge cases, tightening the design. That final stretch was time-consuming, often frustrating, but the creator knew what needed to be done. The path to the final output was more or less known. Put it differently, the difficulty was in the long walk one has to take, not in finding the trail.</p>
+<p>With AI, huge progress appears instantly. A single prompt generates a draft, a sketch, or a block of code in seconds, compressing hours of work into minutes. That is why the old 80/20 logic no longer fits. The new pattern is closer to 90/10, but the deeper change is not the ratio, but the nature of the production process. AI hands you something that looks nearly finished before you have worked out what is wrong with it, what &ldquo;better&ldquo; even means, or which of the many possible improvements would matter. The creative part of the production now comes late.</p>
+<p>The helicopter image captures the shift. AI drops you near the summit without the long climb. You save enormous effort, but you also skip the accumulation of skill, judgment, and feel that the climb once provided, and you do not see the trail that leads to the summit. Nevertheless, you can still ask AI for help for the last part of the journey. This creates two opposing forces.</p>
+<p><strong>The Knowledge Deficit.</strong> In the traditional production process, getting to 80 percent was evidence of understanding. A writer who had produced a strong draft had already wrestled with the structure of the argument and was knowledgeable about the supporting materials. By the time revision began, she knew all the foundational materials and only needed to fix the surface.</p>
+<p>With AI, a draft appears before the thinking is done. The writer now faces polished prose without an equally developed mental model behind it. Her mind is no longer ahead of the page, but behind it. So the hardest part of the job, including diagnosing weaknesses, judging coherence, and deciding what matters, is harder than before. That is why AI so often produces stagnation: the user falls into a cycle of prompt, glance, and re-prompt. New output arrives, but the work does not truly improve.</p>
+<p>Who breaks through the plateau depends on two factors. One is existing skill and domain knowledge. A skillful editor knows the structural reasons a draft is wrong. A less experienced one may not. An understanding of what excellence looks like is a key factor for breakthrough. The second factor has to do with the willingness to do hard thinking. The availability of AI makes it too easy to outsource the thinking too early, but real improvement still requires hard thinking.</p>
+<p><strong>The Companion Effect</strong> While AI may create the knowledge deficit required for further progress, it also gives something back. In the past a writer stuck at 90 percent was often alone with her doubts. And writing alone can be mentally taxing. Now the writer can ask the AI to critique her argument, suggest alternative framings, identify the weakest points, and generate different ways to restructure the conclusion.</p>
+<p>This means the marginal cost of continuing has fallen. When AI functions as a thinking partner, the next hour of effort is less unpleasant and less lonely. Writers may even develop a flow experience working with AI, continuously pushing forward the quality of writing.</p>
+<p>In sum, AI simultaneously raises the difficulty of the last 10 percent because the creator lacks the accumulated understanding that used to come from the early hard climb, and lowers the cost of working on it because there is a collaborator. That combination creates a bifurcation: some people stop early once the visible gains disappear, and others keep going because they know they can improve and the marginal cost of working is acceptable. The evidence shows both patterns.</p>
+<h2>The mediocrity trap and the last-mile illusion</h2>
+<p>To find out the effect of AI on the creative process, Jin and his coauthors ran an experiment with 219 artists, ranging from students to professionals. The task was to illustrate passages from famous novels. Each artist worked for up to 150 minutes, and we looked at the entire creative process with and without AI.<sup><a href="#note-172" id="ref-172" class="note-ref">172</a></sup></p>
+<p>We recorded every brushstroke, undo, and prompt, and independent judges scored the artwork at fifteen-minute intervals. Without AI, the pattern was the familiar pattern of progress with diminishing returns. The first hour produced a rough composition. The artists then added color and shading, and finally brought fine details.</p>
+<p>With AI, the shape of progress changed sharply. Within thirty minutes, many artists reached a quality level that would have taken two hours by hand. But then, they hit a wall. After minute 45, the quality curve plateaued. Further gains were barely noticeable, even as artists kept tweaking prompts and patching details. This pattern is consistent with the knowledge deficit discussed earlier. AI helped the artists to get a polished image before they had put in enough thinking on the composition, making further improvement difficult.</p>
+<p>The new shape of progress led to behavioral changes in many artists. Without AI, almost all artists worked to the deadline. With AI, there was a bifurcation. One group stopped early, right around minute 60, where the plateau starts. They reached a point where additional effort no longer seemed to improve the work and made the reasonable choice to stop. For them, the expected marginal benefit had fallen sharply. Better technology from AI did not bring in higher final quality ratings for these artists. AI became a time-saver, but also a mediocrity trap that stopped them.</p>
+<p>The other group did the opposite: they kept working all the way to the full 150 minutes. But what's interesting is that this extra time produced little quality gain for them. The final qualities, as rated by the judges, are not noticeably different from those who stop earlier. In other words, the quality plateaued in the time allowed. This is the group with low marginal costs.</p>
+<p>In art, &ldquo;good enough&ldquo; is often acceptable. But what happens in settings where the precision is more important, such as software engineering?</p>
+<p>Model Evaluation &amp; Threat Research (METR) explored this question in a field experiment in software development. They recruited 16 experienced open-source developers and gave them real tasks drawn from large, mature codebases that the developers already knew well. These are projects where contributors had, on average, years of prior experience. Tasks were randomly assigned to an &ldquo;AI allowed&ldquo; condition or a &ldquo;no AI&ldquo; condition, and the researchers measured how long the same kinds of issues took to complete in each mode.<sup><a href="#note-173" id="ref-173" class="note-ref">173</a></sup></p>
+<p>The result was the opposite of what almost everyone expected. With access to frontier coding assistants, developers took about 19 percent longer to finish their tasks. Interestingly, developers felt faster: before starting, they predicted a substantial speedup, and afterward they still believed the AI had helped, despite the stopwatch showing the reverse.</p>
+<p>This finding is in line with the two effects in the &ldquo;helicopter drop&ldquo; logic. AI gets you to the high-altitude camp instantly, generating 90 percent of the code quickly. But because you did not make the climb yourself, you lack the knowledge that would let you finish the last mile quickly. At the same time, the companion effect is still present. AI lowers the cost of continuing, and you keep going because bugs need to be fixed. Both because the rate of progress is lower and the programmers won't stop until they reach a sufficiently high level of output, the entire process becomes even longer than before.</p>
+<h2>The organizational standard-setting problem</h2>
+<p>The 90/10 production function creates a problem that is as much organizational as individual. When AI gets everyone to 90 percent instantly, the organization faces a new sorting challenge: how do you distinguish workers who pushed to 98 percent from those who stopped at 91 percent? The surface looks identical. The verification costs we analyzed in Chapter 10 make the problem worse --- the manager reviewing the output cannot easily tell which version represents serious effort.</p>
+<p>The complementarity logic from Chapter 7 applies here. An organization's quality standards, incentive systems, and evaluation processes form a cluster. If the production function changes shape from a slow climb to a helicopter drop with a plateau, the entire cluster must adjust. An organization that still rewards volume of polished output is rewarding the 90 percent that AI provides for free.</p>
+<p>The first step is to stop treating all output equally. The work of the organization can be roughly divided into commodity tasks, such as writing meeting minutes for internal documents, formatting data for spreadsheets, or writing routine status updates, where 90 percent of the quality is good enough. And star tasks, such as a client presentation or a high-stakes negotiation, where success requires the last 10 percent as well.</p>
+<p>For commodity tasks, the goal is competence, not aesthetics. For these tasks, if the AI gets you to 90 percent, the organization should accept that and move on. Spending an hour to polish it further is a waste.</p>
+<p>But &ldquo;star tasks&ldquo; are quite different. For these tasks, the difference between &ldquo;good&ldquo; and &ldquo;excellent&ldquo; is crucial. The organization needs to invest the time to elevate the work from &ldquo;acceptable&ldquo; to &ldquo;excellent.&ldquo;</p>
+<p>The harder step is to redesign incentives to reward the last 10 percent on star tasks rather than rewarding volume across all tasks. An organization that measures productivity by volume will get mountains of 90 percent work and very little excellence.</p>
+<p>For the individual, the implications are the same. Sort your own work into commodity and star tasks before you start. The mistake many people make is treating every task like a star task.</p>
+<p>This brings us back to where we began. Jason Allen did not win the Colorado State Fair by pressing a button. He won because he treated the piece as a star task and refused to stop at the plateau. His eighty hours of prompt iteration and twenty hours of manual refinement were not wasted effort; they were the price of the last 10 percent. Most people who generate an image with AI look at it, feel impressed, and move on. Allen looked at it, saw what was missing, and kept going. For organizations, the question is whether their systems can identify and reward the Allen in the room or whether instead they treat his hundred hours the same as someone else's five minutes.</p></div>
+    <div class="key-takeaway">
+      <div class="key-takeaway-label">Key Takeaway</div>
+      <p>AI makes starting easy — the last mile is still human, and it still matters.</p>
+    </div>
+    <div class="endnotes"><div class="endnotes-label">Endnotes</div><ol class="endnote-list"><li id="note-165" class="endnote-item"><span class="endnote-num">165.</span> <span class="endnote-text">Regarding the controversy over Jason Allen\'s award-winning AI-generated artwork at the Colorado State Fair and the process of prompt engineering and manual refinement involved, see Kevin Roose, &ldquo;An A.I.-Generated Picture Won an Art Prize. Artists Aren\'t Happy,&ldquo; *The New York Times*, September 2, 2022; and Sarah Kuta, &ldquo;Art Made With Artificial Intelligence Wins at State Fair,&ldquo; *Smithsonian Magazine*, September 6, 2022.</span> <a href="#ref-165" class="endnote-back">↩</a></li><li id="note-166" class="endnote-item"><span class="endnote-num">166.</span> <span class="endnote-text">On Stanley Kubrick's directorial perfectionism during the production of *Eyes Wide Shut*, including the repetitive takes for simple actions and the record-breaking 46-week continuous shoot, see Nina Sterle, &ldquo;They Shot This Movie For 400 Days Straight According To Guinness World Records,&ldquo; *Thought Catalog*, March 13, 2025.</span> <a href="#ref-166" class="endnote-back">↩</a></li><li id="note-167" class="endnote-item"><span class="endnote-num">167.</span> <span class="endnote-text">For the definition of grit as a combination of passion and perseverance, see Angela Duckworth, *Grit: The Power of Passion and Perseverance* (Ebury Publishing, 2016).</span> <a href="#ref-167" class="endnote-back">↩</a></li><li id="note-168" class="endnote-item"><span class="endnote-num">168.</span> <span class="endnote-text">For the story about the over-investment of labor into background details at Pixar, see Ed Catmull and Amy Wallace, *Creativity, Inc.: Overcoming the Unseen Forces That Stand in the Way of True Inspiration* (Random House, 2014).</span> <a href="#ref-168" class="endnote-back">↩</a></li><li id="note-169" class="endnote-item"><span class="endnote-num">169.</span> <span class="endnote-text">For the account of Gustave Flaubert's meticulous writing process and his struggle to complete *Madame Bovary*, see Brian Patrick Eha, &ldquo;Herald of Modernism,&ldquo; *City Journal*, Winter 2025.</span> <a href="#ref-169" class="endnote-back">↩</a></li><li id="note-170" class="endnote-item"><span class="endnote-num">170.</span> <span class="endnote-text">For the story about the use of \&ldquo;popsicle sticks\&ldquo; to visualize labor trade-offs and resource management at Pixar, see Ed Catmull and Amy Wallace, *Creativity, Inc.: Overcoming the Unseen Forces That Stand in the Way of True Inspiration* (Random House, 2014).</span> <a href="#ref-170" class="endnote-back">↩</a></li><li id="note-171" class="endnote-item"><span class="endnote-num">171.</span> <span class="endnote-text">For the account of Graham Greene's categorization of his books into &ldquo;novels&ldquo; and &ldquo;entertainments&ldquo; to manage artistic pressure and effort, see James Mustich, &ldquo;On Reading Graham Greene: Page-turning as pilgrimage,&ldquo; *Medium*, April 24, 2020.</span> <a href="#ref-171" class="endnote-back">↩</a></li><li id="note-172" class="endnote-item"><span class="endnote-num">172.</span> <span class="endnote-text">For the details of this experimental study, see Chen, Yvonne J., Jie Gong, Jin Li, and Zibo Zhao, ***\&ldquo;***Better Technology, Worse Motivation: GenAI's Mediocrity Trap,\&ldquo; HKU working paper.</span> <a href="#ref-172" class="endnote-back">↩</a></li><li id="note-173" class="endnote-item"><span class="endnote-num">173.</span> <span class="endnote-text">For the research on the impact of early-2025 AI on the productivity of experienced open-source developers, which found that AI assistance increased completion time despite developer perceptions of speed, see Joel Becker, Nate Rush, Elizabeth Barnes, and David Rein, &ldquo;Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity,&ldquo; *METR* (July 2025).</span> <a href="#ref-173" class="endnote-back">↩</a></li></ol></div>
+    <div class="ch-nav"><a href="chapter-10.html" class="ch-nav-prev"><span class="ch-nav-dir">Previous</span><span class="ch-nav-title">Ch.10 — Workslop</span></a><div class="ch-nav-book"><span class="ch-nav-book-label">Enjoying the book?</span><a href="#" class="ch-nav-book-btn">Get the Full Book</a></div><a href="chapter-12.html" class="ch-nav-next"><span class="ch-nav-dir">Next</span><span class="ch-nav-title">Ch.12 — The Career Ladder is Broken</span></a></div>
+  </main>
+</div>
+
+<script>
+var c=document.getElementById("sidebar-tag-buttons");if(!c)return;
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Authority";var items="<li><a href=\\\"chapter-6.html\\\">Ch.6 \u2014 Coordination as Authority</a></li><li><a href=\\\"chapter-7.html\\\">Ch.7 \u2014 The Messiest Job of All</a></li>";var label="Authority &mdash; 2 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Automation";var items="<li><a href=\\\"chapter-2.html\\\">Ch.2 \u2014 Disappearing Single-Task Jobs</a></li><li><a href=\\\"chapter-3.html\\\">Ch.3 \u2014 What Holds Jobs Together</a></li><li><a href=\\\"chapter-4.html\\\">Ch.4 \u2014 Robots Below</a></li>";var label="Automation &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Autonomy Threshold";var items="<li><a href=\\\"chapter-1.html\\\">Ch.1 \u2014 Cheap Cognition</a></li><li><a href=\\\"chapter-2.html\\\">Ch.2 \u2014 Disappearing Single-Task Jobs</a></li><li><a href=\\\"chapter-3.html\\\">Ch.3 \u2014 What Holds Jobs Together</a></li>";var label="Autonomy Threshold &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Credential Inflation";var items="<li><a href=\\\"chapter-9.html\\\">Ch.9 \u2014 Compressed Signals</a></li><li><a href=\\\"chapter-10.html\\\">Ch.10 \u2014 Workslop</a></li><li><a href=\\\"chapter-12.html\\\">Ch.12 \u2014 The Career Ladder is Broken</a></li>";var label="Credential Inflation &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Early Career";var items="<li><a href=\\\"chapter-2.html\\\">Ch.2 \u2014 Disappearing Single-Task Jobs</a></li><li><a href=\\\"chapter-5.html\\\">Ch.5 \u2014 Robots Above</a></li><li><a href=\\\"chapter-12.html\\\">Ch.12 \u2014 The Career Ladder is Broken</a></li>";var label="Early Career &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Hiring & Screening";var items="<li><a href=\\\"chapter-9.html\\\">Ch.9 \u2014 Compressed Signals</a></li><li><a href=\\\"chapter-12.html\\\">Ch.12 \u2014 The Career Ladder is Broken</a></li>";var label="Hiring & Screening &mdash; 2 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Human Value";var items="<li><a href=\\\"chapter-6.html\\\">Ch.6 \u2014 Coordination as Authority</a></li><li><a href=\\\"chapter-7.html\\\">Ch.7 \u2014 The Messiest Job of All</a></li><li><a href=\\\"chapter-8.html\\\">Ch.8 \u2014 Authenticity</a></li>";var label="Human Value &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Job Redesign";var items="<li><a href=\\\"chapter-3.html\\\">Ch.3 \u2014 What Holds Jobs Together</a></li><li><a href=\\\"chapter-4.html\\\">Ch.4 \u2014 Robots Below</a></li><li><a href=\\\"chapter-5.html\\\">Ch.5 \u2014 Robots Above</a></li>";var label="Job Redesign &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Labour Market";var items="<li><a href=\\\"chapter-1.html\\\">Ch.1 \u2014 Cheap Cognition</a></li><li><a href=\\\"chapter-5.html\\\">Ch.5 \u2014 Robots Above</a></li><li><a href=\\\"chapter-12.html\\\">Ch.12 \u2014 The Career Ladder is Broken</a></li>";var label="Labour Market &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Leadership";var items="<li><a href=\\\"chapter-6.html\\\">Ch.6 \u2014 Coordination as Authority</a></li><li><a href=\\\"chapter-7.html\\\">Ch.7 \u2014 The Messiest Job of All</a></li><li><a href=\\\"chapter-11.html\\\">Ch.11 \u2014 The Mediocrity Trap</a></li>";var label="Leadership &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Organisations";var items="<li><a href=\\\"chapter-7.html\\\">Ch.7 \u2014 The Messiest Job of All</a></li><li><a href=\\\"chapter-9.html\\\">Ch.9 \u2014 Compressed Signals</a></li><li><a href=\\\"chapter-10.html\\\">Ch.10 \u2014 Workslop</a></li>";var label="Organisations &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Quality Control";var items="<li><a href=\\\"chapter-10.html\\\">Ch.10 \u2014 Workslop</a></li><li><a href=\\\"chapter-11.html\\\">Ch.11 \u2014 The Mediocrity Trap</a></li>";var label="Quality Control &mdash; 2 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Senior Professionals";var items="<li><a href=\\\"chapter-4.html\\\">Ch.4 \u2014 Robots Below</a></li><li><a href=\\\"chapter-5.html\\\">Ch.5 \u2014 Robots Above</a></li><li><a href=\\\"chapter-6.html\\\">Ch.6 \u2014 Coordination as Authority</a></li>";var label="Senior Professionals &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Trust";var items="<li><a href=\\\"chapter-8.html\\\">Ch.8 \u2014 Authenticity</a></li><li><a href=\\\"chapter-10.html\\\">Ch.10 \u2014 Workslop</a></li>";var label="Trust &mdash; 2 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+(function(){var btn=document.createElement("button");btn.className="sidebar-tag-btn";btn.textContent="Understanding AI";var items="<li><a href=\\\"chapter-1.html\\\">Ch.1 \u2014 Cheap Cognition</a></li><li><a href=\\\"chapter-2.html\\\">Ch.2 \u2014 Disappearing Single-Task Jobs</a></li><li><a href=\\\"chapter-8.html\\\">Ch.8 \u2014 Authenticity</a></li>";var label="Understanding AI &mdash; 3 chapters";btn.addEventListener("click",function(){  var res=document.getElementById("tag-results");  var lbl=document.getElementById("tag-result-label");  var lst=document.getElementById("tag-result-list");  var active=this.classList.contains("active");  document.querySelectorAll(".sidebar-tag-btn").forEach(function(b){b.classList.remove("active");});  if(!active){this.classList.add("active");lbl.innerHTML=label;lst.innerHTML=items;res.classList.add("visible");}  else{res.classList.remove("visible");}});c.appendChild(btn);})();
+// Progress bar
+window.addEventListener('scroll',function(){
+  var d=document.documentElement;
+  document.getElementById('progress-fill').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+});
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('drawer-overlay').classList.toggle('open');}
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');var ov=document.getElementById('sidebar-overlay');if(ov)ov.classList.toggle('open');}
+</script>
+</body>
+</html>
