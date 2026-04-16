@@ -305,7 +305,7 @@
   </main>
 </div>
 <script>
-var c=document.getElementById('sidebar-tag-buttons');if(!c)return;
+var c=document.getElementById('sidebar-tag-buttons');
 (function(){var btn=document.createElement('button');btn.className='sidebar-tag-btn';btn.textContent="Authority";var items="<li><a href='chapter-6.html'>Ch.6 \u2014 Coordination as Authority</a></li><li><a href='chapter-7.html'>Ch.7 \u2014 The Messiest Job of All</a></li>";var label="Authority &mdash; 2 chapters";btn.addEventListener('click',function(){  var res=document.getElementById('tag-results');  var lbl=document.getElementById('tag-result-label');  var lst=document.getElementById('tag-result-list');  var active=this.classList.contains('active');  document.querySelectorAll('.sidebar-tag-btn').forEach(function(b){b.classList.remove('active');});  if(!active){this.classList.add('active');lbl.innerHTML=label;lst.innerHTML=items;res.classList.add('visible');}  else{res.classList.remove('visible');}});c.appendChild(btn);})();
 (function(){var btn=document.createElement('button');btn.className='sidebar-tag-btn';btn.textContent="Automation";var items="<li><a href='chapter-2.html'>Ch.2 \u2014 Disappearing Single-Task Jobs</a></li><li><a href='chapter-3.html'>Ch.3 \u2014 What Holds Jobs Together</a></li><li><a href='chapter-4.html'>Ch.4 \u2014 Robots Below</a></li>";var label="Automation &mdash; 3 chapters";btn.addEventListener('click',function(){  var res=document.getElementById('tag-results');  var lbl=document.getElementById('tag-result-label');  var lst=document.getElementById('tag-result-list');  var active=this.classList.contains('active');  document.querySelectorAll('.sidebar-tag-btn').forEach(function(b){b.classList.remove('active');});  if(!active){this.classList.add('active');lbl.innerHTML=label;lst.innerHTML=items;res.classList.add('visible');}  else{res.classList.remove('visible');}});c.appendChild(btn);})();
 (function(){var btn=document.createElement('button');btn.className='sidebar-tag-btn';btn.textContent="Autonomy Threshold";var items="<li><a href='chapter-1.html'>Ch.1 \u2014 Cheap Cognition</a></li><li><a href='chapter-2.html'>Ch.2 \u2014 Disappearing Single-Task Jobs</a></li><li><a href='chapter-3.html'>Ch.3 \u2014 What Holds Jobs Together</a></li>";var label="Autonomy Threshold &mdash; 3 chapters";btn.addEventListener('click',function(){  var res=document.getElementById('tag-results');  var lbl=document.getElementById('tag-result-label');  var lst=document.getElementById('tag-result-list');  var active=this.classList.contains('active');  document.querySelectorAll('.sidebar-tag-btn').forEach(function(b){b.classList.remove('active');});  if(!active){this.classList.add('active');lbl.innerHTML=label;lst.innerHTML=items;res.classList.add('visible');}  else{res.classList.remove('visible');}});c.appendChild(btn);})();
@@ -328,11 +328,9 @@ function filterTag(tagName) {
   var btns = document.querySelectorAll(".sidebar-tag-btn");
   btns.forEach(function(btn) {
     if (btn.textContent.trim() === tagName.trim()) {
-      btn.click();
+      if (!btn.classList.contains("active")) { btn.click(); }
       var sidebar = document.getElementById("sidebar");
-      if (sidebar && !sidebar.classList.contains("open")) {
-        toggleSidebar();
-      }
+      if (sidebar && !sidebar.classList.contains("open")) { toggleSidebar(); }
     }
   });
 }
